@@ -131,7 +131,7 @@ export default function Portfolio() {
             <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-950/50 dark:to-indigo-900/50 border-blue-200">
               <CardHeader className="text-center">
                 <Code className="mx-auto h-8 w-8 text-blue-500" />
-                <CardTitle>8.1 CGPA</CardTitle>
+                <CardTitle>7.99 CGPA</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">Computer Science Engineering</p>
@@ -332,15 +332,15 @@ export default function Portfolio() {
             <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
               <CardHeader>
                 <Image
-                  src="/placeholder.svg?height=200&width=400"
+                  src="/projects/decentralized-app.jpg"
                   width={400}
                   height={200}
-                  alt="Decentralized Application Development"
+                  alt="Decentralized Application"
                   className="w-full h-48 object-cover rounded-t-lg"
                 />
-                <CardTitle>Decentralized Application Development</CardTitle>
+                <CardTitle>Decentralized Application</CardTitle>
                 <CardDescription>
-                  Next-Generation Web3 Platform with DAO Voting, Crowdfunding, and Cross-Chain Support
+                  Web3 Platform with DAO Voting and Crowdfunding
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -388,7 +388,7 @@ export default function Portfolio() {
             <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
               <CardHeader>
                 <Image
-                  src="/placeholder.svg?height=200&width=400"
+                  src="/projects/cryptotrade.jpg"
                   width={400}
                   height={200}
                   alt="CryptoTrade"
@@ -434,7 +434,7 @@ export default function Portfolio() {
             <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
               <CardHeader>
                 <Image
-                  src="/placeholder.svg?height=200&width=400"
+                  src="/projects/nexlink.jpg"
                   width={400}
                   height={200}
                   alt="NexLink"
@@ -480,7 +480,7 @@ export default function Portfolio() {
             <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
               <CardHeader>
                 <Image
-                  src="/placeholder.svg?height=200&width=400"
+                  src="/projects/accommodation-finder.jpg"
                   width={400}
                   height={200}
                   alt="Accommodation Finder"
@@ -530,11 +530,20 @@ export default function Portfolio() {
             <div className="grid gap-6 md:grid-cols-2">
               <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg">SDE-1 - Zomato</CardTitle>
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex-1">
+                      <CardTitle className="text-lg">SDE-1 - Zomato</CardTitle>
+                      <CardDescription>Gurgaon, India</CardDescription>
+                    </div>
+                    <Image
+                      src="/logos/zomato-logo.jpg"
+                      width={60}
+                      height={60}
+                      alt="Zomato"
+                      className="w-16 h-16 object-contain rounded"
+                    />
                     <Badge variant="secondary">Jul 2025 - Dec 2025</Badge>
                   </div>
-                  <CardDescription>Gurgaon, India</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2 text-sm">
@@ -553,11 +562,20 @@ export default function Portfolio() {
 
               <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg">SDE Intern - The Linux Foundation</CardTitle>
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex-1">
+                      <CardTitle className="text-lg">SDE Intern - The Linux Foundation</CardTitle>
+                      <CardDescription>Seoul (Remote)</CardDescription>
+                    </div>
+                    <Image
+                      src="/logos/linux-foundation-logo.jpg"
+                      width={60}
+                      height={60}
+                      alt="The Linux Foundation"
+                      className="w-16 h-16 object-contain rounded"
+                    />
                     <Badge variant="secondary">Nov 2023 - Mar 2024</Badge>
                   </div>
-                  <CardDescription>Seoul (Remote)</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2 text-sm">
@@ -577,11 +595,20 @@ export default function Portfolio() {
 
               <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg">SDE Intern - ITJOBS</CardTitle>
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex-1">
+                      <CardTitle className="text-lg">SDE Intern - ITJOBS</CardTitle>
+                      <CardDescription>Mumbai, Maharashtra</CardDescription>
+                    </div>
+                    <Image
+                      src="/logos/itjobs-logo.jpg"
+                      width={60}
+                      height={60}
+                      alt="ITJOBS"
+                      className="w-16 h-16 object-contain rounded"
+                    />
                     <Badge variant="secondary">Jul 2023 - Sep 2023</Badge>
                   </div>
-                  <CardDescription>Mumbai, Maharashtra</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2 text-sm">
