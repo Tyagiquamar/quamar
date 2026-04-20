@@ -97,13 +97,15 @@ export default function Portfolio() {
             </div>
           </div>
           <div className="flex items-center justify-center">
-            <Image
-              src="/placeholder.svg?height=400&width=400"
-              width={400}
-              height={400}
-              alt="Mohd Quamar Tyagi"
-              className="aspect-square overflow-hidden rounded-full object-cover"
-            />
+            <div className="relative w-96 h-96 rounded-full overflow-hidden ring-4 ring-purple-500/50 shadow-2xl shadow-purple-500/50">
+              <Image
+                src="/images/profile-rose.jpg"
+                width={400}
+                height={400}
+                alt="Mohd Quamar Tyagi"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
