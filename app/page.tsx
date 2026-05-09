@@ -29,6 +29,9 @@ export default function Portfolio() {
               <Link href="#projects" className="hover:text-foreground/80 transition-colors duration-200">
                 Projects
               </Link>
+              <Link href="#ai-tools" className="hover:text-foreground/80 transition-colors duration-200">
+                AI & Tools
+              </Link>
               <Link href="#contact" className="hover:text-foreground/80 transition-colors duration-200">
                 Contact
               </Link>
@@ -238,6 +241,22 @@ export default function Portfolio() {
 
           {/* Technical Skills */}
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+              <CardHeader>
+                <CardTitle>AI & LLM</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  <Badge>LLM</Badge>
+                  <Badge>Prompt Engineering</Badge>
+                  <Badge>AI Agents</Badge>
+                  <Badge>Orchestration</Badge>
+                  <Badge>Claude</Badge>
+                  <Badge>Cursor</Badge>
+                  <Badge>Lovable</Badge>
+                </div>
+              </CardContent>
+            </Card>
             <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
               <CardHeader>
                 <CardTitle>Programming Languages</CardTitle>
@@ -524,6 +543,102 @@ export default function Portfolio() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+
+          {/* AI & Tools Section */}
+          <div id="ai-tools" className="mt-16">
+            <h3 className="text-2xl font-bold mb-8 text-center">AI & Tools</h3>
+            <div className="grid gap-6 md:grid-cols-2">
+              <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <CardHeader>
+                  <div className="w-full h-48 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-t-lg flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-5xl mb-2">🤖</div>
+                      <p className="text-sm font-semibold text-muted-foreground">AI Interviewer Agent</p>
+                    </div>
+                  </div>
+                  <CardTitle>AI Interviewer Agent</CardTitle>
+                  <CardDescription>
+                    Intelligent multi-stage interview simulation platform powered by advanced LLMs
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3 mb-4">
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline">Claude API</Badge>
+                      <Badge variant="outline">Next.js</Badge>
+                      <Badge variant="outline">Prompt Engineering</Badge>
+                      <Badge variant="outline">AI Agents</Badge>
+                    </div>
+                    <div className="text-sm text-muted-foreground space-y-1">
+                      <p>• Multi-stage interview simulation with realistic conversational AI</p>
+                      <p>• Adaptive difficulty based on user responses</p>
+                      <p>• Real-time feedback and detailed performance analysis</p>
+                      <p>• Support for multiple interview types and domains</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button size="sm" asChild className="transition-all duration-200 hover:scale-105">
+                      <Link href="https://ai-interviewer-agent.vercel.app/">
+                        <ExternalLink className="h-4 w-4 mr-1" />
+                        Live Demo
+                      </Link>
+                    </Button>
+                    <Button size="sm" variant="outline" asChild className="transition-all duration-200 hover:scale-105">
+                      <Link href="https://github.com/Tyagiquamar/ai-interviewer-agent">
+                        <Github className="h-4 w-4 mr-1" />
+                        Code
+                      </Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <CardHeader>
+                  <div className="w-full h-48 bg-gradient-to-br from-cyan-600/20 to-blue-600/20 rounded-t-lg flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-5xl mb-2">🏗️</div>
+                      <p className="text-sm font-semibold text-muted-foreground">SystemForge</p>
+                    </div>
+                  </div>
+                  <CardTitle>SystemForge</CardTitle>
+                  <CardDescription>
+                    Open-source system design playground with drag-and-drop architecture builder
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3 mb-4">
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline">React.js</Badge>
+                      <Badge variant="outline">Canvas API</Badge>
+                      <Badge variant="outline">System Design</Badge>
+                      <Badge variant="outline">Interactive Learning</Badge>
+                    </div>
+                    <div className="text-sm text-muted-foreground space-y-1">
+                      <p>• 22+ pre-built system components (Load Balancer, Cache, Databases, etc.)</p>
+                      <p>• Drag-and-drop canvas with smart connection system</p>
+                      <p>• 6 real-world templates (URL Shortener, Chat App, Instagram Feed, etc.)</p>
+                      <p>• Educational learning layer with component explanations</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button size="sm" asChild className="transition-all duration-200 hover:scale-105">
+                      <Link href="https://system-blueprint-studio.vercel.app/">
+                        <ExternalLink className="h-4 w-4 mr-1" />
+                        Live Demo
+                      </Link>
+                    </Button>
+                    <Button size="sm" variant="outline" asChild className="transition-all duration-200 hover:scale-105">
+                      <Link href="https://github.com/Tyagiquamar/systemforge">
+                        <Github className="h-4 w-4 mr-1" />
+                        Code
+                      </Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
 
           {/* Experience Section */}
