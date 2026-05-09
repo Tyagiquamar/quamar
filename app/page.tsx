@@ -349,7 +349,7 @@ export default function Portfolio() {
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">
             AI & Tools
           </h2>
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
               <CardHeader>
                 <div className="w-full h-48 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-t-lg flex items-center justify-center">
@@ -461,6 +461,51 @@ export default function Portfolio() {
                     <Link href="https://cloud-architect-compass.vercel.app/">
                       <ExternalLink className="h-4 w-4 mr-1" />
                       Live Demo
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+              <CardHeader>
+                <div className="w-full h-48 bg-gradient-to-br from-pink-600/20 to-purple-600/20 rounded-t-lg flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-5xl mb-2">🎨</div>
+                    <p className="text-sm font-semibold text-muted-foreground">Imagify</p>
+                  </div>
+                </div>
+                <CardTitle>Imagify</CardTitle>
+                <CardDescription>
+                  AI-powered image generation and manipulation platform
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3 mb-4">
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline">React.js</Badge>
+                    <Badge variant="outline">AI Image Gen</Badge>
+                    <Badge variant="outline">Cloudinary</Badge>
+                    <Badge variant="outline">Web Design</Badge>
+                  </div>
+                  <div className="text-sm text-muted-foreground space-y-1">
+                    <p>• AI-powered image generation and editing</p>
+                    <p>• Advanced filters and transformations</p>
+                    <p>• Real-time image processing</p>
+                    <p>• Seamless cloud storage integration</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button size="sm" asChild className="transition-all duration-200 hover:scale-105">
+                    <Link href="https://imagify-indol.vercel.app/">
+                      <ExternalLink className="h-4 w-4 mr-1" />
+                      Live Demo
+                    </Link>
+                  </Button>
+                  <Button size="sm" variant="outline" asChild className="transition-all duration-200 hover:scale-105">
+                    <Link href="https://github.com/mthirumalai2905/imagify">
+                      <Github className="h-4 w-4 mr-1" />
+                      Code
                     </Link>
                   </Button>
                 </div>
