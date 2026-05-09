@@ -385,12 +385,6 @@ export default function Portfolio() {
                       Live Demo
                     </Link>
                   </Button>
-                  <Button size="sm" variant="outline" asChild className="transition-all duration-200 hover:scale-105">
-                    <Link href="https://github.com/Tyagiquamar/ai-interviewer-agent">
-                      <Github className="h-4 w-4 mr-1" />
-                      Code
-                    </Link>
-                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -428,12 +422,6 @@ export default function Portfolio() {
                     <Link href="https://system-blueprint-studio.vercel.app/">
                       <ExternalLink className="h-4 w-4 mr-1" />
                       Live Demo
-                    </Link>
-                  </Button>
-                  <Button size="sm" variant="outline" asChild className="transition-all duration-200 hover:scale-105">
-                    <Link href="https://github.com/Tyagiquamar/systemforge">
-                      <Github className="h-4 w-4 mr-1" />
-                      Code
                     </Link>
                   </Button>
                 </div>
