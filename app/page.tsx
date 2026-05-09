@@ -427,6 +427,45 @@ export default function Portfolio() {
                 </div>
               </CardContent>
             </Card>
+
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+              <CardHeader>
+                <div className="w-full h-48 bg-gradient-to-br from-orange-600/20 to-red-600/20 rounded-t-lg flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-5xl mb-2">☁️</div>
+                    <p className="text-sm font-semibold text-muted-foreground">Cloud Architect Compass</p>
+                  </div>
+                </div>
+                <CardTitle>Cloud Architect Compass</CardTitle>
+                <CardDescription>
+                  Interactive AWS architecture visualization and learning platform
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3 mb-4">
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline">React.js</Badge>
+                    <Badge variant="outline">AWS</Badge>
+                    <Badge variant="outline">Cloud Architecture</Badge>
+                    <Badge variant="outline">Interactive Learning</Badge>
+                  </div>
+                  <div className="text-sm text-muted-foreground space-y-1">
+                    <p>• 50+ AWS services with detailed documentation</p>
+                    <p>• Interactive canvas for building cloud architectures</p>
+                    <p>• Best practices and optimization recommendations</p>
+                    <p>• Real-time visualization of service relationships</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button size="sm" asChild className="transition-all duration-200 hover:scale-105">
+                    <Link href="https://cloud-architect-compass.vercel.app/">
+                      <ExternalLink className="h-4 w-4 mr-1" />
+                      Live Demo
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -624,6 +663,84 @@ export default function Portfolio() {
                   </Button>
                   <Button size="sm" variant="outline" asChild className="transition-all duration-200 hover:scale-105">
                     <Link href="https://github.com/Tyagiquamar">
+                      <Github className="h-4 w-4 mr-1" />
+                      Code
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+              <CardHeader>
+                <div className="w-full h-48 bg-gradient-to-br from-green-600/20 to-emerald-600/20 rounded-t-lg flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-5xl mb-2">🗄️</div>
+                    <p className="text-sm font-semibold text-muted-foreground">Quest SQL Arena</p>
+                  </div>
+                </div>
+                <CardTitle>Quest SQL Arena</CardTitle>
+                <CardDescription>
+                  AI-powered SQL learning platform with gamified progression and interactive challenges
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3 mb-4">
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline">Next.js</Badge>
+                    <Badge variant="outline">SQL</Badge>
+                    <Badge variant="outline">Gamification</Badge>
+                    <Badge variant="outline">AI-Powered</Badge>
+                  </div>
+                  <div className="text-sm text-muted-foreground space-y-1">
+                    <p>• 7-level structured curriculum with 40+ lessons</p>
+                    <p>• Interactive SQL playground with real query execution</p>
+                    <p>• Gamified learning with XP, badges, and leaderboards</p>
+                    <p>• AI-generated MCQs and personalized feedback</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button size="sm" asChild className="transition-all duration-200 hover:scale-105">
+                    <Link href="https://quest-sql-arena.vercel.app/">
+                      <ExternalLink className="h-4 w-4 mr-1" />
+                      Live Demo
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+              <CardHeader>
+                <div className="w-full h-48 bg-gradient-to-br from-indigo-600/20 to-blue-600/20 rounded-t-lg flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-5xl mb-2">📄</div>
+                    <p className="text-sm font-semibold text-muted-foreground">Resumai</p>
+                  </div>
+                </div>
+                <CardTitle>Resumai</CardTitle>
+                <CardDescription>
+                  AI-powered resume builder and optimization tool
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3 mb-4">
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline">Next.js</Badge>
+                    <Badge variant="outline">AI</Badge>
+                    <Badge variant="outline">Resume Building</Badge>
+                    <Badge variant="outline">OpenAI</Badge>
+                  </div>
+                  <div className="text-sm text-muted-foreground space-y-1">
+                    <p>• AI-powered resume content suggestions</p>
+                    <p>• Professional template designs</p>
+                    <p>• Real-time grammar and style checking</p>
+                    <p>• ATS-optimized resume generation</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="outline" asChild className="transition-all duration-200 hover:scale-105">
+                    <Link href="https://github.com/Tyagiquamar/Resumai">
                       <Github className="h-4 w-4 mr-1" />
                       Code
                     </Link>
