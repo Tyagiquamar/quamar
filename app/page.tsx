@@ -133,16 +133,7 @@ export default function Portfolio() {
                 <p className="text-sm text-muted-foreground">Candidate Master on Codeforces</p>
               </CardContent>
             </Card>
-            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-950/50 dark:to-indigo-900/50 border-blue-200">
-              <CardHeader className="text-center">
-                <Code className="mx-auto h-8 w-8 text-blue-500" />
-                <CardTitle>7.99 CGPA</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">Computer Science Engineering</p>
-              </CardContent>
-            </Card>
-            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-950/50 dark:to-emerald-900/50 border-green-200">
+<Card className="transition-all duration-300 hover:shadow-lg hover:scale-105 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-950/50 dark:to-emerald-900/50 border-green-200">
               <CardHeader className="text-center">
                 <Star className="mx-auto h-8 w-8 text-green-500" />
                 <CardTitle>Top 0.6%</CardTitle>
