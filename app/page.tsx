@@ -523,14 +523,12 @@ export default function Portfolio() {
                     <Badge variant="outline">AI Agents</Badge>
                   </div>
                 </div>
-                <div className="flex gap-2">
-                  <Button size="sm" asChild className="transition-all duration-200 hover:scale-105 flex-1">
-                    <Link href="https://ai-interviewer-agent.vercel.app/">
-                      <ExternalLink className="h-4 w-4 mr-1" />
-                      Live Demo
-                    </Link>
-                  </Button>
-                </div>
+                <Button size="sm" asChild>
+                  <Link href="https://ai-interviewer-agent.vercel.app/">
+                    <ExternalLink className="h-4 w-4 mr-1" />
+                    Live Demo
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
 
@@ -553,14 +551,12 @@ export default function Portfolio() {
                     <Badge variant="outline">Interactive Learning</Badge>
                   </div>
                 </div>
-                <div className="flex gap-2">
-                  <Button size="sm" asChild className="transition-all duration-200 hover:scale-105 flex-1">
-                    <Link href="https://system-blueprint-studio.vercel.app/">
-                      <ExternalLink className="h-4 w-4 mr-1" />
-                      Live Demo
-                    </Link>
-                  </Button>
-                </div>
+                <Button size="sm" asChild>
+                  <Link href="https://system-blueprint-studio.vercel.app/">
+                    <ExternalLink className="h-4 w-4 mr-1" />
+                    Live Demo
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
 
@@ -583,14 +579,12 @@ export default function Portfolio() {
                     <Badge variant="outline">Interactive Learning</Badge>
                   </div>
                 </div>
-                <div className="flex gap-2">
-                  <Button size="sm" asChild className="transition-all duration-200 hover:scale-105 flex-1">
-                    <Link href="https://cloud-architect-compass.vercel.app/">
-                      <ExternalLink className="h-4 w-4 mr-1" />
-                      Live Demo
-                    </Link>
-                  </Button>
-                </div>
+                <Button size="sm" asChild>
+                  <Link href="https://cloud-architect-compass.vercel.app/">
+                    <ExternalLink className="h-4 w-4 mr-1" />
+                    Live Demo
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
 
@@ -613,16 +607,17 @@ export default function Portfolio() {
                     <Badge variant="outline">Web Design</Badge>
                   </div>
                 </div>
-                <div className="flex gap-2">
-                  <Button size="sm" asChild className="transition-all duration-200 hover:scale-105 flex-1">
+                <div className="flex gap-3">
+                  <Button size="sm" asChild>
                     <Link href="https://imagify-indol.vercel.app/">
                       <ExternalLink className="h-4 w-4 mr-1" />
                       Live Demo
                     </Link>
                   </Button>
-                  <Button size="sm" variant="outline" asChild className="transition-all duration-200 hover:scale-105">
+                  <Button size="sm" variant="outline" asChild>
                     <Link href="https://github.com/mthirumalai2905/imagify">
-                      <Github className="h-4 w-4" />
+                      <Github className="h-4 w-4 mr-1" />
+                      Code
                     </Link>
                   </Button>
                 </div>
@@ -658,10 +653,10 @@ export default function Portfolio() {
                     <Badge variant="outline">AI-Powered</Badge>
                   </div>
                 </div>
-                <Button size="sm" asChild className="w-full">
+                <Button size="sm" asChild>
                   <Link href="https://quest-sql-arena.vercel.app/">
                     <ExternalLink className="h-4 w-4 mr-1" />
-                    View Project
+                    Live Demo
                   </Link>
                 </Button>
               </CardContent>
@@ -686,10 +681,67 @@ export default function Portfolio() {
                     <Badge variant="outline">OpenAI</Badge>
                   </div>
                 </div>
-                <Button size="sm" variant="outline" asChild className="w-full">
-                  <Link href="https://github.com/Tyagiquamar/Resumai">
-                    <Github className="h-4 w-4 mr-1" />
-                    View Code
+                <div className="flex gap-2">
+                  <Button size="sm" variant="outline" asChild>
+                    <Link href="https://github.com/Tyagiquamar/Resumai">
+                      <Github className="h-4 w-4 mr-1" />
+                      Code
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+              <CardHeader>
+                <div className="w-full h-40 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-t-lg flex items-center justify-center mb-4">
+                  <div className="text-4xl">🔗</div>
+                </div>
+                <CardTitle>URL Shortener</CardTitle>
+                <CardDescription>
+                  Fast and reliable URL shortening service
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3 mb-4">
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline">Next.js</Badge>
+                    <Badge variant="outline">URL Shortening</Badge>
+                    <Badge variant="outline">Database</Badge>
+                  </div>
+                </div>
+                <Button size="sm" asChild>
+                  <Link href="https://nex-link-url-shortener.vercel.app/">
+                    <ExternalLink className="h-4 w-4 mr-1" />
+                    Live Demo
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+              <CardHeader>
+                <div className="w-full h-40 bg-gradient-to-br from-orange-600/20 to-red-600/20 rounded-t-lg flex items-center justify-center mb-4">
+                  <div className="text-4xl">💹</div>
+                </div>
+                <CardTitle>CryptoXtrade</CardTitle>
+                <CardDescription>
+                  Cryptocurrency trading and analytics platform
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3 mb-4">
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline">React.js</Badge>
+                    <Badge variant="outline">Crypto</Badge>
+                    <Badge variant="outline">Trading</Badge>
+                    <Badge variant="outline">API Integration</Badge>
+                  </div>
+                </div>
+                <Button size="sm" asChild>
+                  <Link href="https://cryptoxtrade.netlify.app/">
+                    <ExternalLink className="h-4 w-4 mr-1" />
+                    Live Demo
                   </Link>
                 </Button>
               </CardContent>
