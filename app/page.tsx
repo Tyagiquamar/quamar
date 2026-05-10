@@ -504,7 +504,7 @@ export default function Portfolio() {
             AI & Tools Projects
           </h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105 flex flex-col">
               <CardHeader>
                 <div className="w-full h-48 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-t-lg flex items-center justify-center">
                   <div className="text-5xl">🤖</div>
@@ -514,7 +514,7 @@ export default function Portfolio() {
                   Intelligent multi-stage interview simulation powered by advanced LLMs
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-grow flex flex-col justify-between">
                 <div className="space-y-3 mb-4">
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">Claude API</Badge>
@@ -523,7 +523,7 @@ export default function Portfolio() {
                     <Badge variant="outline">AI Agents</Badge>
                   </div>
                 </div>
-                <Button size="sm" asChild>
+                <Button size="sm" asChild className="w-fit">
                   <Link href="https://ai-interviewer-agent.vercel.app/">
                     <ExternalLink className="h-4 w-4 mr-1" />
                     Live Demo
@@ -532,7 +532,7 @@ export default function Portfolio() {
               </CardContent>
             </Card>
 
-            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105 flex flex-col">
               <CardHeader>
                 <div className="w-full h-48 bg-gradient-to-br from-cyan-600/20 to-blue-600/20 rounded-t-lg flex items-center justify-center">
                   <div className="text-5xl">🏗️</div>
@@ -542,7 +542,7 @@ export default function Portfolio() {
                   Open-source system design playground with drag-and-drop architecture builder
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-grow flex flex-col justify-between">
                 <div className="space-y-3 mb-4">
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">React.js</Badge>
@@ -551,7 +551,7 @@ export default function Portfolio() {
                     <Badge variant="outline">Interactive Learning</Badge>
                   </div>
                 </div>
-                <Button size="sm" asChild>
+                <Button size="sm" asChild className="w-fit">
                   <Link href="https://system-blueprint-studio.vercel.app/">
                     <ExternalLink className="h-4 w-4 mr-1" />
                     Live Demo
@@ -560,7 +560,7 @@ export default function Portfolio() {
               </CardContent>
             </Card>
 
-            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105 flex flex-col">
               <CardHeader>
                 <div className="w-full h-48 bg-gradient-to-br from-orange-600/20 to-red-600/20 rounded-t-lg flex items-center justify-center">
                   <div className="text-5xl">☁️</div>
@@ -570,7 +570,7 @@ export default function Portfolio() {
                   Interactive AWS architecture visualization and learning platform
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-grow flex flex-col justify-between">
                 <div className="space-y-3 mb-4">
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">React.js</Badge>
@@ -579,7 +579,7 @@ export default function Portfolio() {
                     <Badge variant="outline">Interactive Learning</Badge>
                   </div>
                 </div>
-                <Button size="sm" asChild>
+                <Button size="sm" asChild className="w-fit">
                   <Link href="https://cloud-architect-compass.vercel.app/">
                     <ExternalLink className="h-4 w-4 mr-1" />
                     Live Demo
@@ -588,7 +588,7 @@ export default function Portfolio() {
               </CardContent>
             </Card>
 
-            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105 flex flex-col">
               <CardHeader>
                 <div className="w-full h-48 bg-gradient-to-br from-pink-600/20 to-purple-600/20 rounded-t-lg flex items-center justify-center">
                   <div className="text-5xl">🎨</div>
@@ -598,7 +598,7 @@ export default function Portfolio() {
                   AI-powered image generation and manipulation platform
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-grow flex flex-col justify-between">
                 <div className="space-y-3 mb-4">
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">React.js</Badge>
