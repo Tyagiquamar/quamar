@@ -66,7 +66,17 @@ export const cpProfiles = [
 ] as const
 export type CpProfile = (typeof cpProfiles)[number]
 
-export const experience = [
+export interface Experience {
+  role: string
+  company: string
+  location: string
+  dates: string
+  current?: boolean
+  bullets: string[]
+  tech: string[]
+}
+
+export const experience: Experience[] = [
   {
     role: "Founding Engineer",
     company: "Takkada",
@@ -86,7 +96,6 @@ export const experience = [
     company: "Zomato",
     location: "Gurgaon, India",
     dates: "Jul 2025 — Dec 2025",
-    logo: "/logos/zomato-logo.jpg",
     bullets: [
       "Reduced API round-trip overhead by removing redundant gRPC/MySQL calls, improving p90 latency 5x at massive scale",
       "Automated ticket workflows and chatbot link-ticket generation, cutting manual ops by 80% and reducing support load by 35%",
@@ -99,7 +108,6 @@ export const experience = [
     company: "The Linux Foundation",
     location: "Seoul (Remote)",
     dates: "Nov 2023 — Mar 2024",
-    logo: "/logos/linux-foundation-logo.jpg",
     bullets: [
       "Replaced HTTPS calls with gRPC architecture, achieving 60% faster data transfer",
       "Implemented CloudForet development images supporting 50+ microservices",
@@ -112,7 +120,6 @@ export const experience = [
     company: "ITJOBS",
     location: "Mumbai, Maharashtra",
     dates: "Jul 2023 — Sep 2023",
-    logo: "/logos/itjobs-logo.jpg",
     bullets: [
       "Redesigned 12 core web pages ensuring accessibility compliance",
       "Designed automated bot detection removing 2,000+ inappropriate posts",
@@ -120,8 +127,7 @@ export const experience = [
     ],
     tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
   },
-] as const
-export type Experience = (typeof experience)[number]
+]
 
 export const caseStudy = {
   id: "case-study",
@@ -142,7 +148,15 @@ export const caseStudy = {
   },
 } as const
 
-export const projects = [
+export interface Project {
+  title: string
+  kind: "case-study" | "repo"
+  description: string
+  tech: string[]
+  href: string
+}
+
+export const projects: Project[] = [
   {
     title: "PaySaathi",
     kind: "case-study",
@@ -174,10 +188,8 @@ export const projects = [
       "URL shortener with real-time analytics — click tracking, geographic and referrer data, custom aliases, and QR sharing.",
     tech: ["Next.js", "MongoDB", "Analytics"],
     href: "https://github.com/Tyagiquamar/NexLink-URL-Shortener",
-    liveHref: "https://nex-link-url-shortener.vercel.app/",
   },
-] as const
-export type Project = (typeof projects)[number]
+]
 
 export const skillGroups = [
   {
