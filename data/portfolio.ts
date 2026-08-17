@@ -3,7 +3,7 @@ export const siteConfig = {
   title: "Mohd Quamar Tyagi — Founding Engineer @ Takkada",
   description:
     "Founding Engineer at Takkada building PaySaathi, a standalone Tally-replacement accounting & ERP platform. Previously SDE-1 at Zomato. Candidate Master on Codeforces (2038), top 0.6% on LeetCode.",
-  url: "https://v0-competitive-programmer-portfolio.vercel.app",
+  url: "https://quamar.vercel.app",
   email: "mohdquamartyagi@gmail.com",
   phone: "+91-8279581337",
   location: "New Delhi, India",
