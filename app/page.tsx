@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import ContactForm from "@/components/contact-form"
+import { Greeting } from "@/components/greeting"
 import {
   ArrowRight,
   Code2,
@@ -42,6 +43,7 @@ export default function Portfolio() {
       <section className="container px-4 pb-16 pt-20 md:pb-24 md:pt-28">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_360px]">
           <div className="space-y-6">
+            <Greeting />
             <div className="space-y-3">
               <p className="font-mono text-sm text-primary">$ whoami</p>
               <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl xl:text-6xl">
