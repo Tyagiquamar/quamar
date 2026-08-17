@@ -40,7 +40,7 @@ export const stats = [
 export type Stat = (typeof stats)[number]
 
 export const about = {
-  heading: "Systems over demos.ms over demos.",
+  heading: "Systems over demos.",
   body: "I'm a Founding Engineer at Takkada, where I'm building PaySaathi — a standalone accounting and ERP platform that replaces Tally — across Flutter, Supabase, PostgreSQL, and Next.js. Previously an SDE-1 at Zomato optimizing high-scale CX services in Go, and an SDE Intern at The Linux Foundation working on gRPC and containerized microservices. I'm a Candidate Master on Codeforces and ranked top 0.6% on LeetCode.",
 } as const
 

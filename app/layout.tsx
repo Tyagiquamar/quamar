@@ -3,11 +3,24 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Nav } from "@/components/nav"
 import { Toaster } from "@/components/ui/toaster"
 import { siteConfig } from "@/data/portfolio"
+import { Geist, Geist_Mono, Libre_Baskerville } from "next/font/google"
 import "./globals.css"
 
-const fontSans = "ui-sans-serif, system-ui, sans-serif"
-const fontDisplay = "ui-sans-serif, system-ui, sans-serif"
-const fontMono = "ui-monospace, SFMono-Regular, Menlo, monospace"
+const fontSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
+
+const fontDisplay = Libre_Baskerville({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-display",
+})
+
+const fontMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -70,7 +83,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body style={{ "--font-sans": fontSans, "--font-display": fontDisplay, "--font-mono": fontMono } as React.CSSProperties}>
+      <body className={`${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

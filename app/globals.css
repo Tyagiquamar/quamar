@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 40 23% 97%;
-    --foreground: 240 10% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
-    --primary: 32 95% 40%;
-    --primary-foreground: 40 30% 98%;
-    --secondary: 40 12% 92%;
-    --secondary-foreground: 240 10% 14%;
-    --muted: 40 12% 93%;
-    --muted-foreground: 240 5% 40%;
-    --accent: 40 12% 92%;
-    --accent-foreground: 240 10% 14%;
+    --background: 0 0% 96%;
+    --foreground: 0 0% 8%;
+    --card: 0 0% 93%;
+    --card-foreground: 0 0% 8%;
+    --popover: 0 0% 96%;
+    --popover-foreground: 0 0% 8%;
+    --primary: 167 77% 43%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 88%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 35%;
+    --accent: 167 40% 88%;
+    --accent-foreground: 0 0% 9%;
     --destructive: 0 72% 45%;
-    --destructive-foreground: 40 30% 98%;
-    --border: 35 12% 87%;
-    --input: 35 12% 87%;
-    --ring: 32 95% 40%;
-    --radius: 0.5rem;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 78%;
+    --input: 0 0% 78%;
+    --ring: 167 77% 43%;
+    --radius: 0.25rem;
   }
 
   .dark {
-    --background: 240 8% 7%;
-    --foreground: 40 20% 94%;
-    --card: 240 7% 10%;
-    --card-foreground: 40 20% 94%;
-    --popover: 240 7% 10%;
-    --popover-foreground: 40 20% 94%;
-    --primary: 38 92% 55%;
-    --primary-foreground: 240 10% 8%;
-    --secondary: 240 5% 16%;
-    --secondary-foreground: 40 20% 94%;
-    --muted: 240 5% 15%;
-    --muted-foreground: 240 5% 60%;
-    --accent: 240 5% 16%;
-    --accent-foreground: 40 20% 94%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 92%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 92%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 92%;
+    --primary: 167 77% 43%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 61%;
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 92%;
     --destructive: 0 62% 40%;
-    --destructive-foreground: 40 20% 94%;
-    --border: 240 5% 18%;
-    --input: 240 5% 18%;
-    --ring: 38 92% 55%;
+    --destructive-foreground: 0 0% 96%;
+    --border: 0 0% 17%;
+    --input: 0 0% 18%;
+    --ring: 167 77% 43%;
   }
 }
 
@@ -59,10 +59,29 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
   }
 }
 
-/* Staggered word reveal — hero animation */
+@layer components {
+  .editorial-section {
+    @apply mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 md:py-24;
+  }
+
+  .section-kicker {
+    @apply font-mono text-xs uppercase tracking-[0.24em] text-muted-foreground;
+  }
+
+  .quiet-link {
+    @apply underline decoration-border underline-offset-4 transition-colors hover:text-primary hover:decoration-primary;
+  }
+}
+
+/* Staggered word reveal - hero animation */
 @keyframes word-reveal {
   from {
     opacity: 0;

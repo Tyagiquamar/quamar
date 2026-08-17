@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
@@ -46,35 +45,31 @@ export default function ContactForm() {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Send a Message</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <form id="contact-form" action={handleSubmit} className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" name="name" placeholder="Your name" required />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" name="email" type="email" placeholder="your.email@example.com" required />
-            </div>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="subject">Subject</Label>
-            <Input id="subject" name="subject" placeholder="What's this about?" required />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="message">Message</Label>
-            <Textarea id="message" name="message" placeholder="Your message..." className="min-h-[120px]" required />
-          </div>
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </Button>
-        </form>
-      </CardContent>
-    </Card>
+    <form id="contact-form" action={handleSubmit} className="border-t pt-5">
+      <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+        Send a message
+      </p>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="space-y-2">
+          <Label htmlFor="name">Name</Label>
+          <Input id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+      </div>
+      <div className="mt-4 space-y-2">
+        <Label htmlFor="subject">Subject</Label>
+        <Input id="subject" name="subject" placeholder="What should we talk about?" required />
+      </div>
+      <div className="mt-4 space-y-2">
+        <Label htmlFor="message">Message</Label>
+        <Textarea id="message" name="message" placeholder="A short note is enough." className="min-h-[140px]" required />
+      </div>
+      <Button type="submit" variant="outline" className="mt-5 w-full" disabled={isSubmitting}>
+        {isSubmitting ? "Sending..." : "Send Message"}
+      </Button>
+    </form>
   )
 }
