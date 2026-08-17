@@ -32,7 +32,7 @@ export const hero = {
 } as const
 
 export const stats = [
-  { value: "1+", label: "Years of experience" },
+  { value: "5x", label: "p90 latency improvement" },
   { value: "1,000+", label: "Commits @ Takkada" },
   { value: "2038", label: "Codeforces · Candidate Master" },
   { value: "2400+", label: "LeetCode · Top 0.6%" },
@@ -84,7 +84,7 @@ export const experience: Experience[] = [
     dates: "May 2026 — Present",
     current: true,
     bullets: [
-      "Building PaySaathi, a standalone Tally-replacement accounting & ERP platform, end-to-end as first engineer — 1,000+ commits, lakhs of LOC in 4 months across Flutter app, Supabase backend, and Next.js admin dashboard",
+      "Building PaySaathi end-to-end as the first engineer across Flutter, Supabase, PostgreSQL, and Next.js, with 1,000+ commits spanning application, backend, database, integrations, and production infrastructure",
       "Engineered the native double-entry accounting core in PostgreSQL: ledgers, voucher numbering, GRN/stock receipts, credit notes, payment/receipt allocations — eliminating Tally dependency",
       "Built filing-ready GST compliance: GSTR-1/GSTR-3B GSTN JSON export, e-invoice/e-way bill, PDF generation",
       "Shipped WhatsApp Business automation (template provisioning, approval reconciliation, per-template routing) and an AI document-import pipeline (Gemini/Vertex)",
@@ -115,18 +115,6 @@ export const experience: Experience[] = [
     ],
     tech: ["Docker", "Nginx", "gRPC", "Linux", "Minikube"],
   },
-  {
-    role: "SDE Intern",
-    company: "ITJOBS",
-    location: "Mumbai, Maharashtra",
-    dates: "Jul 2023 — Sep 2023",
-    bullets: [
-      "Redesigned 12 core web pages ensuring accessibility compliance",
-      "Designed automated bot detection removing 2,000+ inappropriate posts",
-      "Deployed reCAPTCHA improving data integrity for 10,000+ monthly visitors",
-    ],
-    tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
-  },
 ]
 
 export const caseStudy = {
@@ -135,7 +123,7 @@ export const caseStudy = {
   subtitle: "Standalone Tally-Replacement ERP",
   description:
     "A production accounting & ERP platform built end-to-end as founding engineer at Takkada. Native double-entry accounting core in PostgreSQL, filing-ready GST compliance (GSTR-1/GSTR-3B GSTN JSON export, e-invoice, e-way bill), WhatsApp Business automation, and an AI document-import pipeline — replacing Tally for real businesses.",
-  metrics: ["1,000+ commits", "~180k LOC", "4 months", "Founding Engineer"],
+  metrics: ["1,000+ commits", "4 months", "Founding Engineer", "Production ERP"],
   tech: ["Flutter", "Supabase", "PostgreSQL", "Next.js", "TypeScript"],
   architecture: {
     caption: "Four layers: Flutter app → Supabase Edge Functions → PostgreSQL (double-entry ledger, RLS) → External (GSTN, WhatsApp API, Gemini/Vertex)",
@@ -209,8 +197,15 @@ export const skillGroups = [
     skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
   },
   {
-    title: "Core Concepts",
-    skills: ["Data Structures", "Algorithms", "OOP", "SDLC", "Computer Networks"],
+    title: "Backend & Systems",
+    skills: [
+      "API Design",
+      "Database Design",
+      "Authentication & Authorization",
+      "Event-driven Workflows",
+      "Observability",
+      "Distributed Systems",
+    ],
   },
   {
     title: "Tools",
