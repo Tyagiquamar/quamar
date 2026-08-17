@@ -61,3 +61,36 @@
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   }
 }
+
+/* Staggered word reveal — hero animation */
+@keyframes word-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.word-reveal {
+  display: inline-block;
+  opacity: 0;
+  animation: word-reveal 0.5s ease-out forwards;
+}
+
+.word-reveal-delay-1 { animation-delay: 0.05s; }
+.word-reveal-delay-2 { animation-delay: 0.10s; }
+.word-reveal-delay-3 { animation-delay: 0.15s; }
+.word-reveal-delay-4 { animation-delay: 0.20s; }
+.word-reveal-delay-5 { animation-delay: 0.25s; }
+.word-reveal-delay-6 { animation-delay: 0.30s; }
+.word-reveal-delay-7 { animation-delay: 0.35s; }
+.word-reveal-delay-8 { animation-delay: 0.40s; }
+.word-reveal-delay-9 { animation-delay: 0.45s; }
+.word-reveal-delay-10 { animation-delay: 0.50s; }
+.word-reveal-delay-11 { animation-delay: 0.55s; }
+.word-reveal-delay-12 { animation-delay: 0.60s; }

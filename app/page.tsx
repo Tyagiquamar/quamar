@@ -3,20 +3,19 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import ContactForm from "@/components/contact-form"
 import { Greeting } from "@/components/greeting"
+import { CpGraph } from "@/components/cp-graph"
 import {
   ArrowRight,
   Code2,
-  FileText,
+  Download,
   Github,
   Linkedin,
   Mail,
   MapPin,
   Phone,
-  Terminal,
-  Trophy,
 } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
+import Image from "next/image"
 import {
   about,
   caseStudy,
@@ -47,7 +46,11 @@ export default function Portfolio() {
             <div className="space-y-3">
               <p className="font-mono text-sm text-primary">$ whoami</p>
               <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl xl:text-6xl">
-                {hero.name}
+                {hero.name.split(" ").map((word, i) => (
+                  <span key={i} className={`word-reveal word-reveal-delay-${i + 1}`}>
+                    {word}{" "}
+                  </span>
+                ))}
               </h1>
               <p className="font-mono text-lg text-primary sm:text-xl">{hero.role}</p>
               <p className="max-w-[560px] text-muted-foreground md:text-lg">{hero.tagline}</p>
@@ -60,6 +63,11 @@ export default function Portfolio() {
               </Button>
               <Button variant="outline" asChild>
                 <Link href="#contact">Get In Touch</Link>
+              </Button>
+              <Button variant="ghost" size="icon" asChild>
+                <Link href="/resume.pdf" download aria-label="Download resume">
+                  <Download className="h-4 w-4" />
+                </Link>
               </Button>
             </div>
             <div className="flex items-center gap-4 pt-2">
@@ -110,25 +118,12 @@ export default function Portfolio() {
       {/* About */}
       <section id="about" className="container scroll-mt-16 px-4 py-20 md:py-24">
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">{about.heading}</h2>
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            {about.heading}
+          </h2>
           <p className="mt-4 text-muted-foreground md:text-lg">{about.body}</p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {cpProfiles.map((profile) => (
-              <Link key={profile.platform} href={profile.href} target="_blank" rel="noreferrer">
-                <Card className="h-full transition-colors hover:border-primary/50">
-                  <CardHeader className="pb-2">
-                    <div className="flex items-center gap-2">
-                      <Trophy className="h-4 w-4 text-primary" />
-                      <CardTitle className="text-base">{profile.platform}</CardTitle>
-                    </div>
-                    <CardDescription className="font-mono text-xs">{profile.detail}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="font-mono text-sm font-medium">{profile.rating}</p>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+          <div className="mt-8">
+            <CpGraph />
           </div>
         </div>
       </section>
@@ -137,7 +132,10 @@ export default function Portfolio() {
       <section id="experience" className="scroll-mt-16 border-t bg-muted/40">
         <div className="container px-4 py-20 md:py-24">
           <div className="mx-auto max-w-3xl">
-            <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">Systems I&apos;ve Built</h2>
+            <p className="font-mono text-sm text-primary">Experience</p>
+            <h2 className="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+              Where I&apos;ve been shipping.
+            </h2>
             <p className="mt-2 text-muted-foreground">Most recent first.</p>
             <div className="relative mt-10 space-y-10 border-l pl-8">
               {experience.map((job) => (
@@ -231,52 +229,49 @@ export default function Portfolio() {
       <section id="work" className="scroll-mt-16 border-t bg-muted/40">
         <div className="container px-4 py-20 md:py-24">
           <div className="mx-auto max-w-5xl">
-            <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">Selected Work</h2>
+            <p className="font-mono text-sm text-primary">Selected work</p>
+            <h2 className="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+              Products, not demos.
+            </h2>
             <p className="mt-2 text-muted-foreground">
-              The best of what&apos;s public, plus the flagship case study.
+              A small selection of systems I&apos;ve designed and shipped. More on request.
             </p>
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
-              {projects.map((project) => {
+            <div className="mt-10 space-y-0">
+              {projects.map((project, index) => {
                 const isCaseStudy = project.kind === "case-study"
                 return (
                   <Link
                     key={project.title}
                     href={project.href}
                     {...(isCaseStudy ? {} : { target: "_blank", rel: "noreferrer" })}
+                    className="group block"
                   >
-                    <Card
-                      className={`h-full transition-colors hover:border-primary/50 ${
-                        isCaseStudy ? "border-primary/60" : ""
+                    <div
+                      className={`flex items-baseline gap-6 border-t py-6 transition-colors group-hover:bg-muted/30 ${
+                        index === projects.length - 1 ? "border-b" : ""
                       }`}
                     >
-                      <CardHeader>
-                        <div className="flex items-center justify-between gap-2">
-                          <CardTitle className="flex items-center gap-2 text-lg">
-                            {isCaseStudy ? (
-                              <FileText className="h-4 w-4 text-primary" />
-                            ) : (
-                              <Terminal className="h-4 w-4 text-primary" />
-                            )}
+                      <span className="font-mono text-sm text-muted-foreground">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <h3 className="font-display text-lg font-semibold group-hover:text-primary">
                             {project.title}
-                          </CardTitle>
-                          {isCaseStudy ? (
-                            <Badge>Case study</Badge>
-                          ) : (
-                            <Github className="h-4 w-4 text-muted-foreground" />
-                          )}
+                          </h3>
+                          {isCaseStudy && <Badge variant="default">Case study</Badge>}
                         </div>
-                        <CardDescription>{project.description}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="flex flex-wrap gap-1.5">
+                        <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
+                        <div className="mt-2 flex flex-wrap gap-1.5">
                           {project.tech.map((tech) => (
-                            <Badge key={tech} variant="secondary" className="font-mono text-xs">
+                            <span key={tech} className="font-mono text-xs text-muted-foreground">
                               {tech}
-                            </Badge>
+                            </span>
                           ))}
                         </div>
-                      </CardContent>
-                    </Card>
+                      </div>
+                      <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                    </div>
                   </Link>
                 )
               })}
@@ -288,7 +283,10 @@ export default function Portfolio() {
       {/* Skills */}
       <section id="skills" className="container scroll-mt-16 px-4 py-20 md:py-24">
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">Skills</h2>
+          <p className="font-mono text-sm text-primary">Toolkit</p>
+          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            What I reach for.
+          </h2>
           <div className="mt-8 space-y-6">
             {skillGroups.map((group) => (
               <div key={group.title}>
@@ -310,13 +308,24 @@ export default function Portfolio() {
       <section id="contact" className="scroll-mt-16 border-t bg-muted/40">
         <div className="container px-4 py-20 md:py-24">
           <div className="mx-auto max-w-4xl">
-            <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">Get In Touch</h2>
+            <p className="font-mono text-sm text-primary">Contact</p>
+            <h2 className="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+              Reach out.
+            </h2>
             <div className="mt-10 grid gap-10 md:grid-cols-2">
               <div>
                 <p className="text-muted-foreground">
                   I&apos;m always interested in new opportunities and collaborations. Whether you have a project in
                   mind or just want to chat about systems and competitive programming, feel free to reach out.
                 </p>
+                <div className="mt-6">
+                  <Button variant="outline" asChild>
+                    <Link href="/resume.pdf" download>
+                      <Download className="mr-2 h-4 w-4" />
+                      Download Resume
+                    </Link>
+                  </Button>
+                </div>
                 <div className="mt-6 space-y-3 text-sm">
                   <div className="flex items-center gap-3">
                     <Mail className="h-4 w-4 text-primary" />
