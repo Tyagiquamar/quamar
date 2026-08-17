@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" fill="none">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" stroke="#d97706" stroke-width="1.5" fill="none"/>
+    </marker>
+  </defs>
+
+  <!-- Layer 1: Flutter App -->
+  <rect x="170" y="20" width="300" height="64" rx="10" stroke="#d97706" stroke-width="1.5" fill="none"/>
+  <text x="320" y="47" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600" fill="#d97706">Flutter App</text>
+  <text x="320" y="68" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b8b8b">mobile + desktop client</text>
+
+  <!-- Arrow 1-2 -->
+  <line x1="320" y1="88" x2="320" y2="112" stroke="#d97706" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+  <!-- Layer 2: Supabase Edge Functions -->
+  <rect x="170" y="116" width="300" height="64" rx="10" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="320" y="143" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600" fill="#d97706">Supabase Edge Functions</text>
+  <text x="320" y="164" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b8b8b">business logic · integrations</text>
+
+  <!-- Arrow 2-3 -->
+  <line x1="320" y1="184" x2="320" y2="208" stroke="#d97706" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+  <!-- Layer 3: PostgreSQL -->
+  <rect x="170" y="212" width="300" height="64" rx="10" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="320" y="239" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600" fill="#d97706">PostgreSQL</text>
+  <text x="320" y="260" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b8b8b">double-entry ledger · RLS</text>
+
+  <!-- Arrows to external services -->
+  <line x1="240" y1="280" x2="150" y2="330" stroke="#8b8b8b" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+  <line x1="320" y1="280" x2="320" y2="330" stroke="#8b8b8b" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+  <line x1="400" y1="280" x2="490" y2="330" stroke="#8b8b8b" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+
+  <!-- Layer 4: External services -->
+  <rect x="60" y="334" width="150" height="56" rx="10" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="135" y="359" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#d97706">GSTN</text>
+  <text x="135" y="377" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">GSTR-1 / 3B filing</text>
+
+  <rect x="245" y="334" width="150" height="56" rx="10" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="320" y="359" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#d97706">WhatsApp API</text>
+  <text x="320" y="377" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">business automation</text>
+
+  <rect x="430" y="334" width="150" height="56" rx="10" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="505" y="359" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#d97706">Gemini / Vertex</text>
+  <text x="505" y="377" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">AI document import</text>
+</svg>
