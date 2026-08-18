@@ -189,6 +189,10 @@
     transform: translateY(0);
   }
 
+  .micro-egg.is-revealed {
+    cursor: none;
+  }
+
   .mqt-egg {
     min-width: 2.25rem;
     transition: letter-spacing 180ms ease;
@@ -215,15 +219,25 @@
   }
 
   .stat-egg {
-    min-width: 4.75rem;
+    min-width: 5.5rem;
   }
 
   .stat-egg .micro-egg-reveal {
+    top: 0.18rem;
+    left: calc(100% + 0.65rem);
     color: hsl(var(--primary));
     font-size: 0.82rem;
     line-height: 1.25;
     letter-spacing: 0;
     text-transform: none;
+  }
+
+  .rating-codeforces {
+    color: #8f3ffc;
+  }
+
+  .rating-leetcode {
+    color: #d44848;
   }
 
   .contact-handshake span {
@@ -329,6 +343,13 @@
   .micro-egg-reveal,
   .contact-handshake span {
     transition: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .stat-egg .micro-egg-reveal {
+    top: 1.45rem;
+    left: 0;
   }
 }
 

@@ -35,7 +35,7 @@ export const stats = [
   { value: "5x", label: "p90 latency improvement" },
   { value: "1,000+", label: "Commits @ Takkada" },
   { value: "2038", label: "Codeforces · Candidate Master" },
-  { value: "2400+", label: "LeetCode · Top 0.6%" },
+  { value: "2400+", label: "LeetCode · Guardian · Top 0.6%" },
 ] as const
 export type Stat = (typeof stats)[number]
 
@@ -51,7 +51,7 @@ export const proofMarks: ProofMark[] = [
   { label: "Zomato", detail: "SDE-1", logo: "/logos/zomato-logo.jpg" },
   { label: "Linux Foundation", detail: "SDE intern", logo: "/logos/linux-foundation-logo.jpg" },
   { label: "Codeforces", detail: "2038 CM", logo: "/logos/codeforces-logo.png" },
-  { label: "LeetCode", detail: "2400+", logo: "/logos/leetcode-logo.png" },
+  { label: "LeetCode", detail: "Guardian · 2400+", logo: "/logos/leetcode-logo.png" },
 ]
 
 export const about = {

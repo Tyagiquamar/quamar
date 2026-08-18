@@ -44,6 +44,11 @@ const statEggs: Record<string, string> = {
   "2400+": "Accepted ✓",
 }
 
+const statToneClasses: Record<string, string> = {
+  "2038": "rating-codeforces",
+  "2400+": "rating-leetcode",
+}
+
 function NumberedLabel({ index }: { index: number }) {
   return (
     <span className="font-mono text-xs text-muted-foreground">
@@ -149,7 +154,7 @@ export default function Portfolio() {
                     normal={stat.value}
                     reveal={statEggs[stat.value] ?? stat.value}
                     ariaLabel={`Reveal ${stat.label} easter egg`}
-                    className="stat-egg font-mono text-xl text-foreground"
+                    className={`stat-egg font-mono text-xl text-foreground ${statToneClasses[stat.value] ?? ""}`}
                     revealClassName="text-sm"
                   />
                   <p className="mt-1 text-xs">{stat.label}</p>

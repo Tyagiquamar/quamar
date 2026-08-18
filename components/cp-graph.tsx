@@ -11,8 +11,13 @@ const cpEggs: Record<string, { title: string; detail: string }> = {
   },
   LeetCode: {
     title: "Accepted ✓",
-    detail: "Top 0.6%",
+    detail: "Guardian · Top 0.6%",
   },
+}
+
+const ratingToneClasses: Record<string, string> = {
+  Codeforces: "rating-codeforces",
+  LeetCode: "rating-leetcode",
 }
 
 function CpProfileRow({ profile }: { profile: (typeof cpProfiles)[number] }) {
@@ -45,7 +50,7 @@ function CpProfileRow({ profile }: { profile: (typeof cpProfiles)[number] }) {
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
         {profile.platform}
       </p>
-      <p className="text-sm text-foreground">
+      <p className={`text-sm text-foreground ${ratingToneClasses[profile.platform] ?? ""}`}>
         {revealed && egg ? egg.title : profile.rating}
       </p>
       <span className="font-mono text-xs text-muted-foreground transition duration-300 group-hover:translate-x-1 group-hover:text-primary">
