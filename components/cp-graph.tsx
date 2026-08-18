@@ -69,7 +69,7 @@ function CpProfileRow({ profile }: { profile: (typeof cpProfiles)[number] }) {
 export function CpGraph() {
   return (
     <div className="space-y-6">
-      <div className="divide-y divide-border border-y">
+      <div className="divide-y divide-border border border-border/80">
         {cpProfiles.map((p) => (
           <CpProfileRow key={p.platform} profile={p} />
         ))}
