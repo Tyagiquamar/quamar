@@ -50,10 +50,10 @@ function CpProfileRow({ profile }: { profile: (typeof cpProfiles)[number] }) {
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
         {profile.platform}
       </p>
-      <p className={`text-sm text-foreground ${ratingToneClasses[profile.platform] ?? ""}`}>
+      <p className={`text-sm ${ratingToneClasses[profile.platform] ?? "text-foreground"}`}>
         {revealed && egg ? egg.title : profile.rating}
       </p>
-      <span className="font-mono text-xs text-muted-foreground transition duration-300 group-hover:translate-x-1 group-hover:text-primary">
+      <span className={`font-mono text-xs transition duration-300 group-hover:translate-x-1 ${ratingToneClasses[profile.platform] ?? "text-muted-foreground group-hover:text-primary"}`}>
         {revealed && egg ? egg.detail : profile.detail} -&gt;
       </span>
     </a>

@@ -233,19 +233,19 @@
   }
 
   .rating-codeforces {
-    color: #8f3ffc;
+    color: #aa00aa !important;
   }
 
   .rating-leetcode {
-    color: #d44848;
+    color: #d44848 !important;
   }
 
   .stat-egg.rating-codeforces .micro-egg-reveal {
-    color: #8f3ffc;
+    color: #aa00aa !important;
   }
 
   .stat-egg.rating-leetcode .micro-egg-reveal {
-    color: #d44848;
+    color: #d44848 !important;
   }
 
   .contact-handshake span {
