@@ -66,7 +66,7 @@ function BrandMark({
           alt=""
           fill
           sizes={size === "sm" ? "32px" : "44px"}
-          className="object-cover grayscale transition duration-300 group-hover:grayscale-0"
+          className="object-contain p-1 grayscale transition duration-300 group-hover:grayscale-0"
         />
       ) : (
         mark ?? label.slice(0, 2)

@@ -47,7 +47,7 @@ export interface ProofMark {
 }
 
 export const proofMarks: ProofMark[] = [
-  { label: "Takkada", detail: "Founding engineer", logo: "/logos/takkada-favicon.png" },
+  { label: "Takkada", detail: "Founding engineer", logo: "/logos/takkada-icon.png" },
   { label: "Zomato", detail: "SDE-1", logo: "/logos/zomato-logo.jpg" },
   { label: "Linux Foundation", detail: "SDE intern", logo: "/logos/linux-foundation-logo.jpg" },
   { label: "Codeforces", detail: "2038 CM", logo: "/logos/codeforces-logo.png" },
@@ -99,7 +99,7 @@ export const experience: Experience[] = [
     company: "Takkada",
     location: "Remote",
     dates: "May 2026 — Present",
-    logo: "/logos/takkada-favicon.png",
+    logo: "/logos/takkada-icon.png",
     current: true,
     bullets: [
       "Building PaySaathi end-to-end as the first engineer across Flutter, Supabase, PostgreSQL, and Next.js, with 1,000+ commits spanning application, backend, database, integrations, and production infrastructure",
