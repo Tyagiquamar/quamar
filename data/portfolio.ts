@@ -39,6 +39,21 @@ export const stats = [
 ] as const
 export type Stat = (typeof stats)[number]
 
+export interface ProofMark {
+  label: string
+  detail: string
+  logo?: string
+  mark?: string
+}
+
+export const proofMarks: ProofMark[] = [
+  { label: "Takkada", detail: "Founding engineer", mark: "Ta" },
+  { label: "Zomato", detail: "SDE-1", logo: "/logos/zomato-logo.jpg" },
+  { label: "Linux Foundation", detail: "SDE intern", logo: "/logos/linux-foundation-logo.jpg" },
+  { label: "Codeforces", detail: "2038 CM", mark: "CF" },
+  { label: "LeetCode", detail: "2400+", mark: "LC" },
+]
+
 export const about = {
   heading: "Systems over demos.",
   body: "I'm a Founding Engineer at Takkada, where I'm building PaySaathi — a standalone accounting and ERP platform that replaces Tally — across Flutter, Supabase, PostgreSQL, and Next.js. Previously an SDE-1 at Zomato optimizing high-scale CX services in Go, and an SDE Intern at The Linux Foundation working on gRPC and containerized microservices. I'm a Candidate Master on Codeforces and ranked top 0.6% on LeetCode.",
@@ -71,6 +86,8 @@ export interface Experience {
   company: string
   location: string
   dates: string
+  logo?: string
+  mark?: string
   current?: boolean
   bullets: string[]
   tech: string[]
@@ -82,6 +99,7 @@ export const experience: Experience[] = [
     company: "Takkada",
     location: "Remote",
     dates: "May 2026 — Present",
+    mark: "Ta",
     current: true,
     bullets: [
       "Building PaySaathi end-to-end as the first engineer across Flutter, Supabase, PostgreSQL, and Next.js, with 1,000+ commits spanning application, backend, database, integrations, and production infrastructure",
@@ -96,6 +114,7 @@ export const experience: Experience[] = [
     company: "Zomato",
     location: "Gurgaon, India",
     dates: "Jul 2025 — Dec 2025",
+    logo: "/logos/zomato-logo.jpg",
     bullets: [
       "Reduced API round-trip overhead by removing redundant gRPC/MySQL calls, improving p90 latency 5x at massive scale",
       "Automated ticket workflows and chatbot link-ticket generation, cutting manual ops by 80% and reducing support load by 35%",
@@ -108,6 +127,7 @@ export const experience: Experience[] = [
     company: "The Linux Foundation",
     location: "Seoul (Remote)",
     dates: "Nov 2023 — Mar 2024",
+    logo: "/logos/linux-foundation-logo.jpg",
     bullets: [
       "Replaced HTTPS calls with gRPC architecture, achieving 60% faster data transfer",
       "Implemented CloudForet development images supporting 50+ microservices",

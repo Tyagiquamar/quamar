@@ -16,13 +16,13 @@ export function CpGraph() {
             href={p.href}
             target="_blank"
             rel="noreferrer"
-            className="group grid gap-2 py-4 transition-colors hover:text-primary sm:grid-cols-[180px_1fr_auto] sm:items-baseline"
+            className="group motion-row grid gap-2 border border-transparent px-3 py-4 transition-colors hover:text-primary sm:grid-cols-[180px_1fr_auto] sm:items-baseline"
           >
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
               {p.platform}
             </p>
             <p className="text-sm text-foreground">{p.rating}</p>
-            <span className="font-mono text-xs text-muted-foreground group-hover:text-primary">
+            <span className="font-mono text-xs text-muted-foreground transition duration-300 group-hover:translate-x-1 group-hover:text-primary">
               {p.detail} -&gt;
             </span>
           </a>

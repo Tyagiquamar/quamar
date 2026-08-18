@@ -17,6 +17,7 @@ import {
   caseStudy,
   experience,
   hero,
+  proofMarks,
   projects,
   siteConfig,
   skillGroups,
@@ -34,6 +35,42 @@ function NumberedLabel({ index }: { index: number }) {
   return (
     <span className="font-mono text-xs text-muted-foreground">
       {String(index + 1).padStart(2, "0")}
+    </span>
+  )
+}
+
+function BrandMark({
+  label,
+  logo,
+  mark,
+  size = "md",
+}: {
+  label: string
+  logo?: string
+  mark?: string
+  size?: "sm" | "md"
+}) {
+  const classes =
+    size === "sm"
+      ? "h-8 w-8 text-[10px]"
+      : "h-11 w-11 text-xs"
+
+  return (
+    <span
+      className={`${classes} brand-mark relative inline-flex shrink-0 items-center justify-center overflow-hidden border border-border/80 bg-card font-mono font-medium text-foreground`}
+      aria-hidden="true"
+    >
+      {logo ? (
+        <Image
+          src={logo}
+          alt=""
+          fill
+          sizes={size === "sm" ? "32px" : "44px"}
+          className="object-cover grayscale transition duration-300 group-hover:grayscale-0"
+        />
+      ) : (
+        mark ?? label.slice(0, 2)
+      )}
     </span>
   )
 }
@@ -66,6 +103,25 @@ export default function Portfolio() {
               <Link href="#work" className="quiet-link">
                 Selected work
               </Link>
+            </div>
+            <div className="mt-12 border-y py-4">
+              <p className="section-kicker">Proof marks</p>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+                {proofMarks.map((item) => (
+                  <div
+                    key={item.label}
+                    className="group motion-row flex items-center gap-3 border border-transparent p-2"
+                  >
+                    <BrandMark label={item.label} logo={item.logo} mark={item.mark} size="sm" />
+                    <div className="min-w-0">
+                      <p className="truncate text-sm text-foreground">{item.label}</p>
+                      <p className="mt-0.5 truncate font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+                        {item.detail}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -105,18 +161,23 @@ export default function Portfolio() {
             {experience.map((job) => (
               <article
                 key={`${job.company}-${job.dates}`}
-                className="grid gap-5 py-7 lg:grid-cols-[minmax(0,240px)_1fr]"
+                className="group motion-row grid gap-5 border border-transparent px-3 py-7 lg:grid-cols-[minmax(0,240px)_1fr]"
               >
-                <div>
-                  <h3 className="font-display text-2xl leading-tight">{job.company}</h3>
-                  <p className="mt-2 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                    {job.dates}
-                  </p>
-                  {job.current && (
-                    <p className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-primary">
-                      Current
+                <div className="flex gap-4 lg:block">
+                  <BrandMark label={job.company} logo={job.logo} mark={job.mark} />
+                  <div>
+                    <h3 className="font-display text-2xl leading-tight transition-colors group-hover:text-primary">
+                      {job.company}
+                    </h3>
+                    <p className="mt-2 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                      {job.dates}
                     </p>
-                  )}
+                    {job.current && (
+                      <p className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-primary">
+                        Current
+                      </p>
+                    )}
+                  </div>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">
@@ -202,7 +263,7 @@ export default function Portfolio() {
                   key={project.title}
                   href={project.href}
                   {...(isCaseStudy ? {} : { target: "_blank", rel: "noreferrer" })}
-                  className="group grid gap-4 py-6 transition-colors hover:text-primary sm:grid-cols-[42px_1fr_auto]"
+                  className="group motion-row grid gap-4 border border-transparent px-3 py-6 transition-colors hover:text-primary sm:grid-cols-[42px_1fr_auto]"
                 >
                   <NumberedLabel index={index} />
                   <div>
@@ -214,7 +275,7 @@ export default function Portfolio() {
                       {project.tech.join(" / ")}
                     </p>
                   </div>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
                 </Link>
               )
             })}
