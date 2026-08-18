@@ -6,10 +6,10 @@ import type { ReactNode } from "react"
 
 const statEggs: Record<string, ReactNode> = {
   "5x": "hot path optimized",
-  "1,000+": (
+  "112": (
     <span className="grid gap-0.5">
-      <span>$ git log --oneline | wc -l</span>
-      <span>1000+</span>
+      <span>production footprint</span>
+      <span>112 businesses</span>
     </span>
   ),
   "2038": "Candidate Master unlocked",
@@ -23,8 +23,8 @@ const statToneClasses: Record<string, string> = {
 
 export function HeroStats({ role, stats }: { role: string; stats: readonly Stat[] }) {
   function onBeforeReveal(value: string) {
-    if (value !== "1,000+") return
-    window.dispatchEvent(new CustomEvent("commit-proof-ping"))
+    if (value !== "112") return
+    window.dispatchEvent(new CustomEvent("business-proof-ping"))
   }
 
   return (

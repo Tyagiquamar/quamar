@@ -164,22 +164,22 @@ export function CpGraph() {
   const [expanded, setExpanded] = useState(false)
   const [drawerMounted, setDrawerMounted] = useState(false)
   const [commandTitle, setCommandTitle] = useState(false)
-  const [commitPinged, setCommitPinged] = useState(false)
+  const [proofPinged, setProofPinged] = useState(false)
   const titleTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const expandTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const pingTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
-    function onCommitPing() {
-      setCommitPinged(true)
+    function onBusinessProofPing() {
+      setProofPinged(true)
       if (pingTimer.current) clearTimeout(pingTimer.current)
-      pingTimer.current = setTimeout(() => setCommitPinged(false), 1800)
+      pingTimer.current = setTimeout(() => setProofPinged(false), 1800)
     }
 
-    window.addEventListener("commit-proof-ping", onCommitPing)
+    window.addEventListener("business-proof-ping", onBusinessProofPing)
 
     return () => {
-      window.removeEventListener("commit-proof-ping", onCommitPing)
+      window.removeEventListener("business-proof-ping", onBusinessProofPing)
       if (titleTimer.current) clearTimeout(titleTimer.current)
       if (expandTimer.current) clearTimeout(expandTimer.current)
       if (pingTimer.current) clearTimeout(pingTimer.current)
@@ -212,7 +212,7 @@ export function CpGraph() {
 
       <div
         className={`github-activity-card ${expanded ? "is-expanded" : ""} ${
-          commitPinged ? "is-highlighted" : ""
+          proofPinged ? "is-highlighted" : ""
         }`}
       >
         <button

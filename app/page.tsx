@@ -13,11 +13,9 @@ import {
   Mail,
   MapPin,
   Phone,
-  Workflow,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import type { CSSProperties } from "react"
 import {
   about,
   caseStudy,
@@ -207,6 +205,9 @@ export default function Portfolio() {
                 <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
                   {caseStudy.description}
                 </p>
+                <p className="mt-4 font-mono text-xs uppercase tracking-[0.16em] text-primary">
+                  {caseStudy.growthNote}
+                </p>
               </div>
               <div className="border-y py-4">
                 {caseStudy.metrics.map((metric) => (
@@ -240,21 +241,26 @@ export default function Portfolio() {
 
             <div className="mt-12 grid gap-4 sm:grid-cols-2">
               {caseStudy.screenshots.map((shot) => (
-                <div
+                <figure
                   key={shot.title}
-                  className="group screenshot-placeholder flex min-h-56 flex-col justify-between border border-border/80 bg-card/20 p-5"
+                  className="group overflow-hidden border border-border/80 bg-card/20"
                 >
-                  <div className="flex items-center justify-between gap-4">
-                    <p className="font-display text-2xl leading-tight">{shot.title}</p>
-                    <Camera className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary" />
+                  <div className="relative aspect-[16/10] w-full overflow-hidden">
+                    <Image
+                      src={shot.src}
+                      alt={shot.title}
+                      fill
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
                   </div>
-                  <div>
-                    <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                      Screenshot placeholder
-                    </p>
+                  <figcaption className="p-5">
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="font-display text-2xl leading-tight">{shot.title}</p>
+                      <Camera className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary" />
+                    </div>
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">{shot.detail}</p>
-                  </div>
-                </div>
+                  </figcaption>
+                </figure>
               ))}
             </div>
 
@@ -301,23 +307,6 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div className="mt-12 grid gap-8 lg:grid-cols-[280px_1fr]">
-              <div>
-                <p className="section-kicker">Animated flow</p>
-                <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
-                  A portfolio-safe version of the system path. Real screenshots can replace the
-                  placeholders without changing the section.
-                </p>
-              </div>
-              <div className="architecture-flow border-y py-5">
-                {caseStudy.flow.map((step, index) => (
-                  <div key={step} className="flow-step" style={{ "--step": index } as CSSProperties}>
-                    <Workflow className="h-4 w-4" />
-                    <span>{step}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>

@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Mohd Quamar Tyagi",
   title: "Mohd Quamar Tyagi — Founding Engineer @ Takkada",
   description:
-    "Founding Engineer at Takkada building PaySaathi, a standalone Tally-replacement accounting & ERP platform. Previously SDE-1 at Zomato. Candidate Master on Codeforces (2038), top 0.6% on LeetCode.",
+    "Founding Engineer at Takkada building PaySaathi, a standalone Tally-replacement accounting & ERP platform used by 112 businesses. Previously SDE-1 at Zomato. Candidate Master on Codeforces (2038), top 0.6% on LeetCode.",
   url: "https://quamar.vercel.app",
   email: "mohdquamartyagi@gmail.com",
   phone: "+91-8279581337",
@@ -27,13 +27,13 @@ export const hero = {
   name: "Mohd Quamar Tyagi",
   role: "Founding Engineer @ Takkada",
   tagline:
-    "Building PaySaathi — a standalone Tally-replacement accounting & ERP platform. Previously SDE-1 at Zomato. Candidate Master on Codeforces.",
+    "Building PaySaathi — a standalone Tally-replacement accounting & ERP platform used by 112 businesses. Previously SDE-1 at Zomato. Candidate Master on Codeforces.",
   photo: "/images/profile-rose.jpg",
 } as const
 
 export const stats = [
   { value: "5x", label: "p90 latency improvement" },
-  { value: "1,000+", label: "Commits @ Takkada" },
+  { value: "112", label: "Businesses run their books on it" },
   { value: "2038", label: "Codeforces · Candidate Master" },
   { value: "2400+", label: "LeetCode · Guardian · Top 0.6%" },
 ] as const
@@ -143,8 +143,9 @@ export const caseStudy = {
   title: "Takkada",
   subtitle: "Standalone Tally-Replacement ERP",
   description:
-    "A production accounting & ERP platform built end-to-end as founding engineer at Takkada. Native double-entry accounting core in PostgreSQL, filing-ready GST compliance (GSTR-1/GSTR-3B GSTN JSON export, e-invoice, e-way bill), WhatsApp Business automation, and an AI document-import pipeline — replacing Tally workflows for real businesses.",
-  metrics: ["1,000+ commits", "4 months", "Founding Engineer", "Production ERP"],
+    "A production accounting & ERP platform built end-to-end as founding engineer at Takkada. Now used by 112 businesses, with 603K+ vouchers mirrored and 172K receipts in production. Native double-entry accounting core in PostgreSQL, filing-ready GST compliance (GSTR-1/GSTR-3B GSTN JSON export, e-invoice, e-way bill), WhatsApp Business automation, and an AI document-import pipeline — replacing Tally workflows for real businesses.",
+  growthNote: "Grew from 87 → 112 businesses in five weeks (Jul–Aug 2026); 81 joined in the last 90 days.",
+  metrics: ["600K+ vouchers synced", "172K receipts", "Founding Engineer", "Production ERP"],
   tech: ["Flutter", "Supabase", "PostgreSQL", "Next.js", "TypeScript"],
   architecture: {
     caption: "Four layers: Flutter app → Supabase Edge Functions → PostgreSQL (double-entry ledger, RLS) → External (GSTN, WhatsApp API, Gemini/Vertex)",
@@ -157,12 +158,29 @@ export const caseStudy = {
   },
   screenshots: [
     {
-      title: "Mobile app",
-      detail: "Receivables, voucher creation, inventory, GST workflows, WhatsApp sharing",
+      title: "Product & traction",
+      detail: "Live marketing site and mobile app — real businesses, real receivables",
+      src: "/images/takkada-landing.png",
     },
     {
-      title: "Admin CRM",
-      detail: "Partners, subscriptions, dealer tiers, assisted onboarding, revenue controls",
+      title: "App home",
+      detail: "Receivables, payables, daybook, PDF import, bank import, reminders",
+      src: "/images/takkada-home.png",
+    },
+    {
+      title: "AI document import",
+      detail: "Supplier invoice PDF → extracted line items, supplier, and totals for review",
+      src: "/images/takkada-import-pdf.png",
+    },
+    {
+      title: "GST invoicing",
+      detail: "Line items with HSN and GST split, e-invoice / e-way bill actions, share over WhatsApp",
+      src: "/images/takkada-invoice-detail.png",
+    },
+    {
+      title: "Admin & revenue ops",
+      detail: "Partner wallet, pipeline, targets, dealer tiers, assisted onboarding",
+      src: "/images/takkada-admin.png",
     },
   ],
   ownership: [
@@ -209,14 +227,6 @@ export const caseStudy = {
       detail: "Delivery paths included public buyer orders, payment links, WhatsApp own-number onboarding, template status trails, attached-PDF template provisioning, and polished failure messaging.",
     },
   ],
-  flow: [
-    "Flutter App",
-    "Edge Functions",
-    "PostgreSQL Ledger",
-    "Admin CRM",
-    "Tally Connector",
-    "External Services",
-  ],
 } as const
 
 export interface Project {
@@ -234,7 +244,7 @@ export const projects: Project[] = [
     description:
       "Durable workflow engine with leases, fencing tokens, idempotent starts, retry recovery, event history, and failure-proof scenes.",
     tech: ["Go", "PostgreSQL", "Workers"],
-    href: "#work",
+    href: "https://github.com/Tyagiquamar/durablego",
   },
   {
     title: "QuantXecute",
