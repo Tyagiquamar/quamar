@@ -1,6 +1,8 @@
 import ContactForm from "@/components/contact-form"
+import { ContactHandshakeLink } from "@/components/contact-handshake-link"
 import { CpGraph } from "@/components/cp-graph"
 import { Greeting } from "@/components/greeting"
+import { MicroEasterEgg } from "@/components/micro-easter-egg"
 import {
   ArrowUpRight,
   Camera,
@@ -34,6 +36,13 @@ const socialIcons = {
   linkedin: Linkedin,
   mail: Mail,
 } as const
+
+const statEggs: Record<string, string> = {
+  "5x": "hot path optimized",
+  "1,000+": "git log --oneline | wc -l",
+  "2038": "Candidate Master unlocked",
+  "2400+": "Accepted ✓",
+}
 
 function NumberedLabel({ index }: { index: number }) {
   return (
@@ -136,7 +145,13 @@ export default function Portfolio() {
             <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-4 lg:grid-cols-1">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="font-mono text-xl text-foreground">{stat.value}</p>
+                  <MicroEasterEgg
+                    normal={stat.value}
+                    reveal={statEggs[stat.value] ?? stat.value}
+                    ariaLabel={`Reveal ${stat.label} easter egg`}
+                    className="stat-egg font-mono text-xl text-foreground"
+                    revealClassName="text-sm"
+                  />
                   <p className="mt-1 text-xs">{stat.label}</p>
                 </div>
               ))}
@@ -407,10 +422,7 @@ export default function Portfolio() {
                 I&apos;m open to focused engineering conversations, founding-team work, and systems that need careful shipping.
               </p>
               <div className="mt-8 space-y-4 text-sm">
-                <Link href={`mailto:${siteConfig.email}`} className="quiet-link flex items-center gap-3">
-                  <Mail className="h-4 w-4" />
-                  {siteConfig.email}
-                </Link>
+                <ContactHandshakeLink email={siteConfig.email} />
                 <Link href="https://github.com/Tyagiquamar" className="quiet-link flex items-center gap-3">
                   <Github className="h-4 w-4" />
                   github.com/Tyagiquamar

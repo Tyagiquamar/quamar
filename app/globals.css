@@ -143,6 +143,101 @@
     transform: translateY(-3px);
   }
 
+  .micro-egg {
+    position: relative;
+    display: inline-grid;
+    min-height: 1.2em;
+    cursor: pointer;
+    appearance: none;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+  }
+
+  .micro-egg-normal,
+  .micro-egg-reveal {
+    transition:
+      opacity 180ms ease,
+      filter 180ms ease,
+      transform 180ms ease,
+      letter-spacing 180ms ease;
+  }
+
+  .micro-egg-reveal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(0.25rem);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .micro-egg.is-revealed .micro-egg-normal {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(-0.25rem);
+  }
+
+  .micro-egg.is-revealed .micro-egg-reveal {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+
+  .mqt-egg {
+    min-width: 2.25rem;
+    transition: letter-spacing 180ms ease;
+  }
+
+  .mqt-egg:hover {
+    letter-spacing: 0.34em;
+  }
+
+  .mqt-egg .micro-egg-reveal {
+    display: grid;
+    gap: 0.1rem;
+    min-width: 12rem;
+    letter-spacing: 0.06em;
+    line-height: 1.15;
+  }
+
+  .mqt-egg small {
+    margin-top: 0.25rem;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: lowercase;
+  }
+
+  .stat-egg {
+    min-width: 4.75rem;
+  }
+
+  .stat-egg .micro-egg-reveal {
+    color: hsl(var(--primary));
+    font-size: 0.82rem;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .contact-handshake span {
+    transition:
+      color 180ms ease,
+      filter 180ms ease,
+      transform 180ms ease;
+  }
+
+  .contact-handshake span.is-revealed {
+    color: hsl(var(--primary));
+    transform: translateX(2px);
+  }
+
   .screenshot-placeholder {
     position: relative;
     overflow: hidden;
@@ -228,6 +323,12 @@
 
   .flow-step {
     animation: none;
+  }
+
+  .micro-egg-normal,
+  .micro-egg-reveal,
+  .contact-handshake span {
+    transition: none;
   }
 }
 

@@ -1,4 +1,59 @@
+"use client"
+
+import { useEffect, useRef, useState } from "react"
+import type { MouseEvent } from "react"
 import { cpProfiles } from "@/data/portfolio"
+
+const cpEggs: Record<string, { title: string; detail: string }> = {
+  Codeforces: {
+    title: "Candidate Master unlocked",
+    detail: "2038",
+  },
+  LeetCode: {
+    title: "Accepted ✓",
+    detail: "Top 0.6%",
+  },
+}
+
+function CpProfileRow({ profile }: { profile: (typeof cpProfiles)[number] }) {
+  const [revealed, setRevealed] = useState(false)
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const egg = cpEggs[profile.platform]
+
+  useEffect(() => {
+    return () => {
+      if (timer.current) clearTimeout(timer.current)
+    }
+  }, [])
+
+  function onClick(event: MouseEvent<HTMLAnchorElement>) {
+    if (!egg || revealed) return
+    event.preventDefault()
+    setRevealed(true)
+    if (timer.current) clearTimeout(timer.current)
+    timer.current = setTimeout(() => setRevealed(false), 1800)
+  }
+
+  return (
+    <a
+      href={profile.href}
+      target="_blank"
+      rel="noreferrer"
+      onClick={onClick}
+      className="group motion-row grid gap-2 border border-transparent px-3 py-4 transition-colors hover:text-primary sm:grid-cols-[180px_1fr_auto] sm:items-baseline"
+    >
+      <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+        {profile.platform}
+      </p>
+      <p className="text-sm text-foreground">
+        {revealed && egg ? egg.title : profile.rating}
+      </p>
+      <span className="font-mono text-xs text-muted-foreground transition duration-300 group-hover:translate-x-1 group-hover:text-primary">
+        {revealed && egg ? egg.detail : profile.detail} -&gt;
+      </span>
+    </a>
+  )
+}
 
 /**
  * GitHub contribution graph, rendered by a third-party image service
@@ -11,21 +66,7 @@ export function CpGraph() {
     <div className="space-y-6">
       <div className="divide-y divide-border border-y">
         {cpProfiles.map((p) => (
-          <a
-            key={p.platform}
-            href={p.href}
-            target="_blank"
-            rel="noreferrer"
-            className="group motion-row grid gap-2 border border-transparent px-3 py-4 transition-colors hover:text-primary sm:grid-cols-[180px_1fr_auto] sm:items-baseline"
-          >
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              {p.platform}
-            </p>
-            <p className="text-sm text-foreground">{p.rating}</p>
-            <span className="font-mono text-xs text-muted-foreground transition duration-300 group-hover:translate-x-1 group-hover:text-primary">
-              {p.detail} -&gt;
-            </span>
-          </a>
+          <CpProfileRow key={p.platform} profile={p} />
         ))}
       </div>
 
