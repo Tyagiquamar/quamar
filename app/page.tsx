@@ -3,15 +3,19 @@ import { CpGraph } from "@/components/cp-graph"
 import { Greeting } from "@/components/greeting"
 import {
   ArrowUpRight,
+  Camera,
   Download,
   Github,
+  Layers3,
   Linkedin,
   Mail,
   MapPin,
   Phone,
+  Workflow,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import type { CSSProperties } from "react"
 import {
   about,
   caseStudy,
@@ -243,6 +247,67 @@ export default function Portfolio() {
                 </p>
               </div>
             </div>
+
+            <div className="mt-12 grid gap-4 sm:grid-cols-2">
+              {caseStudy.screenshots.map((shot) => (
+                <div
+                  key={shot.title}
+                  className="group screenshot-placeholder flex min-h-56 flex-col justify-between border border-border/80 bg-card/20 p-5"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <p className="font-display text-2xl leading-tight">{shot.title}</p>
+                    <Camera className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                      Screenshot placeholder
+                    </p>
+                    <p className="mt-3 text-sm leading-6 text-muted-foreground">{shot.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 grid gap-8 lg:grid-cols-[280px_1fr]">
+              <div>
+                <p className="section-kicker">What I owned</p>
+                <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
+                  The work spans product surfaces, data model, backend functions, admin operations,
+                  and the desktop sync edge.
+                </p>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {caseStudy.ownership.map((item) => (
+                  <div key={item.title} className="motion-row border border-transparent border-t px-3 py-4">
+                    <div className="flex items-center gap-3">
+                      <Layers3 className="h-4 w-4 text-primary" />
+                      <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-foreground">
+                        {item.title}
+                      </h3>
+                    </div>
+                    <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-12 grid gap-8 lg:grid-cols-[280px_1fr]">
+              <div>
+                <p className="section-kicker">Animated flow</p>
+                <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
+                  A portfolio-safe version of the system path. Real screenshots can replace the
+                  placeholders without changing the section.
+                </p>
+              </div>
+              <div className="architecture-flow border-y py-5">
+                {caseStudy.flow.map((step, index) => (
+                  <div key={step} className="flow-step" style={{ "--step": index } as CSSProperties}>
+                    <Workflow className="h-4 w-4" />
+                    <span>{step}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -258,11 +323,12 @@ export default function Portfolio() {
           <div className="divide-y divide-border border-y">
             {projects.map((project, index) => {
               const isCaseStudy = project.kind === "case-study"
+              const isExternal = project.href.startsWith("http")
               return (
                 <Link
                   key={project.title}
                   href={project.href}
-                  {...(isCaseStudy ? {} : { target: "_blank", rel: "noreferrer" })}
+                  {...(!isCaseStudy && isExternal ? { target: "_blank", rel: "noreferrer" } : {})}
                   className="group motion-row grid gap-4 border border-transparent px-3 py-6 transition-colors hover:text-primary sm:grid-cols-[42px_1fr_auto]"
                 >
                   <NumberedLabel index={index} />

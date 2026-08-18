@@ -56,7 +56,7 @@ export const proofMarks: ProofMark[] = [
 
 export const about = {
   heading: "Systems over demos.",
-  body: "I'm a Founding Engineer at Takkada, where I'm building PaySaathi — a standalone accounting and ERP platform that replaces Tally — across Flutter, Supabase, PostgreSQL, and Next.js. Previously an SDE-1 at Zomato optimizing high-scale CX services in Go, and an SDE Intern at The Linux Foundation working on gRPC and containerized microservices. I'm a Candidate Master on Codeforces and ranked top 0.6% on LeetCode.",
+  body: "I'm a Founding Engineer at Takkada, where I'm building PaySaathi across Flutter, Supabase, PostgreSQL, Edge Functions, and admin tooling. Previously an SDE-1 at Zomato optimizing high-scale CX services in Go, and an SDE Intern at The Linux Foundation working on gRPC and containerized microservices. I'm a Candidate Master on Codeforces and ranked top 0.6% on LeetCode.",
 } as const
 
 export const cpProfiles = [
@@ -102,8 +102,8 @@ export const experience: Experience[] = [
     logo: "/logos/takkada-icon.png",
     current: true,
     bullets: [
-      "Building PaySaathi end-to-end as the first engineer across Flutter, Supabase, PostgreSQL, and Next.js, with 1,000+ commits spanning application, backend, database, integrations, and production infrastructure",
-      "Engineered the native double-entry accounting core in PostgreSQL: ledgers, voucher numbering, GRN/stock receipts, credit notes, payment/receipt allocations — eliminating Tally dependency",
+      "Building PaySaathi end-to-end as the first engineer across Flutter, Supabase, PostgreSQL, Edge Functions, Next.js admin tooling, integrations, and production infrastructure",
+      "Engineered the native double-entry accounting core in PostgreSQL: ledgers, voucher numbering, GRN/stock receipts, credit notes, payment/receipt allocations, and reconciliation flows",
       "Built filing-ready GST compliance: GSTR-1/GSTR-3B GSTN JSON export, e-invoice/e-way bill, PDF generation",
       "Shipped WhatsApp Business automation (template provisioning, approval reconciliation, per-template routing) and an AI document-import pipeline (Gemini/Vertex)",
     ],
@@ -154,6 +154,42 @@ export const caseStudy = {
       { name: "External", detail: "GSTN · WhatsApp API · Gemini/Vertex" },
     ],
   },
+  screenshots: [
+    {
+      title: "Mobile app",
+      detail: "Receivables, voucher creation, inventory, GST workflows, WhatsApp sharing",
+    },
+    {
+      title: "Admin CRM",
+      detail: "Partners, subscriptions, dealer tiers, assisted onboarding, revenue controls",
+    },
+  ],
+  ownership: [
+    {
+      title: "App surface",
+      detail: "Flutter client flows for registers, parties, vouchers, imports, reminders, reports, and mobile-first operations.",
+    },
+    {
+      title: "Backend core",
+      detail: "Supabase Edge Functions, PostgreSQL schema, RLS-aware services, voucher state, and integration contracts.",
+    },
+    {
+      title: "Admin and ops",
+      detail: "Next.js CRM for partner/admin workflows, plan controls, assisted customer setup, and production support paths.",
+    },
+    {
+      title: "Tally connector",
+      detail: "Desktop sync layer with IPC control, connection testing, company selection, incremental export, and status monitoring.",
+    },
+  ],
+  flow: [
+    "Flutter App",
+    "Edge Functions",
+    "PostgreSQL Ledger",
+    "Admin CRM",
+    "Tally Connector",
+    "External Services",
+  ],
 } as const
 
 export interface Project {
@@ -166,12 +202,12 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Takkada",
-    kind: "case-study",
+    title: "DurableGo",
+    kind: "repo",
     description:
-      "Standalone Tally-replacement accounting & ERP — double-entry PostgreSQL core, GST filing, WhatsApp automation, AI document import.",
-    tech: ["Flutter", "Supabase", "PostgreSQL"],
-    href: "#case-study",
+      "Durable workflow engine with leases, fencing tokens, idempotent starts, retry recovery, event history, and failure-proof scenes.",
+    tech: ["Go", "PostgreSQL", "Workers"],
+    href: "#work",
   },
   {
     title: "QuantXecute",
