@@ -293,6 +293,26 @@ export default function Portfolio() {
 
             <div className="mt-12 grid gap-8 lg:grid-cols-[280px_1fr]">
               <div>
+                <p className="section-kicker">Commit-derived proof</p>
+                <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
+                  Mined from the local PaySaathi/Takkada app, backend, admin dashboard, and loader
+                  histories.
+                </p>
+              </div>
+              <div className="divide-y divide-border border-y">
+                {caseStudy.proofTrail.map((item) => (
+                  <div key={item.title} className="motion-row border border-transparent px-3 py-5">
+                    <h3 className="font-display text-xl leading-tight transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-12 grid gap-8 lg:grid-cols-[280px_1fr]">
+              <div>
                 <p className="section-kicker">Animated flow</p>
                 <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
                   A portfolio-safe version of the system path. Real screenshots can replace the

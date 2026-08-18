@@ -102,10 +102,11 @@ export const experience: Experience[] = [
     logo: "/logos/takkada-icon.png",
     current: true,
     bullets: [
-      "Building PaySaathi end-to-end as the first engineer across Flutter, Supabase, PostgreSQL, Edge Functions, Next.js admin tooling, integrations, and production infrastructure",
-      "Engineered the native double-entry accounting core in PostgreSQL: ledgers, voucher numbering, GRN/stock receipts, credit notes, payment/receipt allocations, and reconciliation flows",
-      "Built filing-ready GST compliance: GSTR-1/GSTR-3B GSTN JSON export, e-invoice/e-way bill, PDF generation",
-      "Shipped WhatsApp Business automation (template provisioning, approval reconciliation, per-template routing) and an AI document-import pipeline (Gemini/Vertex)",
+      "Building PaySaathi end-to-end as the first engineer across Flutter, Supabase, PostgreSQL, Edge Functions, Next.js admin tooling, Tally connector paths, integrations, and production infrastructure",
+      "Rebuilt standalone accounting surfaces across app and backend: voucher-family schemas, register RPCs, bill-wise settlements, ageing/analytics, financial statements, journal/note/FY flows, and line-money contracts",
+      "Shipped production workflows for GRN/Receipt Note, stock journals, purchase/credit/debit note lines, GST return exports, e-invoice/e-way bill enablement, invoice PDFs, and WhatsApp delivery",
+      "Hardened access and operations through RBAC/voucher-type grants, tenant-write guards, license/feature gates, partner tier controls, assisted onboarding, and admin wallet/payment reconciliation",
+      "Improved sync and reliability edges across Tally loader behavior, own-number WhatsApp onboarding, public buyer order flow, error states, report assertions, and deployment fences",
     ],
     tech: ["Flutter", "Supabase", "PostgreSQL", "Next.js", "TypeScript"],
   },
@@ -180,6 +181,32 @@ export const caseStudy = {
     {
       title: "Tally connector",
       detail: "Desktop sync layer with IPC control, connection testing, company selection, incremental export, and status monitoring.",
+    },
+  ],
+  proofTrail: [
+    {
+      title: "Standalone accounting core",
+      detail: "Backend migration arc replaced inherited table/RPC assumptions with app-native voucher families, register periods, bill-wise settlement, ageing, analytics, and financial-statement surfaces.",
+    },
+    {
+      title: "Voucher and compliance workflows",
+      detail: "App and backend commits added GRN/Receipt Note, stock journals, GST return exports, e-invoice/e-way bill tables, invoice-detail columns, PDF rendering, and WhatsApp delivery paths.",
+    },
+    {
+      title: "Access, tenant safety, and gates",
+      detail: "RBAC work covered voucher-type grants, restricted-member behavior, tenant-write guards, license checks, feature gates, granular permission fallbacks, and safer deployment targets.",
+    },
+    {
+      title: "Admin revenue operations",
+      detail: "Admin dashboard commits added MD rate cards, usage views, assisted customer creation, wallet reconciliation, partner/dealer tier controls, onboarding caps, and production Cloudflare deployment constraints.",
+    },
+    {
+      title: "Tally loader reliability",
+      detail: "Loader work covered IPC sync control, GRN writeback, export report cleanup, foreground/busy detection, resumable first sync, checkpoints, response byte ceilings, and terminal-state guarantees.",
+    },
+    {
+      title: "Customer-facing automation",
+      detail: "Delivery paths included public buyer orders, payment links, WhatsApp own-number onboarding, template status trails, attached-PDF template provisioning, and polished failure messaging.",
     },
   ],
   flow: [
