@@ -47,11 +47,11 @@ export interface ProofMark {
 }
 
 export const proofMarks: ProofMark[] = [
-  { label: "Takkada", detail: "Founding engineer", mark: "Ta" },
+  { label: "Takkada", detail: "Founding engineer", logo: "/logos/takkada-favicon.png" },
   { label: "Zomato", detail: "SDE-1", logo: "/logos/zomato-logo.jpg" },
   { label: "Linux Foundation", detail: "SDE intern", logo: "/logos/linux-foundation-logo.jpg" },
-  { label: "Codeforces", detail: "2038 CM", mark: "CF" },
-  { label: "LeetCode", detail: "2400+", mark: "LC" },
+  { label: "Codeforces", detail: "2038 CM", logo: "/logos/codeforces-logo.png" },
+  { label: "LeetCode", detail: "2400+", logo: "/logos/leetcode-logo.png" },
 ]
 
 export const about = {
@@ -99,7 +99,7 @@ export const experience: Experience[] = [
     company: "Takkada",
     location: "Remote",
     dates: "May 2026 — Present",
-    mark: "Ta",
+    logo: "/logos/takkada-favicon.png",
     current: true,
     bullets: [
       "Building PaySaathi end-to-end as the first engineer across Flutter, Supabase, PostgreSQL, and Next.js, with 1,000+ commits spanning application, backend, database, integrations, and production infrastructure",
@@ -139,10 +139,10 @@ export const experience: Experience[] = [
 
 export const caseStudy = {
   id: "case-study",
-  title: "PaySaathi",
+  title: "Takkada",
   subtitle: "Standalone Tally-Replacement ERP",
   description:
-    "A production accounting & ERP platform built end-to-end as founding engineer at Takkada. Native double-entry accounting core in PostgreSQL, filing-ready GST compliance (GSTR-1/GSTR-3B GSTN JSON export, e-invoice, e-way bill), WhatsApp Business automation, and an AI document-import pipeline — replacing Tally for real businesses.",
+    "A production accounting & ERP platform built end-to-end as founding engineer at Takkada. Native double-entry accounting core in PostgreSQL, filing-ready GST compliance (GSTR-1/GSTR-3B GSTN JSON export, e-invoice, e-way bill), WhatsApp Business automation, and an AI document-import pipeline — replacing Tally workflows for real businesses.",
   metrics: ["1,000+ commits", "4 months", "Founding Engineer", "Production ERP"],
   tech: ["Flutter", "Supabase", "PostgreSQL", "Next.js", "TypeScript"],
   architecture: {
@@ -166,7 +166,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "PaySaathi",
+    title: "Takkada",
     kind: "case-study",
     description:
       "Standalone Tally-replacement accounting & ERP — double-entry PostgreSQL core, GST filing, WhatsApp automation, AI document import.",

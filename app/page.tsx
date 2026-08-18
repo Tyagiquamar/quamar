@@ -82,7 +82,7 @@ export default function Portfolio() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end">
           <div>
             <Greeting />
-            <h1 className="mt-8 max-w-5xl text-balance font-display text-5xl leading-[1.02] sm:text-7xl lg:text-8xl">
+            <h1 className="cool-title mt-8 max-w-5xl text-balance font-display text-5xl leading-[1.02] sm:text-7xl lg:text-8xl">
               {hero.name.split(" ").map((word, i) => (
                 <span key={i} className={`word-reveal word-reveal-delay-${i + 1}`}>
                   {word}{" "}
@@ -200,7 +200,7 @@ export default function Portfolio() {
 
       <section id={caseStudy.id} className="editorial-section scroll-mt-20 border-t">
         <div className="grid gap-8 md:grid-cols-[180px_1fr]">
-          <p className="section-kicker">PaySaathi</p>
+          <p className="section-kicker">Takkada</p>
           <div>
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
               <div>
