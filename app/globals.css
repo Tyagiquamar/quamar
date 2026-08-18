@@ -193,31 +193,6 @@
     cursor: none;
   }
 
-  .mqt-egg {
-    min-width: 2.25rem;
-    transition: letter-spacing 180ms ease;
-  }
-
-  .mqt-egg:hover {
-    letter-spacing: 0.34em;
-  }
-
-  .mqt-egg .micro-egg-reveal {
-    display: grid;
-    gap: 0.1rem;
-    min-width: 12rem;
-    letter-spacing: 0.06em;
-    line-height: 1.15;
-  }
-
-  .mqt-egg small {
-    margin-top: 0.25rem;
-    color: hsl(var(--muted-foreground));
-    font-size: 0.65rem;
-    letter-spacing: 0.14em;
-    text-transform: lowercase;
-  }
-
   .stat-egg {
     min-width: 5.5rem;
   }

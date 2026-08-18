@@ -4,7 +4,6 @@ import { useState } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { MicroEasterEgg } from "@/components/micro-easter-egg"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { navLinks } from "@/data/portfolio"
 
@@ -14,19 +13,12 @@ export function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <MicroEasterEgg
-          normal="MQT"
-          reveal={
-            <>
-              <span>Messages</span>
-              <span>Queues</span>
-              <span>Transactions</span>
-              <small>backend things I like</small>
-            </>
-          }
-          ariaLabel="Reveal MQT meaning"
-          className="mqt-egg font-mono text-xs uppercase tracking-[0.22em] text-foreground"
-        />
+        <Link
+          href="/"
+          className="font-mono text-xs uppercase tracking-[0.22em] text-foreground transition-colors hover:text-primary"
+        >
+          MQT <span className="text-muted-foreground">· Mohd Quamar Tyagi</span>
+        </Link>
 
         <nav className="hidden items-center gap-5 rounded-full border border-border/70 bg-background/80 px-4 py-2 text-xs text-muted-foreground shadow-sm backdrop-blur md:flex">
           {navLinks.map((link) => (

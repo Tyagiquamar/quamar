@@ -12,7 +12,6 @@ import {
   Linkedin,
   Mail,
   MapPin,
-  Phone,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -395,10 +394,6 @@ export default function Portfolio() {
                   <Linkedin className="h-4 w-4" />
                   linkedin.com/in/mohd-quamar-tyagi
                 </Link>
-                <p className="flex items-center gap-3 text-muted-foreground">
-                  <Phone className="h-4 w-4" />
-                  {siteConfig.phone}
-                </p>
                 <p className="flex items-center gap-3 text-muted-foreground">
                   <MapPin className="h-4 w-4" />
                   {siteConfig.location}

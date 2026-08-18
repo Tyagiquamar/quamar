@@ -12,8 +12,8 @@ const statEggs: Record<string, ReactNode> = {
       <span>112 businesses</span>
     </span>
   ),
-  "2038": "Candidate Master unlocked",
-  "2400+": "Accepted ✓",
+  "2038": "top 1% globally",
+  "2400+": "top 0.6% globally",
 }
 
 const statToneClasses: Record<string, string> = {

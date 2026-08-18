@@ -5,7 +5,6 @@ export const siteConfig = {
     "Founding Engineer at Takkada building PaySaathi, a standalone Tally-replacement accounting & ERP platform used by 112 businesses. Previously SDE-1 at Zomato. Candidate Master on Codeforces (2038), top 0.6% on LeetCode.",
   url: "https://quamar.vercel.app",
   email: "mohdquamartyagi@gmail.com",
-  phone: "+91-8279581337",
   location: "New Delhi, India",
 } as const
 
@@ -32,10 +31,10 @@ export const hero = {
 } as const
 
 export const stats = [
-  { value: "5x", label: "p90 latency improvement" },
-  { value: "112", label: "Businesses run their books on it" },
-  { value: "2038", label: "Codeforces · Candidate Master" },
-  { value: "2400+", label: "LeetCode · Guardian · Top 0.6%" },
+  { value: "5x", label: "p90 latency improvement at Zomato scale" },
+  { value: "112", label: "businesses run their books on PaySaathi" },
+  { value: "2038", label: "Codeforces rating · Candidate Master" },
+  { value: "2400+", label: "LeetCode rating · Guardian · Top 0.6%" },
 ] as const
 export type Stat = (typeof stats)[number]
 
@@ -48,15 +47,15 @@ export interface ProofMark {
 
 export const proofMarks: ProofMark[] = [
   { label: "Takkada", detail: "Founding engineer", logo: "/logos/takkada-icon.png" },
-  { label: "Zomato", detail: "SDE-1", logo: "/logos/zomato-logo.jpg" },
-  { label: "Linux Foundation", detail: "SDE intern", logo: "/logos/linux-foundation-logo.jpg" },
+  { label: "Zomato", detail: "SDE-1", logo: "/logos/zomato-logo.png" },
+  { label: "Linux Foundation", detail: "SDE intern", logo: "/logos/linux-foundation-logo.png" },
   { label: "Codeforces", detail: "2038 CM", logo: "/logos/codeforces-logo.png" },
   { label: "LeetCode", detail: "Guardian · 2400+", logo: "/logos/leetcode-logo.png" },
 ]
 
 export const about = {
   heading: "Systems over demos.",
-  body: "I'm a Founding Engineer at Takkada, where I'm building PaySaathi across Flutter, Supabase, PostgreSQL, Edge Functions, and admin tooling. Previously an SDE-1 at Zomato optimizing high-scale CX services in Go, and an SDE Intern at The Linux Foundation working on gRPC and containerized microservices. I'm a Candidate Master on Codeforces and ranked top 0.6% on LeetCode.",
+  body: "I got into engineering through competitive programming — years of Codeforces rounds taught me to reason about correctness and complexity before writing a line of code. That habit stuck: I'm drawn to systems where getting it wrong is expensive, which is how I ended up building accounting software. Money, ledgers, GST filings — correctness isn't a nice-to-have, it's the product. Outside of work I still do CP rounds, tinker with systems projects in Go and C++, and care a lot about the craft of shipping software that real people depend on every day.",
 } as const
 
 export const cpProfiles = [
@@ -111,11 +110,22 @@ export const experience: Experience[] = [
     tech: ["Flutter", "Supabase", "PostgreSQL", "Next.js", "TypeScript"],
   },
   {
+    role: "Independent Engineer",
+    company: "Freelance & Systems Projects",
+    location: "Remote",
+    dates: "Jan 2026 — Apr 2026",
+    bullets: [
+      "Freelance backend consulting and full-time work on systems projects — DurableGo (durable workflow engine in Go) and QuantXecute (C++ orderbook cost model)",
+      "Sustained competitive programming practice while evaluating founding-engineer opportunities",
+    ],
+    tech: ["Go", "C++", "PostgreSQL"],
+  },
+  {
     role: "SDE-1",
     company: "Zomato",
     location: "Gurgaon, India",
     dates: "Jul 2025 — Dec 2025",
-    logo: "/logos/zomato-logo.jpg",
+    logo: "/logos/zomato-logo.png",
     bullets: [
       "Reduced API round-trip overhead by removing redundant gRPC/MySQL calls, improving p90 latency 5x at massive scale",
       "Automated ticket workflows and chatbot link-ticket generation, cutting manual ops by 80% and reducing support load by 35%",
@@ -128,7 +138,7 @@ export const experience: Experience[] = [
     company: "The Linux Foundation",
     location: "Seoul (Remote)",
     dates: "Nov 2023 — Mar 2024",
-    logo: "/logos/linux-foundation-logo.jpg",
+    logo: "/logos/linux-foundation-logo.png",
     bullets: [
       "Replaced HTTPS calls with gRPC architecture, achieving 60% faster data transfer",
       "Implemented CloudForet development images supporting 50+ microservices",
@@ -242,7 +252,7 @@ export const projects: Project[] = [
     title: "DurableGo",
     kind: "repo",
     description:
-      "Durable workflow engine with leases, fencing tokens, idempotent starts, retry recovery, event history, and failure-proof scenes.",
+      "Durable workflow engine in Go — leases, fencing tokens, idempotent starts, retry recovery, and event history. Ships with a load generator, integration tests, and failure-scene tests that kill workers mid-execution to prove recovery.",
     tech: ["Go", "PostgreSQL", "Workers"],
     href: "https://github.com/Tyagiquamar/durablego",
   },
@@ -250,7 +260,7 @@ export const projects: Project[] = [
     title: "QuantXecute",
     kind: "repo",
     description:
-      "Real-time trade-cost estimator for crypto futures — streams OKX Level 2 orderbook data over WebSocket and models execution costs in C++.",
+      "Real-time trade-cost estimator for crypto futures — streams OKX Level 2 orderbook data over WebSocket and models execution costs (slippage, fees, market impact) in C++ against live market data.",
     tech: ["C++", "WebSocket", "Orderbook"],
     href: "https://github.com/Tyagiquamar/QuantXecute",
   },
@@ -258,7 +268,7 @@ export const projects: Project[] = [
     title: "AI Interviewer Agent",
     kind: "repo",
     description:
-      "Structured AI interviewer — conducts technical interviews over chat, enforces coverage, and generates transcript-grounded hiring evaluation reports.",
+      "Structured AI interviewer — conducts technical interviews over chat, enforces topic coverage, and generates transcript-grounded hiring evaluation reports backed by Supabase.",
     tech: ["Next.js", "TypeScript", "Gemini", "Supabase"],
     href: "https://github.com/Tyagiquamar/ai-interviewer-agent",
   },
@@ -266,7 +276,7 @@ export const projects: Project[] = [
     title: "NexLink",
     kind: "repo",
     description:
-      "URL shortener with real-time analytics — click tracking, geographic and referrer data, custom aliases, and QR sharing.",
+      "URL shortener with real-time analytics — click tracking with geographic and referrer breakdowns, custom aliases, and QR sharing.",
     tech: ["Next.js", "MongoDB", "Analytics"],
     href: "https://github.com/Tyagiquamar/NexLink-URL-Shortener",
   },
@@ -279,11 +289,11 @@ export const skillGroups = [
   },
   {
     title: "Frameworks & Platforms",
-    skills: ["Flutter", "Next.js", "React", "Node.js", "gRPC", "REST APIs", "Microservices"],
+    skills: ["Flutter", "Next.js", "React", "Node.js", "gRPC"],
   },
   {
     title: "Cloud & DevOps",
-    skills: ["Supabase", "Docker", "AWS", "GitHub Actions", "Vercel", "Nginx", "Linux"],
+    skills: ["Supabase", "Docker", "AWS", "GitHub Actions", "Vercel"],
   },
   {
     title: "Databases",
@@ -294,15 +304,9 @@ export const skillGroups = [
     skills: [
       "API Design",
       "Database Design",
-      "Authentication & Authorization",
       "Event-driven Workflows",
-      "Observability",
       "Distributed Systems",
     ],
-  },
-  {
-    title: "Tools",
-    skills: ["Git", "GitHub"],
   },
 ] as const
 export type SkillGroup = (typeof skillGroups)[number]
