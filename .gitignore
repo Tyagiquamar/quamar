@@ -28,3 +28,5 @@ next-env.d.ts
 
 # dev logs
 next-*.log
+
+.playwright-cli/
