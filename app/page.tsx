@@ -1,4 +1,3 @@
-import ContactForm from "@/components/contact-form"
 import { ContactHandshakeLink } from "@/components/contact-handshake-link"
 import { CpGraph } from "@/components/cp-graph"
 import { Greeting } from "@/components/greeting"
@@ -405,33 +404,30 @@ export default function Portfolio() {
       <section id="contact" className="editorial-section scroll-mt-20 border-t">
         <div className="grid gap-10 md:grid-cols-[180px_1fr]">
           <p className="section-kicker">Contact</p>
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px]">
-            <div>
-              <h2 className="font-display text-4xl leading-tight sm:text-6xl">Reach out.</h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
-                I&apos;m open to focused engineering conversations, founding-team work, and systems that need careful shipping.
+          <div>
+            <h2 className="font-display text-4xl leading-tight sm:text-6xl">Reach out.</h2>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
+              I&apos;m open to focused engineering conversations, founding-team work, and systems that need careful shipping.
+            </p>
+            <div className="mt-8 space-y-4 text-sm">
+              <ContactHandshakeLink email={siteConfig.email} />
+              <Link href="https://github.com/Tyagiquamar" className="quiet-link flex items-center gap-3">
+                <Github className="h-4 w-4" />
+                github.com/Tyagiquamar
+              </Link>
+              <Link href="https://linkedin.com/in/mohd-quamar-tyagi" className="quiet-link flex items-center gap-3">
+                <Linkedin className="h-4 w-4" />
+                linkedin.com/in/mohd-quamar-tyagi
+              </Link>
+              <p className="flex items-center gap-3 text-muted-foreground">
+                <MapPin className="h-4 w-4" />
+                {siteConfig.location}
               </p>
-              <div className="mt-8 space-y-4 text-sm">
-                <ContactHandshakeLink email={siteConfig.email} />
-                <Link href="https://github.com/Tyagiquamar" className="quiet-link flex items-center gap-3">
-                  <Github className="h-4 w-4" />
-                  github.com/Tyagiquamar
-                </Link>
-                <Link href="https://linkedin.com/in/mohd-quamar-tyagi" className="quiet-link flex items-center gap-3">
-                  <Linkedin className="h-4 w-4" />
-                  linkedin.com/in/mohd-quamar-tyagi
-                </Link>
-                <p className="flex items-center gap-3 text-muted-foreground">
-                  <MapPin className="h-4 w-4" />
-                  {siteConfig.location}
-                </p>
-                <Link href="/resume.pdf" download className="quiet-link inline-flex items-center gap-2">
-                  <Download className="h-4 w-4" />
-                  Download resume
-                </Link>
-              </div>
+              <Link href="/resume.pdf" download className="quiet-link inline-flex items-center gap-2">
+                <Download className="h-4 w-4" />
+                Download resume
+              </Link>
             </div>
-            <ContactForm />
           </div>
         </div>
       </section>

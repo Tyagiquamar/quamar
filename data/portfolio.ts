@@ -5,7 +5,7 @@ export const siteConfig = {
     "Founding Engineer at Takkada building PaySaathi, a standalone Tally-replacement accounting & ERP platform used by 112 businesses. Previously SDE-1 at Zomato. Candidate Master on Codeforces (2038), top 0.6% on LeetCode.",
   url: "https://quamar.vercel.app",
   email: "mohdquamartyagi@gmail.com",
-  location: "New Delhi, India",
+  location: "Remote · UTC+5:30",
 } as const
 
 export const socials = [
@@ -263,7 +263,7 @@ export const projects: Project[] = [
     title: "RelayDB",
     kind: "repo",
     description:
-      "PostgreSQL change-data-capture, done correctly: pgoutput decoding with TOAST awareness, events persisted exactly-once per source transaction, fenced LSN checkpoints. A testcontainers e2e proves ordered capture, crash-replay idempotency, and standby takeover fencing; the hosted demo streams a live shop simulator's changes through signed webhooks.",
+      "PostgreSQL change-data-capture, done correctly: pgoutput decoding with TOAST awareness, at-least-once delivery with idempotent replay per source transaction, fenced LSN checkpoints. A testcontainers e2e proves ordered capture, crash-replay without loss or duplication, and standby takeover fencing; the hosted demo streams a live shop simulator's changes through signed webhooks.",
     tech: ["Go", "pgoutput", "gRPC", "HMAC webhooks", "Next.js"],
     href: "https://github.com/Tyagiquamar/relaydb",
     liveLabel: "Live dashboard",
@@ -276,14 +276,6 @@ export const projects: Project[] = [
       "Real-time trade-cost estimator for crypto futures — streams OKX Level 2 orderbook data over WebSocket and models execution costs (slippage, fees, market impact) in C++ against live market data.",
     tech: ["C++", "WebSocket", "Orderbook"],
     href: "https://github.com/Tyagiquamar/QuantXecute",
-  },
-  {
-    title: "AI Interviewer Agent",
-    kind: "repo",
-    description:
-      "Structured AI interviewer — conducts technical interviews over chat, enforces topic coverage, and generates transcript-grounded hiring evaluation reports backed by Supabase.",
-    tech: ["Next.js", "TypeScript", "Gemini", "Supabase"],
-    href: "https://github.com/Tyagiquamar/ai-interviewer-agent",
   },
 ]
 
