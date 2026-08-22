@@ -1,30 +1,41 @@
-# Competitive programmer portfolio
+# Mohd Quamar Tyagi — Engineering Portfolio
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+Personal engineering portfolio. Founding Engineer at Takkada, previously
+SDE-1 at Zomato.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/mohdquamartyagi-7279s-projects/v0-competitive-programmer-portfolio)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/WAFob3lc42P)
+**Live:** https://quamar.vercel.app
 
-## Overview
+## Stack
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+- Next.js 15 (App Router) + React 19, TypeScript
+- Tailwind CSS with dark/light design tokens
+- Deployed on Vercel
 
-## Deployment
+## Structure
 
-Your project is live at:
+All page content — experience, selected work, proof links, competitive
+programming profiles — lives in `data/portfolio.ts`. `app/` composes it into
+semantic sections (`section` / `article` / `figure`) with responsive grids,
+descriptive alt text, and `prefers-reduced-motion` support.
 
-**[https://vercel.com/mohdquamartyagi-7279s-projects/v0-competitive-programmer-portfolio](https://vercel.com/mohdquamartyagi-7279s-projects/v0-competitive-programmer-portfolio)**
+## Featured work
 
-## Build your app
+| Project | Live demo | Source |
+|---|---|---|
+| DurableGo — durable workflow engine with fencing tokens | https://durablego-dashboard.vercel.app | https://github.com/Tyagiquamar/durablego |
+| DurableMCP — durable MCP tool execution and recovery | https://durablemcp-dashboard.vercel.app | https://github.com/Tyagiquamar/durablemcp |
+| RelayDB — PostgreSQL CDC with at-least-once delivery | https://relaydb-dashboard.vercel.app | https://github.com/Tyagiquamar/relaydb |
+| QuantXecute — C++ options pricing engine | — | https://github.com/Tyagiquamar/QuantXecute |
 
-Continue building your app on:
+All three hosted demos run live on free-tier infrastructure with
+self-generating traffic; first hit after an idle period may wait through a
+short cold start while the dashboard retries.
 
-**[https://v0.dev/chat/projects/WAFob3lc42P](https://v0.dev/chat/projects/WAFob3lc42P)**
+## Local development
 
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+```bash
+pnpm install
+pnpm dev      # http://localhost:3000
+pnpm build    # production build
+pnpm lint
+```
