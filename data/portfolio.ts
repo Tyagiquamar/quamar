@@ -110,17 +110,6 @@ export const experience: Experience[] = [
     tech: ["Flutter", "Supabase", "PostgreSQL", "Next.js", "TypeScript"],
   },
   {
-    role: "Independent Engineer",
-    company: "Freelance & Systems Projects",
-    location: "Remote",
-    dates: "Jan 2026 — Apr 2026",
-    bullets: [
-      "Freelance backend consulting and full-time work on systems projects — DurableGo (durable workflow engine in Go) and QuantXecute (C++ orderbook cost model)",
-      "Sustained competitive programming practice while evaluating founding-engineer opportunities",
-    ],
-    tech: ["Go", "C++", "PostgreSQL"],
-  },
-  {
     role: "SDE-1",
     company: "Zomato",
     location: "Gurgaon, India",
