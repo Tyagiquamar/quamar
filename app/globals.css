@@ -4,9 +4,9 @@
 
 @layer base {
   :root {
-    --font-sans: "Geist", "Inter", "Segoe UI", Arial, sans-serif;
-    --font-display: "Libre Baskerville", Georgia, "Times New Roman", serif;
-    --font-mono: "Geist Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    --font-sans: var(--font-geist-sans), "Inter", "Segoe UI", Arial, sans-serif;
+    --font-display: var(--font-libre-baskerville), Georgia, "Times New Roman", serif;
+    --font-mono: var(--font-geist-mono), "SFMono-Regular", Consolas, "Liberation Mono", monospace;
     --background: 0 0% 96%;
     --foreground: 0 0% 8%;
     --card: 0 0% 93%;

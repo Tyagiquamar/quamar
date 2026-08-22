@@ -46,6 +46,15 @@ export default function ContactForm() {
 
   return (
     <form id="contact-form" action={handleSubmit} className="border-t pt-5">
+      <input
+        type="text"
+        name="botcheck"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+        style={{ display: "none" }}
+      />
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
         Send a message
       </p>
