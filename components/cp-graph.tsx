@@ -30,18 +30,18 @@ const featuredRepos = [
     animation: "workflow",
   },
   {
+    title: "Durable MCP Tool Server",
+    language: "Go",
+    detail: "Fencing tokens · self-driving demo",
+    href: "https://github.com/Tyagiquamar/durablemcp",
+    animation: "mcp",
+  },
+  {
     title: "PostgreSQL CDC Platform",
     language: "Go",
     detail: "WAL · checkpoints · replay",
-    href: undefined,
+    href: "https://github.com/Tyagiquamar/relaydb",
     animation: "cdc",
-  },
-  {
-    title: "API Gateway",
-    language: "Go",
-    detail: "LB · circuit breaking · rate limiting",
-    href: undefined,
-    animation: "gateway",
   },
 ] as const
 
@@ -106,19 +106,17 @@ function RepoTrace({ animation }: { animation: (typeof featuredRepos)[number]["a
     )
   }
 
-  return (
-    <div className="repo-trace repo-trace-gateway" aria-hidden>
-      <span>
-        <b style={{ width: "40%" }} />node-a
-      </span>
-      <span>
-        <b style={{ width: "35%" }} />node-b
-      </span>
-      <span>
-        <b style={{ width: "25%" }} />node-c
-      </span>
-    </div>
-  )
+  if (animation === "mcp") {
+    return (
+      <div className="repo-trace repo-trace-workflow" aria-hidden>
+        {["PERSIST", "CLAIM", "EXECUTE", "FENCED"].map((step) => (
+          <span key={step}>{step}</span>
+        ))}
+      </div>
+    )
+  }
+
+  return null
 }
 
 function FeaturedRepoRow({ repo }: { repo: (typeof featuredRepos)[number] }) {

@@ -245,6 +245,8 @@ export interface Project {
   description: string
   tech: string[]
   href: string
+  liveLabel?: string
+  liveHref?: string
 }
 
 export const projects: Project[] = [
@@ -252,9 +254,31 @@ export const projects: Project[] = [
     title: "DurableGo",
     kind: "repo",
     description:
-      "Durable workflow engine in Go — leases, fencing tokens, idempotent starts, retry recovery, and event history. Ships with a load generator, integration tests, and failure-scene tests that kill workers mid-execution to prove recovery.",
-    tech: ["Go", "PostgreSQL", "Workers"],
+      "Durable workflow engine in Go — PostgreSQL-backed queues with SKIP LOCKED claiming, monotonically increasing fencing tokens, and idempotent workflow starts under concurrency. Failure scenes are automated: workers are SIGKILLed mid-execution and the system must prove recovery and stale-completion rejection (409) through its own API.",
+    tech: ["Go", "PostgreSQL", "testcontainers", "Next.js"],
     href: "https://github.com/Tyagiquamar/durablego",
+    liveLabel: "Live dashboard",
+    liveHref: "https://durablego-dashboard.vercel.app",
+  },
+  {
+    title: "DurableMCP",
+    kind: "repo",
+    description:
+      "Durable execution substrate for MCP tool calls — every call is persisted before dispatch, executed under a fencing-token lease, and inspectable from Postgres through a read-only dashboard. The hosted demo feeds itself: an in-container agent submits real tool calls and periodically kills its own executor to generate genuine crash-recovery events.",
+    tech: ["Go", "MCP", "PostgreSQL", "Next.js"],
+    href: "https://github.com/Tyagiquamar/durablemcp",
+    liveLabel: "Live dashboard",
+    liveHref: "https://durablemcp-dashboard.vercel.app",
+  },
+  {
+    title: "RelayDB",
+    kind: "repo",
+    description:
+      "PostgreSQL change-data-capture, done correctly: pgoutput decoding with TOAST awareness, events persisted exactly-once per source transaction, fenced LSN checkpoints. A testcontainers e2e proves ordered capture, crash-replay idempotency, and standby takeover fencing; the hosted demo streams a live shop simulator's changes through signed webhooks.",
+    tech: ["Go", "pgoutput", "gRPC", "HMAC webhooks", "Next.js"],
+    href: "https://github.com/Tyagiquamar/relaydb",
+    liveLabel: "Live dashboard",
+    liveHref: "https://relaydb-dashboard.vercel.app",
   },
   {
     title: "QuantXecute",
@@ -271,14 +295,6 @@ export const projects: Project[] = [
       "Structured AI interviewer — conducts technical interviews over chat, enforces topic coverage, and generates transcript-grounded hiring evaluation reports backed by Supabase.",
     tech: ["Next.js", "TypeScript", "Gemini", "Supabase"],
     href: "https://github.com/Tyagiquamar/ai-interviewer-agent",
-  },
-  {
-    title: "NexLink",
-    kind: "repo",
-    description:
-      "URL shortener with real-time analytics — click tracking with geographic and referrer breakdowns, custom aliases, and QR sharing.",
-    tech: ["Next.js", "MongoDB", "Analytics"],
-    href: "https://github.com/Tyagiquamar/NexLink-URL-Shortener",
   },
 ]
 

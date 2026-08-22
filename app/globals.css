@@ -419,32 +419,6 @@
     transition-delay: 150ms;
   }
 
-  .repo-trace-gateway {
-    display: grid;
-    min-width: 7rem;
-    gap: 0.25rem;
-  }
-
-  .repo-trace-gateway span {
-    display: grid;
-    grid-template-columns: 2.5rem auto;
-    gap: 0.35rem;
-    align-items: center;
-  }
-
-  .repo-trace-gateway b {
-    display: block;
-    height: 0.18rem;
-    background: hsl(var(--primary) / 0.75);
-    transform: scaleX(0.35);
-    transform-origin: left;
-    transition: transform 180ms ease;
-  }
-
-  .featured-repo-row:hover .repo-trace-gateway b {
-    transform: scaleX(1);
-  }
-
   @media (max-width: 720px) {
     .featured-repo-row {
       grid-template-columns: minmax(0, 1fr) auto;

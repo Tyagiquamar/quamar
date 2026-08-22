@@ -317,20 +317,25 @@ export default function Portfolio() {
             <p className="mt-4 max-w-40 text-sm text-muted-foreground">
               Products and systems with the proof still visible.
             </p>
+            <p className="mt-6 max-w-44 font-mono text-xs leading-5 text-muted-foreground">
+              All three systems run live on free-tier hosting with self-generating traffic — first request may wake
+              the instance (~30–60s).
+            </p>
           </div>
           <div className="divide-y divide-border border-y">
             {projects.map((project, index) => {
               const isCaseStudy = project.kind === "case-study"
               const isExternal = project.href.startsWith("http")
               return (
-                <Link
+                <div
                   key={project.title}
-                  href={project.href}
-                  {...(!isCaseStudy && isExternal ? { target: "_blank", rel: "noreferrer" } : {})}
                   className="group motion-row grid gap-4 border border-transparent px-3 py-6 transition-colors hover:text-primary sm:grid-cols-[42px_1fr_auto]"
                 >
                   <NumberedLabel index={index} />
-                  <div>
+                  <Link
+                    href={project.href}
+                    {...(!isCaseStudy && isExternal ? { target: "_blank", rel: "noreferrer" } : {})}
+                  >
                     <h3 className="font-display text-2xl leading-tight">{project.title}</h3>
                     <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
                       {project.description}
@@ -338,9 +343,31 @@ export default function Portfolio() {
                     <p className="mt-3 font-mono text-xs text-muted-foreground">
                       {project.tech.join(" / ")}
                     </p>
+                  </Link>
+                  <div className="flex items-center gap-4 sm:flex-col sm:items-end sm:justify-center sm:gap-3">
+                    {project.liveHref ? (
+                      <a
+                        href={project.liveHref}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 border border-border px-2.5 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+                      >
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+                          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+                        </span>
+                        {project.liveLabel ?? "Live"}
+                      </a>
+                    ) : null}
+                    <Link
+                      href={project.href}
+                      aria-label={`Open ${project.title} on GitHub`}
+                      {...(!isCaseStudy && isExternal ? { target: "_blank", rel: "noreferrer" } : {})}
+                    >
+                      <ArrowUpRight className="h-4 w-4 text-muted-foreground transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
+                    </Link>
                   </div>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
-                </Link>
+                </div>
               )
             })}
           </div>
