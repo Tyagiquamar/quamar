@@ -269,12 +269,18 @@
     display: block;
     width: 100%;
     min-height: 9rem;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
     cursor: pointer;
     text-align: left;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
+  }
+
+  /* sm and up: the wide graph scrolls deliberately inside the card */
+  @media (min-width: 640px) {
+    .github-graph-button {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
   }
 
   .github-graph-button img {

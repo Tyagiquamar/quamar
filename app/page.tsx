@@ -375,7 +375,7 @@ export default function Portfolio() {
       </section>
 
       <section id="signals" className="editorial-section scroll-mt-20 border-t">
-        <div className="grid gap-8 md:grid-cols-[180px_1fr]">
+        <div className="grid gap-8 md:grid-cols-[180px_minmax(0,1fr)]">
           <div>
             <p className="section-kicker">Signals</p>
             <p className="mt-4 max-w-40 text-sm text-muted-foreground">
