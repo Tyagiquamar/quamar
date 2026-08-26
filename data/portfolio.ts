@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Mohd Quamar Tyagi",
   title: "Mohd Quamar Tyagi · Founding Engineer @ Takkada",
   description:
-    "Founding Engineer at Takkada building PaySaathi, a standalone Tally-replacement accounting & ERP platform used by 139 businesses. Previously SDE-1 at Zomato. Candidate Master on Codeforces (2038), top 0.6% on LeetCode.",
+    "Founding Engineer at Takkada building PaySaathi, a standalone Tally-replacement accounting & ERP platform with 139 businesses onboarded. Previously SDE-1 at Zomato. Candidate Master on Codeforces (2038), top 0.6% on LeetCode.",
   url: "https://quamar.vercel.app",
   email: "mohdquamartyagi@gmail.com",
   location: "Remote · UTC+5:30",
@@ -26,13 +26,13 @@ export const hero = {
   name: "Mohd Quamar Tyagi",
   role: "Founding Engineer @ Takkada",
   tagline:
-    "Building PaySaathi, a standalone Tally-replacement accounting & ERP platform used by 139 businesses. Previously SDE-1 at Zomato. Candidate Master on Codeforces.",
+    "Building PaySaathi, a standalone Tally-replacement accounting & ERP platform with 139 businesses onboarded. Previously SDE-1 at Zomato. Candidate Master on Codeforces.",
   photo: "/images/profile-rose.jpg",
 } as const
 
 export const stats = [
   { value: "5x", label: "p90 latency improvement at Zomato scale" },
-  { value: "139", label: "businesses run their books on PaySaathi" },
+  { value: "139", label: "businesses onboarded to PaySaathi" },
   { value: "2038", label: "Codeforces rating · Candidate Master" },
   { value: "2400+", label: "LeetCode rating · Guardian · Top 0.6%" },
 ] as const
@@ -116,10 +116,9 @@ export const experience: Experience[] = [
     dates: "Apr 2026 - Present",
     current: true,
     bullets: [
-      "Evaluate coding-agent and LLM outputs against detailed specifications, test evidence, and scoring rubrics",
-      "Review model-generated patches and technical reasoning for functional correctness, regressions, edge cases, and compliance with task constraints",
-      "Produce structured preference and corrective feedback used in RLHF/model-improvement workflows",
-      "Analyze recurring model failure modes and improve evaluation consistency through clearer grading criteria and reproducible verification",
+      "Evaluate coding-agent and LLM outputs against detailed specifications, tests, expected behavior, and scoring rubrics",
+      "Review model-generated patches and technical reasoning for functional correctness, regressions, edge cases, and instruction compliance",
+      "Produce structured preference/corrective feedback for RLHF workflows while analyzing recurring model failure modes and improving evaluation consistency through reproducible verification",
     ],
     tech: ["RLHF", "LLM Evaluation", "Coding Agents", "Code Review", "Rubric Evaluation"],
   },
@@ -156,9 +155,15 @@ export const caseStudy = {
   title: "Takkada",
   subtitle: "Standalone Tally-Replacement ERP",
   description:
-    "A production accounting & ERP platform built end-to-end as founding engineer at Takkada. Now used by 139 businesses, with 716K+ vouchers mirrored and 196K receipts in production. Native double-entry accounting core in PostgreSQL, filing-ready GST compliance (GSTR-1/GSTR-3B GSTN JSON export, e-invoice, e-way bill), WhatsApp Business automation, and an AI document-import pipeline, replacing Tally workflows for real businesses.",
-  growthNote: "139 businesses onboarded — 23 joined in the last week, 62 in the last 30 days; 83 actively syncing their books from Tally (verified Aug 26, 2026).",
-  metrics: ["716K+ vouchers mirrored", "196K receipts", "Founding Engineer", "Production ERP"],
+    "A production accounting & ERP platform built end-to-end as founding engineer at Takkada. 139 businesses onboarded, 83 actively syncing their books from Tally, 716K+ vouchers mirrored and 196K receipts in production. Native double-entry accounting core in PostgreSQL, filing-ready GST compliance (GSTR-1/GSTR-3B GSTN JSON export, e-invoice, e-way bill), WhatsApp Business automation, and an AI document-import pipeline, replacing Tally workflows for real businesses.",
+  // Verified against the production Supabase project on 2026-08-26 (companies NOT is_demo; trn_voucher; paysathi_receipts; tally_ingest_events seen_at).
+  growthNote: "+23 businesses in 7 days · +62 in 30 days",
+  metrics: [
+    "139 · Businesses onboarded",
+    "83 · Active Tally syncs",
+    "716K+ · Vouchers mirrored",
+    "196K · Receipts",
+  ],
   tech: ["Flutter", "Supabase", "PostgreSQL", "Next.js", "TypeScript"],
   architecture: {
     caption: "Four layers: Flutter app → Supabase Edge Functions → PostgreSQL (double-entry ledger, RLS) → External (GSTN, WhatsApp API, Gemini/Vertex)",
@@ -245,6 +250,7 @@ export const caseStudy = {
 export interface Project {
   title: string
   kind: "case-study" | "repo"
+  group: "systems" | "product"
   description: string
   tech: string[]
   href: string
@@ -256,8 +262,9 @@ export const projects: Project[] = [
   {
     title: "DurableGo",
     kind: "repo",
+    group: "systems",
     description:
-      "Durable workflow engine in Go: PostgreSQL-backed queues with SKIP LOCKED claiming, monotonically increasing fencing tokens, and idempotent workflow starts under concurrency. Failure scenes are automated: workers are SIGKILLed mid-execution and the system must prove recovery and stale-completion rejection (409) through its own API.",
+      "Durable workflow engine in Go with PostgreSQL-backed queues, lease/fencing semantics, and idempotent starts. Automated failure scenes SIGKILL workers mid-execution and prove stale completions are rejected (409) through the API.",
     tech: ["Go", "PostgreSQL", "testcontainers", "Next.js"],
     href: "https://github.com/Tyagiquamar/durablego",
     liveLabel: "Live dashboard",
@@ -266,8 +273,9 @@ export const projects: Project[] = [
   {
     title: "RelayDB",
     kind: "repo",
+    group: "systems",
     description:
-      "PostgreSQL change-data-capture, done correctly: pgoutput decoding with TOAST awareness, at-least-once delivery with idempotent replay per source transaction, fenced LSN checkpoints. A testcontainers e2e proves ordered capture, crash-replay without loss or duplication, and standby takeover fencing; the hosted demo streams a live shop simulator's changes through signed webhooks.",
+      "PostgreSQL CDC platform in Go: pgoutput decoding with TOAST awareness, idempotent replay per source transaction, fenced LSN checkpoints. Testcontainers prove ordered capture and crash-replay without loss or duplication.",
     tech: ["Go", "pgoutput", "gRPC", "HMAC webhooks", "Next.js"],
     href: "https://github.com/Tyagiquamar/relaydb",
     liveLabel: "Live dashboard",
@@ -276,8 +284,9 @@ export const projects: Project[] = [
   {
     title: "DurableMCP",
     kind: "repo",
+    group: "systems",
     description:
-      "Durable execution substrate for MCP tool calls: every call is persisted before dispatch, executed under a fencing-token lease, and inspectable from Postgres through a read-only dashboard. The hosted demo feeds itself: an in-container agent submits real tool calls and periodically kills its own executor to generate genuine crash-recovery events.",
+      "Durable execution layer for MCP tool calls: persisted before dispatch, executed under fencing-token leases, inspectable from Postgres. The hosted demo kills its own executor to generate genuine crash-recovery events.",
     tech: ["Go", "MCP", "PostgreSQL", "Next.js"],
     href: "https://github.com/Tyagiquamar/durablemcp",
     liveLabel: "Live dashboard",
@@ -286,8 +295,9 @@ export const projects: Project[] = [
   {
     title: "LiveBoard",
     kind: "repo",
+    group: "product",
     description:
-      "Real-time collaborative project workspace: a Kanban board with live multi-user sync over Socket.IO, presence and typing indicators, optimistic updates with idempotency keys and 409 conflict handling, reconnect resync from a per-workspace event log, and a two-client convergence test proving byte-identical event streams.",
+      "Real-time collaborative workspace: Kanban with Socket.IO sync, presence, optimistic mutations with idempotency keys, reconnect replay from a per-workspace event log, and two-client convergence tests.",
     tech: ["Next.js", "Socket.IO", "MongoDB", "React Query"],
     href: "https://github.com/Tyagiquamar/liveboard",
     liveLabel: "Live demo",
@@ -296,8 +306,9 @@ export const projects: Project[] = [
   {
     title: "ComponentForge",
     kind: "repo",
+    group: "product",
     description:
-      "Accessible, themeable React component system on design tokens: 15 keyboard-first components with hand-rolled ARIA patterns (activedescendant listbox, grid DatePicker, shared focus-trapped surfaces), controlled/uncontrolled APIs, shipped as a tree-shakable ESM library with a Next.js docs site.",
+      "Accessible React component system on design tokens: 15 keyboard-first components with hand-rolled ARIA patterns, controlled/uncontrolled APIs, and theming without a headless-UI dependency.",
     tech: ["React", "TypeScript", "ARIA", "Design tokens"],
     href: "https://github.com/Tyagiquamar/componentforge",
     liveLabel: "Live docs",
@@ -306,8 +317,9 @@ export const projects: Project[] = [
   {
     title: "CanvasFlow",
     kind: "repo",
+    group: "product",
     description:
-      "Node-based workflow builder where the hard part is the state layer: normalized graph state with structural sharing, deterministic canonical-JSON serialization with content-hash versioning, coalesced undo/redo, cycle-safe connect-time validation, and a deterministic execution simulator with an inspectable run log.",
+      "Node-based workflow builder: normalized graph state with structural sharing, coalesced undo/redo, cycle-safe connect-time validation, deterministic canonical-JSON serialization, and an inspectable execution simulator.",
     tech: ["React Flow", "Zustand", "TypeScript"],
     href: "https://github.com/Tyagiquamar/canvasflow",
     liveLabel: "Live demo",

@@ -287,7 +287,7 @@ export default function Portfolio() {
 
             <div className="mt-12 grid gap-8 lg:grid-cols-[280px_1fr]">
               <div>
-                <p className="section-kicker">Commit-derived proof</p>
+                <p className="section-kicker">What shipped</p>
                 <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
                   Mined from the local PaySaathi/Takkada app, backend, admin dashboard, and loader
                   histories.
@@ -323,7 +323,15 @@ export default function Portfolio() {
             </p>
           </div>
           <div className="divide-y divide-border border border-border/80">
-            {projects.map((project, index) => {
+            {(["systems", "product"] as const).map((group) => (
+              <div key={group}>
+                <p className="section-kicker px-3 pt-4">
+                  {group === "systems" ? "Systems / Infrastructure" : "Product / Frontend engineering"}
+                </p>
+                {projects
+                  .map((project, index) => ({ project, index }))
+                  .filter(({ project }) => project.group === group)
+                  .map(({ project, index }) => {
               const isCaseStudy = project.kind === "case-study"
               const isExternal = project.href.startsWith("http")
               return (
@@ -369,7 +377,9 @@ export default function Portfolio() {
                   </div>
                 </div>
               )
-            })}
+                  })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
