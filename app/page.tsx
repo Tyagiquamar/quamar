@@ -293,9 +293,9 @@ export default function Portfolio() {
                   histories.
                 </p>
               </div>
-              <div className="divide-y divide-border border border-border/80">
+              <div className="grid gap-px border border-border/80 bg-border/80 sm:grid-cols-2">
                 {caseStudy.proofTrail.map((item) => (
-                  <div key={item.title} className="motion-row border border-transparent px-3 py-5">
+                  <div key={item.title} className="motion-row border border-transparent bg-background px-3 py-5">
                     <h3 className="font-display text-xl leading-tight transition-colors">
                       {item.title}
                     </h3>
