@@ -95,10 +95,10 @@ export default function Portfolio() {
               {hero.tagline}
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
-              <Link href="/resume.pdf" download className="quiet-link inline-flex items-center gap-2">
+              <a href="/resume.pdf" download className="quiet-link inline-flex items-center gap-2">
                 <Download className="h-4 w-4" />
                 Resume
-              </Link>
+              </a>
               <Link href="#contact" className="quiet-link">
                 Contact
               </Link>
