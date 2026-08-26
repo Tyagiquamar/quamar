@@ -21,7 +21,7 @@ const ratingToneClasses: Record<string, string> = {
 }
 
 const ACTIVITY_GRAPH_URL =
-  "https://github-readme-activity-graph.vercel.app/graph?username=Tyagiquamar&theme=github-dark-dimmed&hide_border=true&area=true&bg_color=0a0a0a&color=9ca3af&line=22c7a9&point=e5e7eb&area_color=22c7a9"
+  "https://fabianocouto-activity-graph.vercel.app/graph/?username=Tyagiquamar&theme=react-dark&hide_border=true"
 const FALLBACK_GRAPH_URL = "https://ghchart.rshah.org/22c7a9/Tyagiquamar"
 
 function CpProfileRow({ profile }: { profile: (typeof cpProfiles)[number] }) {
@@ -121,7 +121,7 @@ function FeaturedRepoRow({ repo }: { repo: (typeof featuredRepos)[number] }) {
 
 /**
  * GitHub contribution graph, rendered by a third-party image service
- * (github-readme-activity-graph). Shows real commit activity — NOT a
+ * (fabianocouto-activity-graph). Shows real commit activity, NOT a
  * competitive-programming graph. The CP cards above link out to the
  * actual Codeforces/LeetCode/CodeChef profiles.
  */
