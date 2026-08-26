@@ -269,9 +269,12 @@
     display: block;
     width: 100%;
     min-height: 9rem;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     cursor: pointer;
     text-align: left;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
   }
 
   .github-graph-button img {

@@ -317,8 +317,9 @@ export default function Portfolio() {
               Products and systems with the proof still visible.
             </p>
             <p className="mt-6 max-w-44 font-mono text-xs leading-5 text-muted-foreground">
-              All three systems run live on free-tier hosting with self-generating traffic. First request may wake
-              the instance (~30-60s).
+              The Go systems run live on free-tier hosting with self-generating traffic; first
+              request may wake the instance (~30-60s). Dashboards observe the live engine by
+              default, with a deterministic demo one toggle away.
             </p>
           </div>
           <div className="divide-y divide-border border border-border/80">
