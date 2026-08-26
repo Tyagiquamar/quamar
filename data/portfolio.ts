@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Mohd Quamar Tyagi",
-  title: "Mohd Quamar Tyagi — Founding Engineer @ Takkada",
+  title: "Mohd Quamar Tyagi · Founding Engineer @ Takkada",
   description:
     "Founding Engineer at Takkada building PaySaathi, a standalone Tally-replacement accounting & ERP platform used by 112 businesses. Previously SDE-1 at Zomato. Candidate Master on Codeforces (2038), top 0.6% on LeetCode.",
   url: "https://quamar.vercel.app",
@@ -26,7 +26,7 @@ export const hero = {
   name: "Mohd Quamar Tyagi",
   role: "Founding Engineer @ Takkada",
   tagline:
-    "Building PaySaathi — a standalone Tally-replacement accounting & ERP platform used by 112 businesses. Previously SDE-1 at Zomato. Candidate Master on Codeforces.",
+    "Building PaySaathi, a standalone Tally-replacement accounting & ERP platform used by 112 businesses. Previously SDE-1 at Zomato. Candidate Master on Codeforces.",
   photo: "/images/profile-rose.jpg",
 } as const
 
@@ -55,7 +55,7 @@ export const proofMarks: ProofMark[] = [
 
 export const about = {
   heading: "Systems over demos.",
-  body: "I got into engineering through competitive programming — years of Codeforces rounds taught me to reason about correctness and complexity before writing a line of code. That habit stuck: I'm drawn to systems where getting it wrong is expensive, which is how I ended up building accounting software. Money, ledgers, GST filings — correctness isn't a nice-to-have, it's the product. Outside of work I still do CP rounds, tinker with systems projects in Go and C++, and care a lot about the craft of shipping software that real people depend on every day.",
+  body: "I got into engineering through competitive programming. Years of Codeforces rounds taught me to reason about correctness and complexity before writing a line of code. That habit stuck: I'm drawn to systems where getting it wrong is expensive, which is how I ended up building accounting software. Money, ledgers, GST filings: correctness isn't a nice-to-have, it's the product. Outside of work I still do CP rounds, tinker with systems projects in Go and C++, and care a lot about the craft of shipping software that real people depend on every day.",
 } as const
 
 export const cpProfiles = [
@@ -97,7 +97,7 @@ export const experience: Experience[] = [
     role: "Founding Engineer",
     company: "Takkada",
     location: "Remote",
-    dates: "May 2026 — Present",
+    dates: "May 2026 - Present",
     logo: "/logos/takkada-icon.png",
     current: true,
     bullets: [
@@ -110,10 +110,24 @@ export const experience: Experience[] = [
     tech: ["Flutter", "Supabase", "PostgreSQL", "Next.js", "TypeScript"],
   },
   {
+    role: "RLHF Trainer / AI Evaluation Engineer",
+    company: "Caudal AI",
+    location: "Contract · Remote",
+    dates: "2026 - Present",
+    current: true,
+    bullets: [
+      "Evaluate coding-agent and LLM outputs against detailed specifications, test evidence, and scoring rubrics",
+      "Review model-generated patches and technical reasoning for functional correctness, regressions, edge cases, and compliance with task constraints",
+      "Produce structured preference and corrective feedback used in RLHF/model-improvement workflows",
+      "Analyze recurring model failure modes and improve evaluation consistency through clearer grading criteria and reproducible verification",
+    ],
+    tech: ["LLM Evaluation", "RLHF", "Code Review"],
+  },
+  {
     role: "SDE-1",
     company: "Zomato",
     location: "Gurgaon, India",
-    dates: "Jul 2025 — Dec 2025",
+    dates: "Jul 2025 - Dec 2025",
     logo: "/logos/zomato-logo.png",
     bullets: [
       "Reduced API round-trip overhead by removing redundant gRPC/MySQL calls, improving p90 latency 5x at massive scale",
@@ -126,7 +140,7 @@ export const experience: Experience[] = [
     role: "SDE Intern",
     company: "The Linux Foundation",
     location: "Seoul (Remote)",
-    dates: "Nov 2023 — Mar 2024",
+    dates: "Nov 2023 - Mar 2024",
     logo: "/logos/linux-foundation-logo.png",
     bullets: [
       "Replaced HTTPS calls with gRPC architecture, achieving 60% faster data transfer",
@@ -142,7 +156,7 @@ export const caseStudy = {
   title: "Takkada",
   subtitle: "Standalone Tally-Replacement ERP",
   description:
-    "A production accounting & ERP platform built end-to-end as founding engineer at Takkada. Now used by 112 businesses, with 603K+ vouchers mirrored and 172K receipts in production. Native double-entry accounting core in PostgreSQL, filing-ready GST compliance (GSTR-1/GSTR-3B GSTN JSON export, e-invoice, e-way bill), WhatsApp Business automation, and an AI document-import pipeline — replacing Tally workflows for real businesses.",
+    "A production accounting & ERP platform built end-to-end as founding engineer at Takkada. Now used by 112 businesses, with 603K+ vouchers mirrored and 172K receipts in production. Native double-entry accounting core in PostgreSQL, filing-ready GST compliance (GSTR-1/GSTR-3B GSTN JSON export, e-invoice, e-way bill), WhatsApp Business automation, and an AI document-import pipeline, replacing Tally workflows for real businesses.",
   growthNote: "Grew from 87 → 112 businesses in five weeks (Jul–Aug 2026); 81 joined in the last 90 days.",
   metrics: ["600K+ vouchers synced", "172K receipts", "Founding Engineer", "Production ERP"],
   tech: ["Flutter", "Supabase", "PostgreSQL", "Next.js", "TypeScript"],
@@ -158,7 +172,7 @@ export const caseStudy = {
   screenshots: [
     {
       title: "Product & traction",
-      detail: "Live marketing site and mobile app — real businesses, real receivables",
+      detail: "Live marketing site and mobile app: real businesses, real receivables",
       src: "/images/takkada-landing.png",
     },
     {
@@ -243,7 +257,7 @@ export const projects: Project[] = [
     title: "DurableGo",
     kind: "repo",
     description:
-      "Durable workflow engine in Go — PostgreSQL-backed queues with SKIP LOCKED claiming, monotonically increasing fencing tokens, and idempotent workflow starts under concurrency. Failure scenes are automated: workers are SIGKILLed mid-execution and the system must prove recovery and stale-completion rejection (409) through its own API.",
+      "Durable workflow engine in Go: PostgreSQL-backed queues with SKIP LOCKED claiming, monotonically increasing fencing tokens, and idempotent workflow starts under concurrency. Failure scenes are automated: workers are SIGKILLed mid-execution and the system must prove recovery and stale-completion rejection (409) through its own API.",
     tech: ["Go", "PostgreSQL", "testcontainers", "Next.js"],
     href: "https://github.com/Tyagiquamar/durablego",
     liveLabel: "Live dashboard",
@@ -253,7 +267,7 @@ export const projects: Project[] = [
     title: "DurableMCP",
     kind: "repo",
     description:
-      "Durable execution substrate for MCP tool calls — every call is persisted before dispatch, executed under a fencing-token lease, and inspectable from Postgres through a read-only dashboard. The hosted demo feeds itself: an in-container agent submits real tool calls and periodically kills its own executor to generate genuine crash-recovery events.",
+      "Durable execution substrate for MCP tool calls: every call is persisted before dispatch, executed under a fencing-token lease, and inspectable from Postgres through a read-only dashboard. The hosted demo feeds itself: an in-container agent submits real tool calls and periodically kills its own executor to generate genuine crash-recovery events.",
     tech: ["Go", "MCP", "PostgreSQL", "Next.js"],
     href: "https://github.com/Tyagiquamar/durablemcp",
     liveLabel: "Live dashboard",
@@ -273,11 +287,35 @@ export const projects: Project[] = [
     title: "QuantXecute",
     kind: "repo",
     description:
-      "Real-time trade-cost estimator for crypto futures — streams OKX Level 2 orderbook data over WebSocket and models execution costs (slippage, fees, market impact) in C++ against live market data.",
+      "Real-time trade-cost estimator for crypto futures. Streams OKX Level 2 orderbook data over WebSocket and models execution costs (slippage, fees, market impact) in C++ against live market data.",
     tech: ["C++", "WebSocket", "Orderbook"],
     href: "https://github.com/Tyagiquamar/QuantXecute",
   },
 ]
+
+export const featuredRepos = [
+  {
+    title: "Durable Workflow Engine",
+    language: "Go",
+    detail: "Durable execution · leases · recovery",
+    href: "https://github.com/Tyagiquamar/durablego",
+    animation: "workflow",
+  },
+  {
+    title: "Durable MCP Tool Server",
+    language: "Go",
+    detail: "Fencing tokens · self-driving demo",
+    href: "https://github.com/Tyagiquamar/durablemcp",
+    animation: "mcp",
+  },
+  {
+    title: "PostgreSQL CDC Platform",
+    language: "Go",
+    detail: "WAL · checkpoints · replay",
+    href: "https://github.com/Tyagiquamar/relaydb",
+    animation: "cdc",
+  },
+] as const
 
 export const skillGroups = [
   {

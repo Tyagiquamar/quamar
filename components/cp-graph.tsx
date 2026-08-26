@@ -1,9 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import type { MouseEvent } from "react"
 import { ArrowUpRight } from "lucide-react"
-import { cpProfiles } from "@/data/portfolio"
+import { cpProfiles, featuredRepos } from "@/data/portfolio"
 
 const cpEggs: Record<string, { title: string; detail: string }> = {
   Codeforces: {
@@ -21,55 +20,23 @@ const ratingToneClasses: Record<string, string> = {
   LeetCode: "rating-leetcode",
 }
 
-const featuredRepos = [
-  {
-    title: "Durable Workflow Engine",
-    language: "Go",
-    detail: "Durable execution · leases · recovery",
-    href: "https://github.com/Tyagiquamar/durablego",
-    animation: "workflow",
-  },
-  {
-    title: "Durable MCP Tool Server",
-    language: "Go",
-    detail: "Fencing tokens · self-driving demo",
-    href: "https://github.com/Tyagiquamar/durablemcp",
-    animation: "mcp",
-  },
-  {
-    title: "PostgreSQL CDC Platform",
-    language: "Go",
-    detail: "WAL · checkpoints · replay",
-    href: "https://github.com/Tyagiquamar/relaydb",
-    animation: "cdc",
-  },
-] as const
+const ACTIVITY_GRAPH_URL =
+  "https://github-readme-activity-graph.vercel.app/graph?username=Tyagiquamar&theme=github-dark-dimmed&hide_border=true&area=true&bg_color=0a0a0a&color=9ca3af&line=22c7a9&point=e5e7eb&area_color=22c7a9"
+const FALLBACK_GRAPH_URL = "https://ghchart.rshah.org/22c7a9/Tyagiquamar"
 
 function CpProfileRow({ profile }: { profile: (typeof cpProfiles)[number] }) {
   const [revealed, setRevealed] = useState(false)
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const egg = cpEggs[profile.platform]
-
-  useEffect(() => {
-    return () => {
-      if (timer.current) clearTimeout(timer.current)
-    }
-  }, [])
-
-  function onClick(event: MouseEvent<HTMLAnchorElement>) {
-    if (!egg || revealed) return
-    event.preventDefault()
-    setRevealed(true)
-    if (timer.current) clearTimeout(timer.current)
-    timer.current = setTimeout(() => setRevealed(false), 1800)
-  }
 
   return (
     <a
       href={profile.href}
       target="_blank"
       rel="noreferrer"
-      onClick={onClick}
+      onMouseEnter={() => egg && setRevealed(true)}
+      onMouseLeave={() => setRevealed(false)}
+      onFocus={() => egg && setRevealed(true)}
+      onBlur={() => setRevealed(false)}
       className="group motion-row grid gap-2 border border-transparent px-3 py-4 transition-colors hover:text-primary sm:grid-cols-[180px_1fr_auto] sm:items-baseline"
     >
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
@@ -163,6 +130,7 @@ export function CpGraph() {
   const [drawerMounted, setDrawerMounted] = useState(false)
   const [commandTitle, setCommandTitle] = useState(false)
   const [proofPinged, setProofPinged] = useState(false)
+  const [graphSrc, setGraphSrc] = useState(ACTIVITY_GRAPH_URL)
   const titleTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const expandTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const pingTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -234,7 +202,8 @@ export function CpGraph() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://github-readme-activity-graph.vercel.app/graph?username=Tyagiquamar&theme=github-dark-dimmed&hide_border=true&area=true&bg_color=0a0a0a&color=9ca3af&line=22c7a9&point=e5e7eb&area_color=22c7a9"
+            src={graphSrc}
+            onError={() => setGraphSrc(FALLBACK_GRAPH_URL)}
             alt="GitHub contribution graph for Tyagiquamar"
             className="w-full min-w-[620px] opacity-85 grayscale-[20%]"
             loading="lazy"

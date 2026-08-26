@@ -147,7 +147,7 @@ export default function Portfolio() {
             <p className="section-kicker">Experience</p>
             <p className="mt-4 max-w-36 text-sm text-muted-foreground">Most recent first.</p>
           </div>
-          <div className="divide-y divide-border border-y">
+          <div className="divide-y divide-border border border-border/80">
             {experience.map((job) => (
               <article
                 key={`${job.company}-${job.dates}`}
@@ -174,8 +174,8 @@ export default function Portfolio() {
                     {job.role} / {job.location}
                   </p>
                   <ul className="mt-4 space-y-3 text-sm leading-6 text-muted-foreground">
-                    {job.bullets.map((bullet) => (
-                      <li key={bullet.slice(0, 48)}>{bullet}</li>
+                    {job.bullets.map((bullet, i) => (
+                      <li key={i}>{bullet}</li>
                     ))}
                   </ul>
                   <p className="mt-4 font-mono text-xs text-muted-foreground">
@@ -293,7 +293,7 @@ export default function Portfolio() {
                   histories.
                 </p>
               </div>
-              <div className="divide-y divide-border border-y">
+              <div className="divide-y divide-border border border-border/80">
                 {caseStudy.proofTrail.map((item) => (
                   <div key={item.title} className="motion-row border border-transparent px-3 py-5">
                     <h3 className="font-display text-xl leading-tight transition-colors">
@@ -317,11 +317,11 @@ export default function Portfolio() {
               Products and systems with the proof still visible.
             </p>
             <p className="mt-6 max-w-44 font-mono text-xs leading-5 text-muted-foreground">
-              All three systems run live on free-tier hosting with self-generating traffic — first request may wake
-              the instance (~30–60s).
+              All three systems run live on free-tier hosting with self-generating traffic. First request may wake
+              the instance (~30-60s).
             </p>
           </div>
-          <div className="divide-y divide-border border-y">
+          <div className="divide-y divide-border border border-border/80">
             {projects.map((project, index) => {
               const isCaseStudy = project.kind === "case-study"
               const isExternal = project.href.startsWith("http")

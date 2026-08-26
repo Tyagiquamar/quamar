@@ -27,7 +27,7 @@ export default function OgImage() {
           Founding Engineer @ Takkada
         </div>
         <div style={{ fontSize: 24, color: "#a3a39a", marginTop: 24, maxWidth: 900 }}>
-          Building PaySaathi — a standalone Tally-replacement ERP · Ex-Zomato SDE-1 · Codeforces
+          Building PaySaathi, a standalone Tally-replacement ERP · Ex-Zomato SDE-1 · Codeforces
           Candidate Master
         </div>
       </div>
