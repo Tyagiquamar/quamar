@@ -198,7 +198,7 @@ export function CpGraph() {
           type="button"
           onClick={toggleFeaturedRepos}
           aria-label="Toggle featured GitHub repositories"
-          className="github-graph-button"
+          className="github-graph-button w-0 min-w-full"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
