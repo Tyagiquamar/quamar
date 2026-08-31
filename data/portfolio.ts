@@ -16,10 +16,10 @@ export const socials = [
 export type Social = (typeof socials)[number]
 
 export const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Work", href: "#work" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#about" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Work", href: "/work" },
+  { label: "Contact", href: "/#contact" },
 ] as const
 
 export const hero = {
@@ -176,18 +176,13 @@ export const caseStudy = {
   },
   screenshots: [
     {
-      title: "Product & traction",
-      detail: "Live marketing site and mobile app: real businesses, real receivables",
+      title: "Marketing site",
+      detail: "Live product marketing site — real businesses, real receivables",
       src: "/images/takkada-landing.png",
     },
     {
-      title: "App home",
-      detail: "Receivables, payables, daybook, PDF import, bank import, reminders",
-      src: "/images/takkada-home.png",
-    },
-    {
-      title: "AI document import",
-      detail: "Supplier invoice PDF → extracted line items, supplier, and totals for review",
+      title: "Mobile purchase flow",
+      detail: "Add purchase on mobile: pick a party to create or update a draft invoice",
       src: "/images/takkada-import-pdf.png",
     },
     {
@@ -197,7 +192,7 @@ export const caseStudy = {
     },
     {
       title: "Admin & revenue ops",
-      detail: "Partner wallet, pipeline, targets, dealer tiers, assisted onboarding",
+      detail: "Partner workspace: payouts, commissions, targets, dealer tiers",
       src: "/images/takkada-admin.png",
     },
   ],
@@ -246,86 +241,6 @@ export const caseStudy = {
     },
   ],
 } as const
-
-export interface Project {
-  title: string
-  kind: "case-study" | "repo"
-  group: "systems" | "product"
-  description: string
-  tech: string[]
-  href: string
-  liveLabel?: string
-  liveHref?: string
-}
-
-export const projects: Project[] = [
-  {
-    title: "DurableGo",
-    kind: "repo",
-    group: "systems",
-    description:
-      "Durable workflow engine in Go with PostgreSQL-backed queues, lease/fencing semantics, and idempotent starts. Automated failure scenes SIGKILL workers mid-execution and prove stale completions are rejected (409) through the API.",
-    tech: ["Go", "PostgreSQL", "testcontainers", "Next.js"],
-    href: "https://github.com/Tyagiquamar/durablego",
-    liveLabel: "Live dashboard",
-    liveHref: "https://durablego-dashboard.vercel.app",
-  },
-  {
-    title: "RelayDB",
-    kind: "repo",
-    group: "systems",
-    description:
-      "PostgreSQL CDC platform in Go: pgoutput decoding with TOAST awareness, idempotent replay per source transaction, fenced LSN checkpoints. Testcontainers prove ordered capture and crash-replay without loss or duplication.",
-    tech: ["Go", "pgoutput", "gRPC", "HMAC webhooks", "Next.js"],
-    href: "https://github.com/Tyagiquamar/relaydb",
-    liveLabel: "Live dashboard",
-    liveHref: "https://relaydb-dashboard.vercel.app",
-  },
-  {
-    title: "DurableMCP",
-    kind: "repo",
-    group: "systems",
-    description:
-      "Durable execution layer for MCP tool calls: persisted before dispatch, executed under fencing-token leases, inspectable from Postgres. The hosted demo kills its own executor to generate genuine crash-recovery events.",
-    tech: ["Go", "MCP", "PostgreSQL", "Next.js"],
-    href: "https://github.com/Tyagiquamar/durablemcp",
-    liveLabel: "Live dashboard",
-    liveHref: "https://durablemcp-dashboard.vercel.app",
-  },
-  {
-    title: "LiveBoard",
-    kind: "repo",
-    group: "product",
-    description:
-      "Real-time collaborative workspace: Kanban with Socket.IO sync, presence, optimistic mutations with idempotency keys, reconnect replay from a per-workspace event log, and two-client convergence tests.",
-    tech: ["Next.js", "Socket.IO", "MongoDB", "React Query"],
-    href: "https://github.com/Tyagiquamar/liveboard",
-    liveLabel: "Live demo",
-    liveHref: "https://liveboard-red.vercel.app",
-  },
-  {
-    title: "ComponentForge",
-    kind: "repo",
-    group: "product",
-    description:
-      "Accessible React component system on design tokens: 15 keyboard-first components with hand-rolled ARIA patterns, controlled/uncontrolled APIs, and theming without a headless-UI dependency.",
-    tech: ["React", "TypeScript", "ARIA", "Design tokens"],
-    href: "https://github.com/Tyagiquamar/componentforge",
-    liveLabel: "Live docs",
-    liveHref: "https://componentforge-kohl.vercel.app",
-  },
-  {
-    title: "CanvasFlow",
-    kind: "repo",
-    group: "product",
-    description:
-      "Node-based workflow builder: normalized graph state with structural sharing, coalesced undo/redo, cycle-safe connect-time validation, deterministic canonical-JSON serialization, and an inspectable execution simulator.",
-    tech: ["React Flow", "Zustand", "TypeScript"],
-    href: "https://github.com/Tyagiquamar/canvasflow",
-    liveLabel: "Live demo",
-    liveHref: "https://canvasflow-nine.vercel.app",
-  },
-]
 
 export const featuredRepos = [
   {

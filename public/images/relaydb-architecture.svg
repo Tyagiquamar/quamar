@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" fill="none">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" stroke="#14b8a6" stroke-width="1.5" fill="none"/>
+    </marker>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+    </marker>
+  </defs>
+
+  <!-- Source PostgreSQL -->
+  <rect x="30" y="60" width="170" height="64" rx="6" stroke="#14b8a6" stroke-width="1.5" fill="none"/>
+  <text x="115" y="87" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#14b8a6">Source PostgreSQL</text>
+  <text x="115" y="106" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">WAL · publication</text>
+
+  <!-- WAL arrow -->
+  <line x1="204" y1="92" x2="262" y2="92" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="233" y="82" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#8b8b8b">pgoutput</text>
+
+  <!-- Capture -->
+  <rect x="266" y="60" width="150" height="64" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="341" y="87" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#14b8a6">Capture</text>
+  <text x="341" y="106" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">decode · normalize</text>
+
+  <!-- LSN ack (dashed, back) -->
+  <line x1="266" y1="128" x2="196" y2="128" stroke="#8b8b8b" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow-gray)"/>
+  <text x="231" y="146" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#8b8b8b">flushed LSN (after commit)</text>
+
+  <!-- Capture to metadata -->
+  <line x1="416" y1="92" x2="474" y2="92" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="445" y="82" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#8b8b8b">1 tx</text>
+
+  <!-- Metadata PostgreSQL -->
+  <rect x="478" y="60" width="150" height="64" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="553" y="82" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#14b8a6">Metadata PG</text>
+  <text x="553" y="100" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">events + fenced</text>
+  <text x="553" y="114" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">checkpoint</text>
+
+  <!-- Metadata to API -->
+  <line x1="553" y1="128" x2="553" y2="196" stroke="#8b8b8b" stroke-width="1.5" marker-end="url(#arrow-gray)"/>
+
+  <!-- API -->
+  <rect x="478" y="200" width="150" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="553" y="224" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#14b8a6">REST + gRPC</text>
+  <text x="553" y="242" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">relayctl · BFF</text>
+
+  <!-- API to dashboard -->
+  <line x1="474" y1="228" x2="384" y2="228" stroke="#8b8b8b" stroke-width="1.5" marker-end="url(#arrow-gray)"/>
+
+  <!-- Dashboard -->
+  <rect x="234" y="200" width="146" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="307" y="224" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#14b8a6">Control room</text>
+  <text x="307" y="242" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">live / demo modes</text>
+
+  <!-- Metadata to delivery -->
+  <line x1="515" y1="128" x2="360" y2="300" stroke="#8b8b8b" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow-gray)"/>
+
+  <!-- Delivery worker -->
+  <rect x="260" y="304" width="200" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="360" y="328" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#14b8a6">Delivery worker</text>
+  <text x="360" y="346" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">leased cursors · retries · DLQ</text>
+
+  <!-- Delivery to sink -->
+  <line x1="464" y1="332" x2="524" y2="332" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="494" y="322" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#8b8b8b">HMAC</text>
+
+  <!-- Webhook sink -->
+  <rect x="528" y="304" width="100" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="578" y="328" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600" fill="#14b8a6">Sink</text>
+  <text x="578" y="346" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">webhooks</text>
+
+  <!-- Invariant note -->
+  <text x="320" y="412" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">persist events + checkpoint in one transaction, then ack the LSN — crash before ack replays idempotently</text>
+</svg>

@@ -2,12 +2,14 @@ import { ContactHandshakeLink } from "@/components/contact-handshake-link"
 import { CpGraph } from "@/components/cp-graph"
 import { Greeting } from "@/components/greeting"
 import { HeroStats } from "@/components/hero-stats"
+import { FeaturedCaseStudy } from "@/components/featured-case-study"
+import { CapabilityStrip } from "@/components/capability-strip"
+import { OpenSourceSection } from "@/components/open-source-section"
+import { ProjectGrid } from "@/components/project-card"
 import {
   ArrowUpRight,
-  Camera,
   Download,
   Github,
-  Layers3,
   Linkedin,
   Mail,
   MapPin,
@@ -16,30 +18,21 @@ import Link from "next/link"
 import Image from "next/image"
 import {
   about,
-  caseStudy,
   experience,
   hero,
   proofMarks,
-  projects,
   siteConfig,
   skillGroups,
   socials,
   stats,
 } from "@/data/portfolio"
+import { featuredProjects } from "@/data/projects"
 
 const socialIcons = {
   github: Github,
   linkedin: Linkedin,
   mail: Mail,
 } as const
-
-function NumberedLabel({ index }: { index: number }) {
-  return (
-    <span className="font-mono text-xs text-muted-foreground">
-      {String(index + 1).padStart(2, "0")}
-    </span>
-  )
-}
 
 function BrandMark({
   label,
@@ -188,126 +181,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id={caseStudy.id} className="editorial-section scroll-mt-20 border-t">
-        <div className="grid gap-8 md:grid-cols-[180px_1fr]">
-          <p className="section-kicker">Takkada</p>
-          <div>
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
-              <div>
-                <h2 className="font-display text-4xl leading-tight sm:text-6xl">
-                  {caseStudy.title}
-                </h2>
-                <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                  {caseStudy.subtitle}
-                </p>
-                <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
-                  {caseStudy.description}
-                </p>
-                <p className="mt-4 font-mono text-xs uppercase tracking-[0.16em] text-primary">
-                  {caseStudy.growthNote}
-                </p>
-              </div>
-              <div className="border-y py-4">
-                {caseStudy.metrics.map((metric) => (
-                  <p key={metric} className="border-b py-3 font-mono text-sm last:border-b-0">
-                    {metric}
-                  </p>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-10 grid gap-6 lg:grid-cols-[360px_1fr]">
-              <div>
-                <p className="section-kicker">Stack</p>
-                <p className="mt-4 font-mono text-xs text-muted-foreground">
-                  {caseStudy.tech.join(" / ")}
-                </p>
-              </div>
-              <div>
-                <Image
-                  src="/images/paysaathi-architecture.svg"
-                  width={640}
-                  height={440}
-                  alt="PaySaathi architecture: Flutter app to Supabase Edge Functions to PostgreSQL double-entry ledger to external GSTN, WhatsApp, and Gemini services"
-                  className="w-full border border-border/80 bg-card/30"
-                />
-                <p className="mt-3 text-xs leading-5 text-muted-foreground">
-                  {caseStudy.architecture.caption}
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-12 grid gap-4 sm:grid-cols-2">
-              {caseStudy.screenshots.map((shot) => (
-                <figure
-                  key={shot.title}
-                  className="group overflow-hidden border border-border/80 bg-card/20"
-                >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden">
-                    <Image
-                      src={shot.src}
-                      alt={shot.title}
-                      fill
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
-                    />
-                  </div>
-                  <figcaption className="p-5">
-                    <div className="flex items-center justify-between gap-4">
-                      <p className="font-display text-2xl leading-tight">{shot.title}</p>
-                      <Camera className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary" />
-                    </div>
-                    <p className="mt-3 text-sm leading-6 text-muted-foreground">{shot.detail}</p>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-
-            <div className="mt-12 grid gap-8 lg:grid-cols-[280px_1fr]">
-              <div>
-                <p className="section-kicker">What I owned</p>
-                <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
-                  The work spans product surfaces, data model, backend functions, admin operations,
-                  and the desktop sync edge.
-                </p>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {caseStudy.ownership.map((item) => (
-                  <div key={item.title} className="motion-row border border-transparent border-t px-3 py-4">
-                    <div className="flex items-center gap-3">
-                      <Layers3 className="h-4 w-4 text-primary" />
-                      <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-foreground">
-                        {item.title}
-                      </h3>
-                    </div>
-                    <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.detail}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-12 grid gap-8 lg:grid-cols-[280px_1fr]">
-              <div>
-                <p className="section-kicker">What shipped</p>
-                <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
-                  Mined from the local PaySaathi/Takkada app, backend, admin dashboard, and loader
-                  histories.
-                </p>
-              </div>
-              <div className="grid gap-px border border-border/80 bg-border/80 sm:grid-cols-2">
-                {caseStudy.proofTrail.map((item) => (
-                  <div key={item.title} className="motion-row border border-transparent bg-background px-3 py-5">
-                    <h3 className="font-display text-xl leading-tight transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.detail}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      <FeaturedCaseStudy />
 
       <section id="work" className="editorial-section scroll-mt-20 border-t">
         <div className="grid gap-8 md:grid-cols-[180px_1fr]">
@@ -318,71 +192,23 @@ export default function Portfolio() {
             </p>
             <p className="mt-6 max-w-44 font-mono text-xs leading-5 text-muted-foreground">
               The Go systems run live on free-tier hosting with self-generating traffic; first
-              request may wake the instance (~30-60s). Dashboards observe the live engine by
-              default, with a deterministic demo one toggle away.
+              request may wake the instance (~30-60s).
             </p>
+            <Link
+              href="/work"
+              className="quiet-link mt-8 inline-flex items-center gap-2 text-sm"
+            >
+              All work
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </div>
-          <div className="divide-y divide-border border border-border/80">
-            {(["systems", "product"] as const).map((group) => (
-              <div key={group}>
-                <p className="section-kicker px-3 pt-4">
-                  {group === "systems" ? "Systems / Infrastructure" : "Product / Frontend engineering"}
-                </p>
-                {projects
-                  .map((project, index) => ({ project, index }))
-                  .filter(({ project }) => project.group === group)
-                  .map(({ project, index }) => {
-              const isCaseStudy = project.kind === "case-study"
-              const isExternal = project.href.startsWith("http")
-              return (
-                <div
-                  key={project.title}
-                  className="group motion-row grid gap-4 border border-transparent px-3 py-6 transition-colors hover:text-primary sm:grid-cols-[42px_1fr_auto]"
-                >
-                  <NumberedLabel index={index} />
-                  <Link
-                    href={project.href}
-                    {...(!isCaseStudy && isExternal ? { target: "_blank", rel: "noreferrer" } : {})}
-                  >
-                    <h3 className="font-display text-2xl leading-tight">{project.title}</h3>
-                    <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
-                      {project.description}
-                    </p>
-                    <p className="mt-3 font-mono text-xs text-muted-foreground">
-                      {project.tech.join(" / ")}
-                    </p>
-                  </Link>
-                  <div className="flex items-center gap-4 sm:flex-col sm:items-end sm:justify-center sm:gap-3">
-                    {project.liveHref ? (
-                      <a
-                        href={project.liveHref}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 border border-border px-2.5 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:border-primary hover:text-primary"
-                      >
-                        <span className="relative flex h-1.5 w-1.5">
-                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
-                          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
-                        </span>
-                        {project.liveLabel ?? "Live"}
-                      </a>
-                    ) : null}
-                    <Link
-                      href={project.href}
-                      aria-label={`Open ${project.title} on GitHub`}
-                      {...(!isCaseStudy && isExternal ? { target: "_blank", rel: "noreferrer" } : {})}
-                    >
-                      <ArrowUpRight className="h-4 w-4 text-muted-foreground transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
-                    </Link>
-                  </div>
-                </div>
-              )
-                  })}
-              </div>
-            ))}
-          </div>
+          <ProjectGrid projects={featuredProjects} />
         </div>
       </section>
+
+      <CapabilityStrip />
+
+      <OpenSourceSection />
 
       <section id="signals" className="editorial-section scroll-mt-20 border-t">
         <div className="grid gap-8 md:grid-cols-[180px_minmax(0,1fr)]">
