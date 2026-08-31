@@ -260,10 +260,10 @@ export default function Portfolio() {
                 <MapPin className="h-4 w-4" />
                 {siteConfig.location}
               </p>
-              <Link href="/resume.pdf" download className="quiet-link inline-flex items-center gap-2">
+              <a href="/resume.pdf" download className="quiet-link inline-flex items-center gap-2">
                 <Download className="h-4 w-4" />
                 Download resume
-              </Link>
+              </a>
             </div>
           </div>
         </div>

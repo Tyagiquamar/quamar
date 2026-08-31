@@ -22,11 +22,11 @@ function CaseStudyHeader({
   return (
     <header>
       <Link
-        href="/work"
+        href="/"
         className="quiet-link inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em]"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
-        All work
+        Home
       </Link>
       <p className="section-kicker mt-10">{kicker}</p>
       <h1 className="mt-4 font-display text-4xl leading-tight sm:text-6xl">{title}</h1>
