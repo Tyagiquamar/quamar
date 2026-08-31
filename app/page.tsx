@@ -92,12 +92,12 @@ export default function Portfolio() {
                 <Download className="h-4 w-4" />
                 Resume
               </a>
-              <Link href="#contact" className="quiet-link">
+              <a href="#contact" className="quiet-link">
                 Contact
-              </Link>
-              <Link href="#work" className="quiet-link">
+              </a>
+              <a href="#work" className="quiet-link">
                 Selected work
-              </Link>
+              </a>
             </div>
             <div className="mt-12 border-y py-4">
               <p className="section-kicker">Proof marks</p>

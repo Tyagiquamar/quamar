@@ -39,30 +39,32 @@ export function FeaturedCaseStudy() {
                 {caseStudy.growthNote}
               </p>
 
-              <div className="mt-8 grid grid-cols-2 gap-px border border-border/80 bg-border/80">
-                {caseStudy.metrics.map((metric) => {
-                  const [value, ...rest] = metric.split(" · ")
-                  return (
-                    <div key={metric} className="bg-background px-4 py-4">
-                      <p className="font-display text-2xl leading-tight">{value}</p>
-                      <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
-                        {rest.join(" · ")}
-                      </p>
-                    </div>
-                  )
-                })}
-              </div>
+              <Link href="/work/takkada" className="group/metrics mt-8 block">
+                <div className="grid grid-cols-2 gap-px border border-border/80 bg-border/80 transition-colors duration-300 group-hover/metrics:border-primary/60">
+                  {caseStudy.metrics.map((metric) => {
+                    const [value, ...rest] = metric.split(" · ")
+                    return (
+                      <div key={metric} className="bg-background px-4 py-4">
+                        <p className="font-display text-2xl leading-tight">{value}</p>
+                        <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                          {rest.join(" · ")}
+                        </p>
+                      </div>
+                    )
+                  })}
+                </div>
+              </Link>
 
               <p className="mt-6 font-mono text-xs text-muted-foreground">
                 {caseStudy.tech.join(" / ")}
               </p>
-              <div className="mt-6">
+              <div className="mt-8">
                 <Link
                   href="/work/takkada"
-                  className="quiet-link inline-flex items-center gap-2 text-sm"
+                  className="group/cta inline-flex items-center gap-3 border border-primary/60 bg-primary/10 px-5 py-3 font-mono text-xs uppercase tracking-[0.18em] text-foreground transition-colors duration-300 hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
-                  View case study
-                  <ArrowUpRight className="h-4 w-4" />
+                  Read the full case study
+                  <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
                 </Link>
               </div>
             </div>
