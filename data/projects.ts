@@ -1,9 +1,10 @@
-export type ProjectCategory = "product" | "systems" | "frontend"
+export type ProjectCategory = "product" | "systems" | "trading" | "frontend"
 
 export const categoryLabels: Record<ProjectCategory, string> = {
   product: "Product & AI",
   systems: "Systems & Infrastructure",
-  frontend: "Frontend engineering",
+  trading: "Trading & Performance Systems",
+  frontend: "Additional Engineering Work",
 }
 
 export interface ProjectVisual {
@@ -33,6 +34,10 @@ export interface ProjectCaseStudy {
     caption: string
   }
   screenshots?: CaseStudyScreenshot[]
+  background?: {
+    heading: string
+    body: string
+  }
 }
 
 export interface Project {
@@ -360,6 +365,101 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "quantxecute",
+    title: "QuantXecute",
+    category: "trading",
+    descriptor: "Real-time market data & execution simulation",
+    description:
+      "C++20 engine that reconstructs L2 order books from live exchange snapshot/delta streams, simulates execution against observed depth, and enforces deterministic live/replay parity.",
+    tech: ["C++20", "WebSocket", "CMake", "ASan+UBSan", "TSan", "Next.js"],
+    featured: true,
+    github: "https://github.com/Tyagiquamar/QuantXecute",
+    liveHref: "https://quantxecute-dashboard.vercel.app",
+    liveLabel: "Dashboard",
+    visual: {
+      src: "/images/quantxecute-dashboard.png",
+      alt: "QuantXecute engineering console in replay mode: depth ladder, trade-simulation result with VWAP and bps cost, and book-health counters from the live engine API",
+    },
+    caseStudy: {
+      headline: "Correctness-first market-data and execution-simulation engine in C++20",
+      problem:
+        "Exchange order-book feeds are incremental and stateful: a missed or misordered update silently corrupts the local book, and everything computed on top of it is wrong. Execution simulation is just as fragile — it is meaningless unless replaying a recorded session produces exactly the same book state and results as processing it live.",
+      built: [
+        {
+          title: "L2 order-book reconstruction",
+          detail:
+            "Snapshot + incremental delta processing with price-level updates. The book is a pure state applier; all feed continuity semantics live in a separate sequence validator, so the correctness logic is unit-testable under sanitizers with no UI and no network.",
+        },
+        {
+          title: "Exchange sequencing integrity",
+          detail:
+            "OKX books feeds use seqId/prevSeqId continuity, not dense +1 counters. A snapshot (prevSeqId = -1) establishes the baseline; an update is accepted only if its prevSeqId equals the last accepted seqId. A mismatch invalidates the book, counts a gap and requests a fresh snapshot — the bad update is never applied.",
+        },
+        {
+          title: "Execution simulator",
+          detail:
+            "Simulates market execution against observed L2 depth with sound units: VWAP, basis points and USD cost, sized by notional or base quantity with an explicit taker fee. Simulations refuse to run against an unverified book.",
+        },
+        {
+          title: "Deterministic record & replay",
+          detail:
+            "Recorded market events replay through the same validation/application path as live data. The parity invariant — identical event sequence, byte-identical order book, identical execution results — is enforced by qx.parity_test, a required member of make verify.",
+        },
+        {
+          title: "Resilient feed client",
+          detail:
+            "The feed client drives reconnect with backoff, staleness detection and gap-triggered resync over a transport-agnostic FeedSource; the OKX source implements the production TLS WebSocket session. Reconnect policy lives in one state machine.",
+        },
+        {
+          title: "API & engineering console",
+          detail:
+            "REST endpoints for /health, /book and /simulate plus a 1 Hz WebSocket /events stream. The Next.js dashboard exposes feed and book health — including parity status — and reports the engine as unavailable instead of rendering placeholder data.",
+        },
+      ],
+      decisions: [
+        {
+          title: "Sequence correctness over naive counters",
+          detail:
+            "seqId may jump forward arbitrarily, repeat on empty keepalives, or move lower on a maintenance reset — none of those are false gaps. Continuity is judged solely on prevSeqId matching the last accepted seqId, with keepalive, stale-reject and gap-resync handled as distinct verdicts.",
+        },
+        {
+          title: "Explicit integrity policy",
+          detail:
+            "OKX deprecated the books checksum on 2026-06-23 — the field still arrives but is fixed to 0 — so the engine runs OKX under an explicit SequenceOnly integrity policy and never advertises CRC32 as a live guarantee. Checksum-capable feeds can opt into SequenceAndChecksum, where a genuine mismatch takes the book offline until a fresh snapshot recovers it.",
+        },
+        {
+          title: "One code path for live and replay",
+          detail:
+            "Replay drives the same decoder, validator, book and execution simulator as the live feed — there is no separate demo implementation. The parity test ships with negative controls: dropping one delta or tampering one prevSeqId must break parity.",
+        },
+        {
+          title: "No fake availability",
+          detail:
+            "If live mode cannot connect, /health reports connected: false and bookReady: false, and /simulate refuses with 503. The server never silently switches between fixture replay and live data, and the dashboard says unavailable rather than showing a stale book.",
+        },
+      ],
+      testing:
+        "make verify runs three gates in a Linux container: an ASan+UBSan instrumented build of the production libraries under the full CTest suite, a ThreadSanitizer pass, and clang-tidy over core, feed and server — all enforced by GitHub Actions alongside dashboard tests, typecheck and build, plus a Docker replay smoke test. Benchmarks are measured, not claimed (GCC 12, Release -O2): applyDelta at p50 122 ns across 200k ops on a 5,000-level book, and deterministic replay sustaining ~239,656 events/s over a 100k-delta recording.",
+      architecture: {
+        image: "/images/quantxecute-architecture.svg",
+        caption:
+          "Live OKX WebSocket or a recorded JSONL log drive the same decoder → sequence validator → book → execution simulator path; the REST + WebSocket API serves the Next.js dashboard",
+      },
+      screenshots: [
+        {
+          title: "Engine console",
+          detail: "Replay mode against the real engine: depth ladder, a $25,000 simulated buy with VWAP and bps cost, and live book-health counters",
+          src: "/images/quantxecute-dashboard.png",
+        },
+      ],
+      background: {
+        heading: "Algorithms & performance background",
+        body:
+          "The habits behind this engine come from competitive programming: reasoning about invariants, edge cases and complexity before writing code. That background carries directly into correctness-sensitive C++ systems — sequence validation, deterministic replay and sanitizer-clean concurrency are the same discipline applied to market data.",
+      },
+    },
+  },
+  {
     slug: "liveboard",
     title: "LiveBoard",
     category: "product",
@@ -442,7 +542,7 @@ export const projects: Project[] = [
     description:
       "MCP server where every tool call is persisted before dispatch, executed under fencing-token leases, and inspectable from Postgres. The hosted demo kills its own executor to generate genuine crash-recovery events.",
     tech: ["Go", "MCP", "PostgreSQL", "Next.js"],
-    featured: true,
+    featured: false,
     github: "https://github.com/Tyagiquamar/durablemcp",
     liveHref: "https://durablemcp-dashboard.vercel.app",
     liveLabel: "Live dashboard",

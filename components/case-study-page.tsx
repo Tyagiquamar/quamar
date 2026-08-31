@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowUpRight, Camera, Layers3 } from "lucide-react"
 import { categoryLabels, type Project } from "@/data/projects"
-import { caseStudy } from "@/data/portfolio"
+import { caseStudy, cpProfiles } from "@/data/portfolio"
 
 function CaseStudyHeader({
   kicker,
@@ -200,6 +200,31 @@ export function ProjectCaseStudyPage({ project }: { project: Project }) {
           <div className="mt-14">
             <p className="section-kicker mb-6">Screenshots</p>
             <ScreenshotGrid screenshots={cs.screenshots} />
+          </div>
+        ) : null}
+
+        {cs.background ? (
+          <div className="mt-14 grid gap-8 lg:grid-cols-[280px_1fr]">
+            <p className="section-kicker">{cs.background.heading}</p>
+            <div>
+              <p className="max-w-3xl text-sm leading-6 text-muted-foreground">
+                {cs.background.body}
+              </p>
+              <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-muted-foreground">
+                {cpProfiles.map((profile) => (
+                  <a
+                    key={profile.platform}
+                    href={profile.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="quiet-link inline-flex items-center gap-1.5"
+                  >
+                    {profile.platform} · {profile.rating}
+                    <ArrowUpRight className="h-3 w-3" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         ) : null}
 

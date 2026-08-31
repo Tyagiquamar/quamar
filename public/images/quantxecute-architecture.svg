@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" fill="none">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" stroke="#14b8a6" stroke-width="1.5" fill="none"/>
+    </marker>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+    </marker>
+  </defs>
+
+  <!-- LIVE source -->
+  <rect x="20" y="40" width="180" height="56" rx="6" stroke="#14b8a6" stroke-width="1.5" fill="none"/>
+  <text x="110" y="63" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600" fill="#14b8a6">OKX WebSocket</text>
+  <text x="110" y="81" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">snapshot + deltas</text>
+
+  <!-- live arrow -->
+  <line x1="204" y1="68" x2="252" y2="68" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="228" y="58" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#8b8b8b">WSS</text>
+
+  <!-- Feed client -->
+  <rect x="256" y="40" width="160" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="336" y="63" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600" fill="#14b8a6">FeedClient</text>
+  <text x="336" y="81" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">reconnect · resync</text>
+
+  <!-- REPLAY source -->
+  <rect x="20" y="150" width="180" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="110" y="173" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600" fill="#14b8a6">Recorded JSONL</text>
+  <text x="110" y="191" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">event log</text>
+
+  <!-- replay arrow -->
+  <line x1="204" y1="178" x2="252" y2="178" stroke="#8b8b8b" stroke-width="1.5" marker-end="url(#arrow-gray)"/>
+
+  <!-- EventLogReader -->
+  <rect x="256" y="150" width="160" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="336" y="173" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600" fill="#14b8a6">EventLogReader</text>
+  <text x="336" y="191" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">deterministic replay</text>
+
+  <!-- convergence arrows into core -->
+  <line x1="420" y1="68" x2="452" y2="100" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="420" y1="178" x2="452" y2="160" stroke="#8b8b8b" stroke-width="1.5" marker-end="url(#arrow-gray)"/>
+  <text x="437" y="133" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#8b8b8b">same path</text>
+
+  <!-- Core engine -->
+  <rect x="456" y="70" width="168" height="140" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="540" y="94" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600" fill="#14b8a6">quantxecute_core</text>
+  <text x="540" y="118" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">Decoder →</text>
+  <text x="540" y="136" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">SequenceValidator →</text>
+  <text x="540" y="154" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">Book →</text>
+  <text x="540" y="172" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">ExecutionSimulator</text>
+  <text x="540" y="196" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#8b8b8b">no UI · no network</text>
+
+  <!-- core to API -->
+  <line x1="540" y1="214" x2="540" y2="258" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- API -->
+  <rect x="456" y="262" width="168" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="540" y="285" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600" fill="#14b8a6">REST + WS /events</text>
+  <text x="540" y="303" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">/health · /book · /simulate</text>
+
+  <!-- API to dashboard -->
+  <line x1="452" y1="290" x2="308" y2="290" stroke="#8b8b8b" stroke-width="1.5" marker-end="url(#arrow-gray)"/>
+  <text x="380" y="280" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#8b8b8b">HTTPS + WSS</text>
+
+  <!-- Dashboard -->
+  <rect x="128" y="262" width="176" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="216" y="285" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600" fill="#14b8a6">Next.js dashboard</text>
+  <text x="216" y="303" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">depth · simulation · health</text>
+
+  <!-- Parity note -->
+  <text x="320" y="372" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">parity invariant: identical event sequence → identical book and execution results</text>
+  <text x="320" y="392" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">enforced by qx.parity_test in make verify</text>
+</svg>

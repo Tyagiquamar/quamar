@@ -10,17 +10,17 @@ import { categoryLabels, projects, type ProjectCategory } from "@/data/projects"
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Products and systems by Mohd Quamar Tyagi: the Takkada production ERP case study, AI product workflows, and Go backend/infrastructure systems with live dashboards.",
+    "Products and systems by Mohd Quamar Tyagi: the Takkada production ERP case study, AI product workflows, Go backend/infrastructure systems, and correctness-sensitive C++ market-data systems.",
   alternates: { canonical: "/work" },
   openGraph: {
     title: `Work · ${siteConfig.name}`,
     description:
-      "Production ERP case study, AI product workflows, and Go systems with live dashboards.",
+      "Production ERP case study, AI product workflows, Go systems with live dashboards, and correctness-sensitive C++ market-data systems.",
     url: `${siteConfig.url}/work`,
   },
 }
 
-const categoryOrder: ProjectCategory[] = ["product", "systems", "frontend"]
+const categoryOrder: ProjectCategory[] = ["product", "systems", "trading", "frontend"]
 
 export default function WorkPage() {
   return (
@@ -32,8 +32,8 @@ export default function WorkPage() {
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
           A production ERP shipped as founding engineer, AI workflows with human-in-the-loop
-          safety, realtime collaboration, and Go systems built around durability, CDC and
-          crash recovery.
+          safety, realtime collaboration, Go systems built around durability, CDC and crash
+          recovery, and correctness-sensitive C++ market infrastructure.
         </p>
 
         <section aria-labelledby="work-featured" className="mt-16">
