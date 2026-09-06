@@ -17,14 +17,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: siteConfig.url,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 1,
     },
     {
       url: `${siteConfig.url}/work`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.8,
+    },
+    {
+      url: `${siteConfig.url}/systems`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    },
+    {
+      url: `${siteConfig.url}/quant`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${siteConfig.url}/fullstack`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${siteConfig.url}/open-source`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     },
     ...caseStudyRoutes,
   ]

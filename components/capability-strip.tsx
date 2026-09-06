@@ -10,13 +10,16 @@ export function CapabilityStrip() {
             Ownership across the whole surface, not a skill list.
           </p>
         </div>
-        <div className="grid gap-px border border-border/80 bg-border/80 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="capability-grid grid grid-cols-1 gap-px border border-border/80 bg-border/80 sm:grid-cols-2 lg:grid-cols-6">
           {capabilityAreas.map((area) => (
-            <div key={area.title} className="motion-row border border-transparent bg-background px-4 py-5">
+            <div
+              key={area.title}
+              className="capability-cell motion-row flex h-full flex-col border border-transparent bg-background px-4 py-5"
+            >
               <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-foreground">
                 {area.title}
               </h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">{area.detail}</p>
+              <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{area.detail}</p>
             </div>
           ))}
         </div>

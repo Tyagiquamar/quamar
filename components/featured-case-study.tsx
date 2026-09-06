@@ -18,7 +18,7 @@ export function FeaturedCaseStudy() {
     <section id={caseStudy.id} className="editorial-section scroll-mt-20 border-t">
       <div className="grid gap-8 md:grid-cols-[180px_1fr]">
         <div>
-          <p className="section-kicker">Featured case study</p>
+          <p className="section-kicker">Production product</p>
           <p className="mt-4 max-w-40 text-sm text-muted-foreground">
             Real production, real customers, full ownership.
           </p>

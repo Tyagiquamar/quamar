@@ -75,6 +75,33 @@
     @apply mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 md:py-24;
   }
 
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid hsl(var(--border) / 0.8);
+    background: hsl(var(--card) / 0.2);
+    transition: border-color 300ms ease;
+  }
+
+  .project-card:hover {
+    border-color: hsl(var(--border));
+  }
+
+  .capability-grid {
+    align-items: stretch;
+  }
+
+  @media (min-width: 1024px) {
+    .capability-cell:nth-child(-n + 3) {
+      grid-column: span 2;
+    }
+
+    .capability-cell:nth-child(n + 4) {
+      grid-column: span 3;
+    }
+  }
+
   .section-kicker {
     @apply font-mono text-xs uppercase tracking-[0.24em] text-muted-foreground;
   }
@@ -519,6 +546,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .motion-row,
   .brand-mark,
   .word-reveal {
@@ -542,6 +573,10 @@
   .micro-egg-reveal,
   .contact-handshake span {
     transition: none;
+  }
+
+  .animate-ping {
+    animation: none;
   }
 }
 
