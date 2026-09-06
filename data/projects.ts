@@ -1,11 +1,15 @@
-export type ProjectCategory = "product" | "systems" | "trading" | "frontend"
+import type { EngineeringTrack } from "@/data/tracks"
 
-export const categoryLabels: Record<ProjectCategory, string> = {
-  product: "Product & AI",
-  systems: "Systems & Infrastructure",
-  trading: "Trading & Performance Systems",
-  frontend: "Additional Engineering Work",
+export type ProjectTrack = EngineeringTrack
+
+export const trackLabels: Record<ProjectTrack, string> = {
+  systems: "Backend & Systems",
+  quant: "Quant / Trading & Performance",
+  fullstack: "Full-Stack & Product",
 }
+
+/** @deprecated Use trackLabels. Kept for existing imports during the IA pass. */
+export const categoryLabels = trackLabels
 
 export interface ProjectVisual {
   src: string
@@ -43,11 +47,15 @@ export interface ProjectCaseStudy {
 export interface Project {
   slug: string
   title: string
-  category: ProjectCategory
+  track: ProjectTrack
+  priority: number
+  showOnHome: boolean
+  featured: boolean
+  additional?: boolean
+  secondaryTags?: string[]
   descriptor: string
   description: string
   tech: string[]
-  featured: boolean
   github: string
   liveHref?: string
   liveLabel?: string
@@ -59,7 +67,9 @@ export const projects: Project[] = [
   {
     slug: "parseflow",
     title: "ParseFlow AI",
-    category: "product",
+    track: "fullstack",
+    priority: 1,
+    showOnHome: true,
     descriptor: "AI document review & compliance workflow",
     description:
       "Extracts invoices, POs and receipts with per-field confidence and char-accurate provenance, evaluates them against versioned compliance rules, and routes to humans only when policy says so.",
@@ -144,7 +154,9 @@ export const projects: Project[] = [
   {
     slug: "durablego",
     title: "DurableGo",
-    category: "systems",
+    track: "systems",
+    priority: 1,
+    showOnHome: true,
     descriptor: "Durable workflow engine in Go",
     description:
       "PostgreSQL-backed durable workflow engine with lease/fencing semantics and idempotent starts. Failure scenes SIGKILL workers mid-execution and prove stale completions are rejected (409) through the API.",
@@ -214,7 +226,9 @@ export const projects: Project[] = [
   {
     slug: "supportpilot",
     title: "SupportPilot AI",
-    category: "product",
+    track: "fullstack",
+    priority: 2,
+    showOnHome: false,
     descriptor: "Supervised AI support operations",
     description:
       "Traced agent pipeline: injection scan, intent classification, grounded cited drafts — and financial write actions queued behind an explicit human approval gate. Not a chatbot; a supervised ops system.",
@@ -299,7 +313,9 @@ export const projects: Project[] = [
   {
     slug: "relaydb",
     title: "RelayDB",
-    category: "systems",
+    track: "systems",
+    priority: 2,
+    showOnHome: true,
     descriptor: "PostgreSQL CDC platform in Go",
     description:
       "Change-data-capture from the Postgres WAL: pgoutput decoding with TOAST awareness, idempotent replay per source transaction, and fenced LSN checkpoints proven by crash-replay testcontainers suites.",
@@ -365,9 +381,229 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "chainforge",
+    title: "ChainForge",
+    track: "systems",
+    priority: 3,
+    showOnHome: true,
+    descriptor: "Reorg-safe Ethereum event indexing",
+    description:
+      "Canonical-chain tracking with reorg detection, common-ancestor recovery, and HMAC webhook delivery. Finalized blocks are never silently rewritten.",
+    tech: ["Go", "PostgreSQL", "testcontainers", "Prometheus", "HMAC webhooks"],
+    featured: true,
+    github: "https://github.com/Tyagiquamar/chainforge",
+    visual: {
+      src: "/images/chainforge-dashboard.png",
+      alt: "ChainForge operator dashboard showing a labeled demo snapshot of reorg-safe indexing and delivery",
+    },
+    caseStudy: {
+      headline: "Reorg-safe Ethereum event indexing and delivery infrastructure in Go",
+      problem:
+        "If a system tells a customer a deposit arrived based on a block that later gets orphaned, that is a correctness incident. Unfinalized chain data is provisional: parent-hash divergence, orphaned branches, and webhook fans-out all have to stay consistent after a reorg.",
+      built: [
+        {
+          title: "Canonical-chain coordinator",
+          detail:
+            "A single writer ingests heads, detects parent-hash divergence, finds the common ancestor, orphans the dead branch and its events, then indexes the replacement — atomically with the checkpoint.",
+        },
+        {
+          title: "Event lifecycle",
+          detail:
+            "Downstream deliveries are typed: event.created, event.confirmed, event.finalized, and event.removed for previously delivered non-finalized events on an orphaned branch.",
+        },
+        {
+          title: "PostgreSQL invariants",
+          detail:
+            "At most one canonical block per height, parent continuity, and a halt if a reorg would rewrite finalized range instead of silently corrupting state.",
+        },
+        {
+          title: "Delivery and backfill",
+          detail:
+            "HMAC-signed, idempotency-keyed webhooks with retries and a DLQ, SSRF-guarded URLs, Prometheus metrics, resumable/idempotent backfill, and RPC provider failover.",
+        },
+      ],
+      decisions: [
+        {
+          title: "At-least-once delivery",
+          detail:
+            "Consumers must deduplicate. Stable event IDs are hashed from chain ID, block hash, tx hash, and log index. Finalized blocks are never rewritten.",
+        },
+        {
+          title: "Deterministic fake RPC",
+          detail:
+            "Integration tests use an in-process Ethereum RPC and testcontainers Postgres — including a flagship reorg scene and restart-after-reorg convergence — without a live Ethereum dependency.",
+        },
+        {
+          title: "Explicit demo vs live",
+          detail:
+            "The dashboard defaults to a labeled DEMO SNAPSHOT of a synthetic reorg. Switching to live RPC data is explicit and never automatic.",
+        },
+      ],
+      testing:
+        "go test ./... with testcontainers; race detector on the full suite. Coverage includes decode/HMAC/retry/SSRF unit tests plus depth-1/2 reorgs, MAX_REORG_DEPTH halt, backfill resume, webhook 500→DLQ, and finality monotonicity.",
+      screenshots: [
+        {
+          title: "Operator dashboard",
+          detail: "Labeled demo snapshot of indexing, reorg handling, and delivery — never implied to be mainnet data",
+          src: "/images/chainforge-dashboard.png",
+        },
+      ],
+    },
+  },
+  {
+    slug: "apexbook",
+    title: "ApexBook",
+    track: "quant",
+    priority: 1,
+    showOnHome: true,
+    descriptor: "Crypto execution and market-data engine",
+    description:
+      "Public Binance L2 data, snapshot/delta reconciliation, and a deterministic per-symbol paper matching engine. No real-money orders.",
+    tech: ["Go", "PostgreSQL", "WebSocket", "Prometheus", "fixed-point int64"],
+    featured: true,
+    github: "https://github.com/Tyagiquamar/apexbook",
+    visual: {
+      src: "/images/apexbook-overview.png",
+      alt: "ApexBook operator dashboard overview: feed health, paper orders, and system status",
+    },
+    caseStudy: {
+      headline: "Crypto execution and market-data engine in Go — paper matching against public L2 data",
+      problem:
+        "A depth stream cannot be applied to an empty map. Missed or misordered updates silently corrupt the local book, and matching on top of that book is meaningless. ApexBook makes snapshot/delta reconciliation, determinism, and pre-trade risk inspectable. It does not place real-money orders.",
+      built: [
+        {
+          title: "Snapshot/delta reconciliation",
+          detail:
+            "Buffer diffs, anchor on a REST snapshot, apply the bridging event, then require continuity. Any gap invalidates the book and forces a fresh snapshot. Stale events are discarded and counted.",
+        },
+        {
+          title: "Per-symbol actor model",
+          detail:
+            "One goroutine owns mutable state. Commands enter a bounded FIFO queue. Map iteration never influences execution order. Identical command sequences produce byte-identical fills and positions.",
+        },
+        {
+          title: "Paper matching",
+          detail:
+            "Price-time priority with LIMIT, MARKET, GTC, IOC, FOK, and post-only. Idempotent submissions. Pre-trade risk: kill switch, max notional, max quantity, max position.",
+        },
+        {
+          title: "Persistence and surfaces",
+          detail:
+            "Append-only fills, derived positions, PostgreSQL recovery of open orders in engine_seq order, REST, WebSocket, Prometheus, and an operator dashboard with an explicit demo snapshot.",
+        },
+      ],
+      decisions: [
+        {
+          title: "Fixed-point money",
+          detail:
+            "All prices and quantities are int64 at scale 1e8. float64 never touches an economic value.",
+        },
+        {
+          title: "Honest durability window",
+          detail:
+            "Persistence is batched. A crash can lose accepted-but-unflushed events; that bound is documented rather than hidden.",
+        },
+        {
+          title: "Measured benchmarks, not slogans",
+          detail:
+            "On Windows 11, i3-1315U, Go 1.26.5: ApplyLevel 28.3 ns/op (0 allocs), match single fill 1.24 µs/op, end-to-end driver 34,761 cmd/s with p99 997 µs. Reproduce with make bench.",
+        },
+      ],
+      testing:
+        "make test covers unit, API, WebSocket, and reconciliation without Docker. make test-race. make test-integration uses Postgres testcontainers including TestRestartRecovery. Property tests cover remaining ≥ 0, fill conservation, and canceled orders never filling.",
+      screenshots: [
+        {
+          title: "Overview",
+          detail: "Feed health, paper activity, and system status from the operator dashboard",
+          src: "/images/apexbook-overview.png",
+        },
+        {
+          title: "Order book",
+          detail: "Local L2 book reconstructed from public Binance depth after snapshot/delta reconciliation",
+          src: "/images/apexbook-orderbook.png",
+        },
+        {
+          title: "Execution",
+          detail: "Paper fills against the local book — simulated matching, not live exchange orders",
+          src: "/images/apexbook-execution.png",
+        },
+      ],
+    },
+  },
+  {
+    slug: "crossvenue",
+    title: "CrossVenue",
+    track: "quant",
+    priority: 2,
+    showOnHome: false,
+    descriptor: "Multi-venue market-data and execution simulation",
+    description:
+      "Binance, OKX, and Bybit feeds into local books, depth-aware VWAP, and non-atomic two-leg paper execution with inventory-aware risk. Not HFT and not a live gateway.",
+    tech: ["Go", "PostgreSQL", "Prometheus", "Binance", "OKX", "Bybit"],
+    featured: true,
+    github: "https://github.com/Tyagiquamar/crossvenue",
+    visual: {
+      src: "/images/crossvenue-architecture.svg",
+      alt: "CrossVenue pipeline: venue adapters into local books, opportunity engine, risk, and simulated two-leg execution",
+    },
+    caseStudy: {
+      headline: "Multi-venue market-data and execution-simulation infrastructure",
+      problem:
+        "Cross-exchange “arbitrage” on best bid/ask is misleading. Venues have different sequence rules, two-leg execution is not atomic, and a restart must not resume trading from stale books. CrossVenue is a trading-systems project: simulated execution, no live funds, no profitability claims.",
+      built: [
+        {
+          title: "Venue-specific market data",
+          detail:
+            "Binance, OKX, and Bybit adapters normalize into a shared event model while preserving each venue’s sequence/gap rules for local books.",
+        },
+        {
+          title: "Depth-aware opportunity pricing",
+          detail:
+            "Opportunities are computed from observed depth (VWAP) after configurable fees, modeled slippage, and a latency penalty — not top-of-book spreads.",
+        },
+        {
+          title: "Non-atomic two-leg simulation",
+          detail:
+            "Partial second-leg fills are first-class: residual directional exposure is journaled. Inventory-aware risk, stale quote rejection, daily loss limit, and a kill switch run before execution.",
+        },
+        {
+          title: "Record, replay, recover",
+          detail:
+            "Same recording + config + seed produces identical books, executions, balances, PnL, and journal digest. Restart restores portfolio state; books resynchronize from fresh market data.",
+        },
+      ],
+      decisions: [
+        {
+          title: "Three modes, one ingest path",
+          detail:
+            "live-market-sim (public WS, paper fills), synthetic, and replay share a single engine ingest path. ENABLE_LIVE_EXECUTION=true refuses to start rather than trade.",
+        },
+        {
+          title: "Failure scenes as tests",
+          detail:
+            "Automated scenes cover sequence gap, venue disconnect, stale quote, partial second-leg fill, duplicate client order ID, restart, kill switch, and queue overload.",
+        },
+        {
+          title: "Replay digest as proof",
+          detail:
+            "Verified locally on commit e9be5ea (Go 1.26.5, windows/amd64): two replay runs produced identical digest de7495fd8b25d9dbb66726d1bb5aac61045b23d5eef79b19ec0abddcfe87f33c. Benchmarks on the same machine: ApplyDelta 41.4 ns/op (0 allocs).",
+        },
+      ],
+      testing:
+        "go test ./... including integration and replay parity; go test -race; make verify (fmt, vet, staticcheck, tests, race, seed-42 replay, synthetic probe, failure scenes, docker build).",
+      architecture: {
+        image: "/images/crossvenue-architecture.svg",
+        caption:
+          "Venue adapters normalize Binance, OKX, Bybit, synthetic, and replay sources into per-book owner goroutines, then opportunity, risk, simulated execution, portfolio, and a PostgreSQL journal",
+      },
+    },
+  },
+  {
     slug: "quantxecute",
     title: "QuantXecute",
-    category: "trading",
+    track: "quant",
+    priority: 3,
+    showOnHome: false,
     descriptor: "Real-time market data & execution simulation",
     description:
       "C++20 engine that reconstructs L2 order books from live exchange snapshot/delta streams, simulates execution against observed depth, and enforces deterministic live/replay parity.",
@@ -462,7 +698,9 @@ export const projects: Project[] = [
   {
     slug: "liveboard",
     title: "LiveBoard",
-    category: "product",
+    track: "fullstack",
+    priority: 3,
+    showOnHome: false,
     descriptor: "Realtime collaborative workspace",
     description:
       "A lightweight Linear × Notion: Kanban collaboration over Socket.IO with presence, optimistic mutations with idempotency keys, and reconnect replay from a per-workspace event log.",
@@ -537,7 +775,9 @@ export const projects: Project[] = [
   {
     slug: "durablemcp",
     title: "DurableMCP",
-    category: "systems",
+    track: "systems",
+    priority: 4,
+    showOnHome: false,
     descriptor: "Durable execution for MCP tool calls",
     description:
       "MCP server where every tool call is persisted before dispatch, executed under fencing-token leases, and inspectable from Postgres. The hosted demo kills its own executor to generate genuine crash-recovery events.",
@@ -607,7 +847,11 @@ export const projects: Project[] = [
   {
     slug: "componentforge",
     title: "ComponentForge",
-    category: "frontend",
+    track: "fullstack",
+    priority: 10,
+    showOnHome: false,
+    additional: true,
+    secondaryTags: ["component-system"],
     descriptor: "Accessible React component system",
     description:
       "15 keyboard-first components with hand-rolled ARIA patterns, controlled/uncontrolled APIs, and design-token theming without a headless-UI dependency.",
@@ -624,7 +868,11 @@ export const projects: Project[] = [
   {
     slug: "canvasflow",
     title: "CanvasFlow",
-    category: "frontend",
+    track: "fullstack",
+    priority: 11,
+    showOnHome: false,
+    additional: true,
+    secondaryTags: ["graph-editor"],
     descriptor: "Node-based workflow builder",
     description:
       "Normalized graph state with structural sharing, coalesced undo/redo, cycle-safe connect-time validation, deterministic canonical-JSON serialization, and an inspectable execution simulator.",
@@ -647,57 +895,6 @@ export function getProject(slug: string): Project | undefined {
 }
 
 export const takkadaSlug = "takkada"
-
-export interface OpenSourceContribution {
-  repo: string
-  title: string
-  detail: string
-  language: string
-  pr: string
-}
-
-// Verified via `gh search prs --author Tyagiquamar --merged` on 2026-08-31:
-// 6 merged PRs across 4 upstream repositories (helix-db x2, mega x2, dev-3.0, studio).
-export const openSource = {
-  positioning:
-    "Production fixes contributed upstream across Go, Rust and TypeScript codebases — databases, Git infrastructure, and developer tooling.",
-  mergedPRs: 6,
-  upstreamRepos: 4,
-  contributions: [
-    {
-      repo: "gitmono-dev/mega",
-      title: "Frame receive-pack bodies by pkt-line structure",
-      detail:
-        "Git-protocol correctness fix in a Rust monorepo server: parse receive-pack bodies by pkt-line framing instead of ad-hoc boundaries.",
-      language: "Rust",
-      pr: "https://github.com/gitmono-dev/mega/pull/2174",
-    },
-    {
-      repo: "h0x91b/dev-3.0",
-      title: "Release task ports under the cross-process assignment lock",
-      detail:
-        "Concurrency fix: port assignment released under the same cross-process lock that allocates it, closing a stale-port race across processes.",
-      language: "TypeScript",
-      pr: "https://github.com/h0x91b/dev-3.0/pull/1530",
-    },
-    {
-      repo: "HelixDB/helix-db",
-      title: "Accept every integer width in typed float parameters",
-      detail:
-        "Go SDK type fix: typed float parameters previously rejected valid integer widths at the boundary.",
-      language: "Go",
-      pr: "https://github.com/HelixDB/helix-db/pull/1032",
-    },
-    {
-      repo: "decocms/studio",
-      title: "Fall back to Decopilot when the hosted sandbox is unavailable",
-      detail:
-        "Task-board resilience: degrade to Decopilot instead of failing when the hosted sandbox path is down.",
-      language: "TypeScript",
-      pr: "https://github.com/decocms/studio/pull/6540",
-    },
-  ] satisfies OpenSourceContribution[],
-}
 
 export interface CapabilityArea {
   title: string

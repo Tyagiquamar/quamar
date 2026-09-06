@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Mohd Quamar Tyagi",
-  title: "Mohd Quamar Tyagi · Founding Engineer @ Takkada",
+  title: "Mohd Quamar Tyagi · Backend & Systems Engineer",
   description:
-    "Founding Engineer at Takkada building PaySaathi, a standalone Tally-replacement accounting & ERP platform with 139 businesses onboarded. Previously SDE-1 at Zomato. Candidate Master on Codeforces (2038), top 0.6% on LeetCode.",
+    "Backend and systems engineer working on distributed systems, infrastructure and production software, with work across trading systems and full-stack products. Founding Engineer at Takkada. Previously SDE-1 at Zomato.",
   url: "https://quamar.vercel.app",
   email: "mohdquamartyagi@gmail.com",
   location: "Remote · UTC+5:30",
@@ -16,17 +16,22 @@ export const socials = [
 export type Social = (typeof socials)[number]
 
 export const navLinks = [
-  { label: "About", href: "/#about" },
+  { label: "Systems", href: "/systems" },
+  { label: "Quant", href: "/quant" },
+  { label: "Full-Stack", href: "/fullstack" },
   { label: "Experience", href: "/#experience" },
-  { label: "Work", href: "/work" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Open Source", href: "/#open-source" },
+  { label: "About", href: "/#about" },
+  { label: "Resume", href: "/resume.pdf" },
 ] as const
 
 export const hero = {
   name: "Mohd Quamar Tyagi",
-  role: "Founding Engineer @ Takkada",
+  role: "Backend & Systems Engineer",
   tagline:
-    "Building PaySaathi, a standalone Tally-replacement accounting & ERP platform with 139 businesses onboarded. Previously SDE-1 at Zomato. Candidate Master on Codeforces.",
+    "Distributed systems, infrastructure and production software, with work across trading systems and full-stack products.",
+  current:
+    "Currently founding engineer at Takkada. Previously SDE-1 at Zomato.",
   photo: "/images/profile-rose.jpg",
 } as const
 
@@ -55,7 +60,7 @@ export const proofMarks: ProofMark[] = [
 
 export const about = {
   heading: "Systems over demos.",
-  body: "I got into engineering through competitive programming. Years of Codeforces rounds taught me to reason about correctness and complexity before writing a line of code. That habit stuck: I'm drawn to systems where getting it wrong is expensive, which is how I ended up building accounting software. Money, ledgers, GST filings: correctness isn't a nice-to-have, it's the product. Outside of work I still do CP rounds, tinker with systems projects in Go and C++, and care a lot about the craft of shipping software that real people depend on every day.",
+  body: "I got into engineering through competitive programming. Years of Codeforces rounds taught me to reason about correctness and complexity before writing a line of code. That habit stuck: I am drawn to systems where getting it wrong is expensive — durable execution, data capture, and production backends. Day-to-day I also ship product surfaces people depend on. Outside of work I still do CP rounds and tinker with systems projects in Go and C++.",
 } as const
 
 export const cpProfiles = [

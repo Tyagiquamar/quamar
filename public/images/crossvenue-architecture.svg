@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" fill="none">
+  <defs>
+    <marker id="cv-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" stroke="#14b8a6" stroke-width="1.5" fill="none"/>
+    </marker>
+  </defs>
+  <rect x="24" y="36" width="112" height="52" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="80" y="66" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#14b8a6">Binance</text>
+  <rect x="152" y="36" width="112" height="52" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="208" y="66" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#14b8a6">OKX</text>
+  <rect x="280" y="36" width="112" height="52" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="336" y="66" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#14b8a6">Bybit</text>
+  <rect x="408" y="36" width="96" height="52" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="456" y="66" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b8b8b">Synthetic</text>
+  <rect x="520" y="36" width="96" height="52" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="568" y="66" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#8b8b8b">Replay</text>
+  <line x1="320" y1="88" x2="320" y2="124" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#cv-arrow)"/>
+  <rect x="170" y="128" width="300" height="56" rx="6" stroke="#14b8a6" stroke-width="1.5" fill="none"/>
+  <text x="320" y="152" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600" fill="#14b8a6">Normalize · venue sequence rules</text>
+  <text x="320" y="170" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">per-book owner goroutines</text>
+  <line x1="320" y1="184" x2="320" y2="220" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#cv-arrow)"/>
+  <rect x="48" y="224" width="170" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="133" y="248" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#14b8a6">Local books</text>
+  <text x="133" y="266" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">gap ’ invalidate</text>
+  <rect x="235" y="224" width="170" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="320" y="248" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#14b8a6">Opportunity</text>
+  <text x="320" y="266" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">VWAP  fees  slippage</text>
+  <rect x="422" y="224" width="170" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="507" y="248" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#14b8a6">Risk</text>
+  <text x="507" y="266" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">kill switch · stale quotes</text>
+  <line x1="320" y1="280" x2="320" y2="316" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#cv-arrow)"/>
+  <rect x="70" y="320" width="240" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="190" y="344" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#14b8a6">Paper two-leg execution</text>
+  <text x="190" y="362" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">partial fills · residual exposure</text>
+  <rect x="330" y="320" width="240" height="56" rx="6" stroke="#8b8b8b" stroke-width="1.5" fill="none"/>
+  <text x="450" y="344" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#14b8a6">PostgreSQL journal</text>
+  <text x="450" y="362" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">replay digest · restart recovery</text>
+  <text x="320" y="416" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">Simulated execution only · no live order path</text>
+</svg>

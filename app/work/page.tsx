@@ -3,42 +3,44 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { ProjectGrid } from "@/components/project-card"
+import { SiteFooter } from "@/components/site-footer"
 import { takkadaPreview } from "@/components/featured-case-study"
 import { caseStudy, siteConfig } from "@/data/portfolio"
-import { categoryLabels, projects, type ProjectCategory } from "@/data/projects"
+import { trackLabels } from "@/data/projects"
+import { additionalProjects, projectsForTrack } from "@/lib/projects"
+import { trackOrder } from "@/data/tracks"
 
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Products and systems by Mohd Quamar Tyagi: the Takkada production ERP case study, AI product workflows, Go backend/infrastructure systems, and correctness-sensitive C++ market-data systems.",
+    "Backend and systems projects, trading-systems engineering, and production full-stack product work by Mohd Quamar Tyagi.",
   alternates: { canonical: "/work" },
   openGraph: {
     title: `Work · ${siteConfig.name}`,
     description:
-      "Production ERP case study, AI product workflows, Go systems with live dashboards, and correctness-sensitive C++ market-data systems.",
+      "Durable execution, CDC, reorg-safe indexing, paper trading systems, and production product work.",
     url: `${siteConfig.url}/work`,
   },
 }
 
-const categoryOrder: ProjectCategory[] = ["product", "systems", "trading", "frontend"]
-
 export default function WorkPage() {
+  const extra = additionalProjects()
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <div className="editorial-section pt-28">
         <p className="section-kicker">Work</p>
         <h1 className="mt-4 max-w-3xl font-display text-4xl leading-tight sm:text-6xl">
-          Real products end-to-end, and the systems underneath them.
+          Backend and systems first, with trading infrastructure and product work beside it.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-          A production ERP shipped as founding engineer, AI workflows with human-in-the-loop
-          safety, realtime collaboration, Go systems built around durability, CDC and crash
-          recovery, and correctness-sensitive C++ market infrastructure.
+          Flagship Go systems around durability, capture, and chain correctness; market-data and
+          paper-execution engines; and production product work including the Takkada ERP.
         </p>
 
         <section aria-labelledby="work-featured" className="mt-16">
           <h2 id="work-featured" className="section-kicker">
-            Featured case study
+            Production product case study
           </h2>
           <Link
             href="/work/takkada"
@@ -61,32 +63,32 @@ export default function WorkPage() {
               </div>
               <p className="mt-6 inline-flex items-center gap-2 text-sm text-foreground underline decoration-border underline-offset-4 transition-colors group-hover:text-primary group-hover:decoration-primary">
                 Read the case study
-                <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
               </p>
             </div>
-            <div className="relative aspect-[16/9] w-full overflow-hidden border-t border-border/80 bg-card/30 lg:aspect-auto lg:border-l lg:border-t-0">
+            <div className="relative aspect-[16/9] w-full overflow-hidden border-t border-border/80 bg-card/30 lg:aspect-auto lg:min-h-[16rem] lg:border-l lg:border-t-0">
               <Image
                 src={takkadaPreview.visual.src}
                 alt={takkadaPreview.visual.alt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 380px"
-                className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transform-none"
               />
             </div>
           </Link>
         </section>
 
-        {categoryOrder.map((category) => {
-          const categoryProjects = projects.filter((project) => project.category === category)
+        {trackOrder.map((track) => {
+          const categoryProjects = projectsForTrack(track)
           if (categoryProjects.length === 0) return null
           return (
             <section
-              key={category}
-              aria-labelledby={`work-${category}`}
+              key={track}
+              aria-labelledby={`work-${track}`}
               className="mt-16 border-t pt-10"
             >
-              <h2 id={`work-${category}`} className="section-kicker">
-                {categoryLabels[category]}
+              <h2 id={`work-${track}`} className="section-kicker">
+                {trackLabels[track]}
               </h2>
               <div className="mt-6">
                 <ProjectGrid projects={categoryProjects} />
@@ -94,7 +96,19 @@ export default function WorkPage() {
             </section>
           )
         })}
+
+        {extra.length > 0 ? (
+          <section aria-labelledby="work-additional" className="mt-16 border-t pt-10">
+            <h2 id="work-additional" className="section-kicker">
+              Additional engineering work
+            </h2>
+            <div className="mt-6">
+              <ProjectGrid projects={extra} />
+            </div>
+          </section>
+        ) : null}
       </div>
+      <SiteFooter />
     </main>
   )
 }

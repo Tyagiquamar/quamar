@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowUpRight, Camera, Layers3 } from "lucide-react"
-import { categoryLabels, type Project } from "@/data/projects"
+import { trackLabels, type Project } from "@/data/projects"
 import { caseStudy, cpProfiles } from "@/data/portfolio"
 
 function CaseStudyHeader({
@@ -84,8 +84,13 @@ function BlockGrid({
         ) : null}
       </div>
       <div className="grid gap-px border border-border/80 bg-border/80 sm:grid-cols-2">
-        {blocks.map((block) => (
-          <div key={block.title} className="motion-row border border-transparent bg-background px-4 py-5">
+        {blocks.map((block, index) => (
+          <div
+            key={block.title}
+            className={`motion-row flex h-full flex-col border border-transparent bg-background px-4 py-5 ${
+              blocks.length % 2 === 1 && index === blocks.length - 1 ? "sm:col-span-2" : ""
+            }`}
+          >
             <h3 className="font-display text-xl leading-tight">{block.title}</h3>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">{block.detail}</p>
           </div>
@@ -101,11 +106,13 @@ function ScreenshotGrid({
   screenshots: { title: string; detail: string; src: string }[]
 }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
-      {screenshots.map((shot) => (
+    <div className="grid items-stretch gap-4 sm:grid-cols-2">
+      {screenshots.map((shot, index) => (
         <figure
           key={shot.title}
-          className="group overflow-hidden border border-border/80 bg-card/20"
+          className={`group flex h-full flex-col overflow-hidden border border-border/80 bg-card/20 ${
+            screenshots.length % 2 === 1 && index === screenshots.length - 1 ? "sm:col-span-2" : ""
+          }`}
         >
           <div className="relative aspect-[16/10] w-full overflow-hidden">
             <Image
@@ -137,7 +144,7 @@ export function ProjectCaseStudyPage({ project }: { project: Project }) {
     <main className="min-h-screen bg-background text-foreground">
       <article className="editorial-section pt-28">
         <CaseStudyHeader
-          kicker={`Case study · ${categoryLabels[project.category]}`}
+          kicker={`Case study · ${trackLabels[project.track]}`}
           title={project.title}
           headline={cs.headline}
           liveHref={project.liveHref}
