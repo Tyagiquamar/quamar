@@ -23,7 +23,7 @@ export function ProjectCard({ project }: { project: Project }) {
         }
         className={`block ${focusRing}`}
       >
-        <div className="card-visual relative aspect-[16/9] w-full overflow-hidden border-b border-border/80 bg-card/30">
+        <div className="card-visual relative aspect-[16/9] w-full overflow-hidden border-b border-border bg-card/40">
           {project.visual ? (
             <Image
               src={project.visual.src}
@@ -72,17 +72,14 @@ export function ProjectCard({ project }: { project: Project }) {
               <ArrowUpRight className="h-3.5 w-3.5 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
             </Link>
           ) : null}
-          {project.liveHref ? (
+              {project.liveHref ? (
             <a
               href={project.liveHref}
               target="_blank"
               rel="noreferrer"
-              className={`inline-flex min-h-9 items-center gap-1.5 border border-border px-2.5 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:border-primary hover:text-primary ${focusRing}`}
+              className={`inline-flex min-h-9 items-center gap-1.5 border border-border px-2.5 py-1.5 font-mono text-xs text-foreground transition-colors hover:border-primary hover:text-primary ${focusRing}`}
             >
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60 motion-reduce:animate-none" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
-              </span>
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               {project.liveLabel ?? "Live"}
             </a>
           ) : null}
@@ -91,7 +88,7 @@ export function ProjectCard({ project }: { project: Project }) {
             target="_blank"
             rel="noreferrer"
             aria-label={`View ${project.title} source on GitHub`}
-            className={`inline-flex min-h-9 items-center gap-1 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground ${focusRing}`}
+            className={`inline-flex min-h-9 items-center gap-1 font-mono text-xs text-foreground transition-colors hover:text-primary ${focusRing}`}
           >
             GitHub
             <ArrowUpRight className="h-3.5 w-3.5" />

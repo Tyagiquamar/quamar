@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { caseStudy } from "@/data/portfolio"
+import { Reveal } from "@/components/reveal"
 
 export const takkadaPreview = {
   descriptor: "Founding Engineer · Production ERP",
@@ -17,13 +18,13 @@ export function FeaturedCaseStudy() {
   return (
     <section id={caseStudy.id} className="editorial-section scroll-mt-20 border-t">
       <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
-        <div>
-          <p className="section-kicker">Featured production work</p>
+        <Reveal>
+          <p className="section-kicker">Featured Work</p>
           <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
             Real production, real customers, full ownership. Current role, not a portfolio demo.
           </p>
-        </div>
-        <p className="font-mono text-xs uppercase tracking-[0.16em] text-primary">
+        </Reveal>
+        <p className="pb-1 font-mono text-xs uppercase tracking-[0.16em] text-primary">
           {caseStudy.growthNote}
         </p>
       </div>

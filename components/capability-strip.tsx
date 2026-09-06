@@ -1,14 +1,14 @@
 import { capabilityAreas } from "@/data/projects"
+import { SectionHeading } from "@/components/section-heading"
 
 export function CapabilityStrip() {
   return (
     <section id="stack" className="editorial-section scroll-mt-20 border-t">
-      <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
-        <p className="section-kicker">Across the stack</p>
-        <p className="text-sm text-muted-foreground">
-          Ownership across the whole surface, not a skill list.
-        </p>
-      </div>
+      <SectionHeading
+        kicker="Capabilities"
+        title="Across the Stack"
+        description="Ownership across the whole surface, not a skill list."
+      />
       <div className="capability-grid mt-8 grid grid-cols-1 gap-px border border-border/80 bg-border/80 sm:grid-cols-2 lg:grid-cols-6">
         {capabilityAreas.map((area) => (
           <div

@@ -7,6 +7,7 @@ import { CapabilityStrip } from "@/components/capability-strip"
 import { OpenSourceSection } from "@/components/open-source-section"
 import { ProjectGrid } from "@/components/project-card"
 import { ExperienceList } from "@/components/experience-list"
+import { SectionHeading } from "@/components/section-heading"
 import { TrackSelector } from "@/components/track-selector"
 import { SiteFooter } from "@/components/site-footer"
 import { ArrowUpRight, Download, Github, Linkedin, MapPin } from "lucide-react"
@@ -20,7 +21,7 @@ import {
   skillGroups,
   stats,
 } from "@/data/portfolio"
-import { featuredOpenSource } from "@/data/opensource"
+import { featuredOpenSource, openSource } from "@/data/opensource"
 import { trackOrder, tracks } from "@/data/tracks"
 import { homeFeaturedProjects } from "@/lib/projects"
 
@@ -48,7 +49,7 @@ function BrandMark({
           alt=""
           fill
           sizes={size === "sm" ? "32px" : "44px"}
-          className="object-contain p-1 grayscale transition duration-300 group-hover:grayscale-0"
+          className="object-contain p-1"
         />
       ) : (
         mark ?? label.slice(0, 2)
@@ -103,7 +104,7 @@ export default function Portfolio() {
                     <BrandMark label={item.label} logo={item.logo} mark={item.mark} size="sm" />
                     <div className="min-w-0">
                       <p className="truncate text-sm text-foreground">{item.label}</p>
-                      <p className="mt-0.5 truncate font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+                      <p className="mt-0.5 font-mono text-[11px] uppercase leading-4 tracking-[0.16em] text-muted-foreground">
                         {item.detail}
                       </p>
                     </div>
@@ -120,6 +121,10 @@ export default function Portfolio() {
               { label: "Current", value: "Founding Engineer · Takkada" },
               { label: "Previous", value: hero.previous },
               { label: "Focus", value: hero.focus },
+              {
+                label: "Open Source",
+                value: `${openSource.mergedTotal} upstream PRs merged`,
+              },
               { label: "Location", value: siteConfig.location },
             ]}
           />
@@ -127,14 +132,11 @@ export default function Portfolio() {
       </section>
 
       <section id="experience" className="editorial-section scroll-mt-20 border-t">
-        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
-          <div>
-            <p className="section-kicker">Experience</p>
-            <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
-              Most recent first. Summaries here; the Takkada case study carries the detail.
-            </p>
-          </div>
-        </div>
+        <SectionHeading
+          kicker="Experience"
+          title="Professional Experience"
+          description="Most recent first. Summaries here; the Takkada case study carries the detail."
+        />
         <div className="mt-8">
           <ExperienceList variant="home" />
         </div>
@@ -144,22 +146,21 @@ export default function Portfolio() {
 
       <section id="work" className="editorial-section scroll-mt-20 border-t">
         <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
-          <div>
-            <p className="section-kicker">Selected engineering work</p>
-            <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">
-              A sample across systems, trading infrastructure, and product. The full project sets
-              live on the track pages.
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+          <SectionHeading
+            kicker="Selected Work"
+            title="Selected Engineering Work"
+            description="A sample across systems, trading infrastructure, and product. The full project sets live on the track pages."
+            className="max-w-2xl"
+          />
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pb-1 text-sm">
             {trackOrder.map((slug) => (
               <Link
                 key={slug}
                 href={tracks[slug].href}
-                className="quiet-link inline-flex items-center gap-2"
+                className="quiet-link group inline-flex items-center gap-2"
               >
                 {tracks[slug].title}
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
               </Link>
             ))}
           </div>
@@ -176,16 +177,12 @@ export default function Portfolio() {
       <CapabilityStrip />
 
       <section id="signals" className="editorial-section scroll-mt-20 border-t">
-        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
-          <div>
-            <p className="section-kicker">Engineering signals</p>
-            <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">
-              Competitive programming as supporting evidence, not the engineering story, and the
-              day-to-day toolkit.
-            </p>
-          </div>
-        </div>
-        <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start">
+        <SectionHeading
+          kicker="Signals"
+          title="Engineering Signals"
+          description="Competitive programming as supporting evidence, not the engineering story, and the day-to-day toolkit."
+        />
+        <div className="mt-10 space-y-10">
           <CpGraph />
           <div id="skills" className="grid gap-6 sm:grid-cols-2">
             {skillGroups.map((group) => (

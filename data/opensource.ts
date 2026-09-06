@@ -17,6 +17,8 @@ export const openSource = {
   positioning:
     "Selected production-code fixes in unfamiliar upstream systems: runtimes, databases, market math, and protocol clients.",
   verifiedOn: "2026-09-06",
+  /** Merged PRs in external upstream systems, verified via GitHub search (self-owned and small community repos excluded). */
+  mergedTotal: 11,
   contributions: [
     {
       repo: "qdrant/go-client",

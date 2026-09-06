@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { featuredOpenSource, openSource, type OpenSourceContribution, type OssStatus } from "@/data/opensource"
+import { SectionHeading } from "@/components/section-heading"
 
 const statusClass: Record<OssStatus, string> = {
   MERGED: "text-primary",
@@ -20,7 +21,7 @@ export function OssCard({
       target="_blank"
       rel="noreferrer"
       aria-label={`PR #${contribution.prNumber} in ${contribution.repo}: ${contribution.title}`}
-      className="oss-card group flex h-full flex-col border border-border/80 bg-card/20 p-5 transition-colors duration-300 hover:border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="oss-card group flex h-full flex-col border border-border bg-card p-5 transition-colors duration-300 hover:border-foreground/25 hover:bg-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
         {contribution.repo}
@@ -53,16 +54,19 @@ export function OpenSourceSection({
   return (
     <section id="open-source" className="editorial-section scroll-mt-20 border-t">
       <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
-        <div>
-          <p className="section-kicker">Selected open source engineering</p>
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">
-            {openSource.positioning} Status checked against GitHub on {openSource.verifiedOn}.
-          </p>
-        </div>
+        <SectionHeading
+          kicker="Open Source"
+          title="Selected Open Source Engineering"
+          description={`${openSource.positioning} Status checked against GitHub on ${openSource.verifiedOn}.`}
+          className="max-w-2xl"
+        />
         {showAllLink ? (
-          <Link href="/open-source" className="quiet-link inline-flex items-center gap-2 text-sm">
+          <Link
+            href="/open-source"
+            className="quiet-link group inline-flex items-center gap-2 pb-1 text-sm"
+          >
             View all contributions
-            <ArrowUpRight className="h-4 w-4" />
+            <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transform-none" />
           </Link>
         ) : null}
       </div>

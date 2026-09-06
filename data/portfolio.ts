@@ -135,6 +135,11 @@ export const experience: Experience[] = [
       "Review model-generated patches and technical reasoning for functional correctness, regressions, edge cases, and instruction compliance",
       "Produce structured preference/corrective feedback for RLHF workflows while analyzing recurring model failure modes and improving evaluation consistency through reproducible verification",
     ],
+    homeBullets: [
+      "Evaluate coding-agent and LLM outputs against detailed specs, tests, and scoring rubrics",
+      "Review model-generated patches for functional correctness, regressions, and edge cases",
+      "Produce structured corrective feedback for RLHF workflows, with reproducible verification",
+    ],
     tech: ["RLHF", "LLM Evaluation", "Coding Agents", "Code Review", "Rubric Evaluation"],
   },
   {

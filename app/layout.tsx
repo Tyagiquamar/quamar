@@ -96,6 +96,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${libreBaskerville.variable}`}
     >
       <body>
+        <noscript>
+          <style tabIndex={-1}>{`.reveal { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
