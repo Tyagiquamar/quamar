@@ -21,16 +21,39 @@ const statToneClasses: Record<string, string> = {
   "2400+": "rating-leetcode",
 }
 
-export function HeroStats({ role, stats }: { role: string; stats: readonly Stat[] }) {
+interface HeroFact {
+  label: string
+  value: string
+}
+
+export function HeroStats({
+  role,
+  stats,
+  facts,
+}: {
+  role: string
+  stats: readonly Stat[]
+  facts: readonly HeroFact[]
+}) {
   function onBeforeReveal(value: string) {
     if (value !== "139") return
     window.dispatchEvent(new CustomEvent("business-proof-ping"))
   }
 
   return (
-    <aside className="border-y py-5 text-sm text-muted-foreground lg:border-l lg:border-y-0 lg:pl-6">
+    <aside className="border-y py-5 text-sm text-muted-foreground lg:border-l lg:border-y-0 lg:pl-8">
       <p className="font-mono text-xs uppercase tracking-[0.24em] text-foreground">{role}</p>
-      <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-4 lg:grid-cols-1">
+      <dl className="mt-5 space-y-3 border-b border-border/60 pb-5">
+        {facts.map((fact) => (
+          <div key={fact.label}>
+            <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+              {fact.label}
+            </dt>
+            <dd className="mt-0.5 text-sm text-foreground">{fact.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-4">
         {stats.map((stat) => (
           <div key={stat.label}>
             <MicroEasterEgg

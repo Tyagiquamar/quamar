@@ -19,7 +19,7 @@ export const tracks: Record<
     title: "Backend & Systems",
     kicker: "Primary track",
     summary:
-      "Durable execution, change-data capture, and crypto-infra indexing — Go, PostgreSQL, failure scenes, and proof.",
+      "Durable execution, change-data capture, and crypto-infra indexing: Go, PostgreSQL, failure scenes, and proof.",
     homeNote: "Distributed systems, leases, checkpoints, and crash recovery.",
   },
   quant: {
@@ -29,7 +29,7 @@ export const tracks: Record<
     title: "Quant / Trading & Performance",
     kicker: "Market systems",
     summary:
-      "Market-data correctness, paper execution, and deterministic replay — not live-money trading.",
+      "Market-data correctness, paper execution, and deterministic replay, not live-money trading.",
     homeNote: "Order books, execution simulation, and performance engineering.",
   },
   fullstack: {

@@ -22,11 +22,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (slug === takkadaSlug) {
     return {
-      title: "Takkada — Production ERP case study",
+      title: "Takkada · Production ERP case study",
       description: caseStudy.description,
       alternates: { canonical: `/work/${slug}` },
       openGraph: {
-        title: `Takkada — Production ERP case study · ${siteConfig.name}`,
+        title: `Takkada · Production ERP case study · ${siteConfig.name}`,
         description: caseStudy.description,
         url: `${siteConfig.url}/work/${slug}`,
       },
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!project || !project.caseStudy) return {}
 
   return {
-    title: `${project.title} — case study`,
+    title: `${project.title} · case study`,
     description: project.description,
     alternates: { canonical: `/work/${slug}` },
     openGraph: {

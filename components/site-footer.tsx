@@ -11,7 +11,7 @@ const socialIcons = {
 export function SiteFooter() {
   return (
     <footer className="border-t">
-      <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 py-8 text-xs text-muted-foreground sm:px-6 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto flex max-w-[1400px] flex-col gap-5 px-4 py-8 text-xs text-muted-foreground sm:px-6 md:flex-row md:items-center md:justify-between md:px-8 lg:px-10 xl:px-16">
         <p className="font-mono uppercase tracking-[0.2em]">{siteConfig.name}</p>
         <p>
           © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.

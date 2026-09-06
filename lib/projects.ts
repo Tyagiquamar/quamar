@@ -11,20 +11,12 @@ export function additionalProjects(): Project[] {
   return projects.filter((project) => project.additional).sort((a, b) => a.priority - b.priority)
 }
 
-export function homeSystemsProjects(): Project[] {
-  return projects
-    .filter((project) => project.track === "systems" && project.showOnHome)
-    .sort((a, b) => a.priority - b.priority)
-}
+const homeFeaturedSlugs = ["durablego", "apexbook", "parseflow", "relaydb"] as const
 
-export function homeSelectedProjects(): Project[] {
-  return projects
-    .filter((project) => project.showOnHome && project.track !== "systems")
-    .sort((a, b) => {
-      const trackRank = { quant: 0, fullstack: 1, systems: 2 } as const
-      if (a.track !== b.track) return trackRank[a.track] - trackRank[b.track]
-      return a.priority - b.priority
-    })
+export function homeFeaturedProjects(): Project[] {
+  return homeFeaturedSlugs
+    .map((slug) => projects.find((project) => project.slug === slug))
+    .filter((project): project is Project => Boolean(project))
 }
 
 export function trackMeta(track: EngineeringTrack) {

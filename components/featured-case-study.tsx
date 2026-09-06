@@ -6,7 +6,7 @@ import { caseStudy } from "@/data/portfolio"
 export const takkadaPreview = {
   descriptor: "Founding Engineer · Production ERP",
   summary:
-    "Production accounting & ERP platform built end-to-end as first engineer: a double-entry accounting core in PostgreSQL, filing-ready GST compliance, WhatsApp automation, and an AI document-import pipeline — replacing Tally workflows for real businesses.",
+    "Production accounting & ERP platform built end-to-end as first engineer: a double-entry accounting core in PostgreSQL, filing-ready GST compliance, WhatsApp automation, and an AI document-import pipeline, replacing Tally workflows for real businesses.",
   visual: {
     src: "/images/takkada-invoice-detail.png",
     alt: "PaySaathi GST sales invoice: line items with HSN and GST split, e-invoice and e-way bill actions, share over WhatsApp",
@@ -16,76 +16,88 @@ export const takkadaPreview = {
 export function FeaturedCaseStudy() {
   return (
     <section id={caseStudy.id} className="editorial-section scroll-mt-20 border-t">
-      <div className="grid gap-8 md:grid-cols-[180px_1fr]">
+      <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
         <div>
-          <p className="section-kicker">Production product</p>
-          <p className="mt-4 max-w-40 text-sm text-muted-foreground">
-            Real production, real customers, full ownership.
+          <p className="section-kicker">Featured production work</p>
+          <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
+            Real production, real customers, full ownership. Current role, not a portfolio demo.
           </p>
         </div>
+        <p className="font-mono text-xs uppercase tracking-[0.16em] text-primary">
+          {caseStudy.growthNote}
+        </p>
+      </div>
+
+      <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start">
         <div>
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start">
-            <div>
-              <h2 className="font-display text-4xl leading-tight sm:text-6xl">
-                {caseStudy.title}
-              </h2>
-              <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                {takkadaPreview.descriptor}
-              </p>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-                {takkadaPreview.summary}
-              </p>
-              <p className="mt-4 font-mono text-xs uppercase tracking-[0.16em] text-primary">
-                {caseStudy.growthNote}
-              </p>
+          <h2 className="font-display text-4xl leading-tight sm:text-6xl">{caseStudy.title}</h2>
+          <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            {takkadaPreview.descriptor}
+          </p>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
+            {takkadaPreview.summary}
+          </p>
 
-              <Link href="/work/takkada" className="group/metrics mt-8 block">
-                <div className="grid grid-cols-2 gap-px border border-border/80 bg-border/80 transition-colors duration-300 group-hover/metrics:border-primary/60">
-                  {caseStudy.metrics.map((metric) => {
-                    const [value, ...rest] = metric.split(" · ")
-                    return (
-                      <div key={metric} className="bg-background px-4 py-4">
-                        <p className="font-display text-2xl leading-tight">{value}</p>
-                        <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
-                          {rest.join(" · ")}
-                        </p>
-                      </div>
-                    )
-                  })}
-                </div>
-              </Link>
-
-              <p className="mt-6 font-mono text-xs text-muted-foreground">
-                {caseStudy.tech.join(" / ")}
-              </p>
-              <div className="mt-8">
-                <Link
-                  href="/work/takkada"
-                  className="group/cta inline-flex items-center gap-3 border border-primary/60 bg-primary/10 px-5 py-3 font-mono text-xs uppercase tracking-[0.18em] text-foreground transition-colors duration-300 hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                >
-                  Read the full case study
-                  <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
-                </Link>
-              </div>
+          <Link
+            href="/work/takkada"
+            aria-label="Read the Takkada case study"
+            className="group mt-8 block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            <div className="relative aspect-[16/10] w-full overflow-hidden border border-border/80 bg-card/30">
+              <Image
+                src={takkadaPreview.visual.src}
+                alt={takkadaPreview.visual.alt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 720px"
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+              />
             </div>
+            <p className="mt-3 text-xs leading-5 text-muted-foreground">
+              GST sales invoice in PaySaathi: HSN/GST split, e-invoice and e-way bill actions,
+              WhatsApp delivery.
+            </p>
+          </Link>
+        </div>
 
+        <div>
+          <Link href="/work/takkada" className="group/metrics block">
+            <div className="grid grid-cols-2 gap-px border border-border/80 bg-border/80 transition-colors duration-300 group-hover/metrics:border-primary/60">
+              {caseStudy.metrics.map((metric) => {
+                const [value, ...rest] = metric.split(" · ")
+                return (
+                  <div key={metric} className="bg-background px-4 py-4">
+                    <p className="font-display text-2xl leading-tight">{value}</p>
+                    <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                      {rest.join(" · ")}
+                    </p>
+                  </div>
+                )
+              })}
+            </div>
+          </Link>
+
+          <div className="mt-8 border-t border-border/60 pt-6">
+            <p className="section-kicker">Ownership</p>
+            <ul className="mt-4 space-y-4">
+              {caseStudy.ownership.map((area) => (
+                <li key={area.title}>
+                  <p className="text-sm text-foreground">{area.title}</p>
+                  <p className="mt-1 text-xs leading-5 text-muted-foreground">{area.detail}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p className="mt-8 font-mono text-xs text-muted-foreground">
+            {caseStudy.tech.join(" / ")}
+          </p>
+          <div className="mt-6">
             <Link
               href="/work/takkada"
-              aria-label="Read the Takkada case study"
-              className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="group/cta inline-flex items-center gap-3 border border-primary/60 bg-primary/10 px-5 py-3 font-mono text-xs uppercase tracking-[0.18em] text-foreground transition-colors duration-300 hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden border border-border/80 bg-card/30">
-                <Image
-                  src={takkadaPreview.visual.src}
-                  alt={takkadaPreview.visual.alt}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 400px"
-                  className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-              </div>
-              <p className="mt-3 text-xs leading-5 text-muted-foreground">
-                GST sales invoice in PaySaathi — HSN/GST split, e-invoice and e-way bill actions, WhatsApp delivery.
-              </p>
+              Read the full case study
+              <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
             </Link>
           </div>
         </div>

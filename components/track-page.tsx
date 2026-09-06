@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowLeft, ArrowUpRight } from "lucide-react"
 import { SiteFooter } from "@/components/site-footer"
 import { ExperienceList } from "@/components/experience-list"
 import { ProjectGrid } from "@/components/project-card"
@@ -44,7 +44,14 @@ export function TrackPage({ track }: { track: EngineeringTrack }) {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <div className="editorial-section pt-28">
-        <p className="section-kicker">{meta.kicker}</p>
+        <Link
+          href="/"
+          className="quiet-link inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em]"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          Home
+        </Link>
+        <p className="section-kicker mt-10">{meta.kicker}</p>
         <h1 className="mt-4 max-w-3xl font-display text-4xl leading-tight sm:text-6xl">
           {meta.title}
         </h1>
@@ -52,7 +59,7 @@ export function TrackPage({ track }: { track: EngineeringTrack }) {
         {track === "quant" ? (
           <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">
             This is trading-systems and performance engineering on public market data and
-            simulated execution — not employment quant experience, and not live-money trading.
+            simulated execution, not employment quant experience, and not live-money trading.
           </p>
         ) : null}
 

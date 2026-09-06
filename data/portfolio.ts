@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Mohd Quamar Tyagi",
-  title: "Mohd Quamar Tyagi · Backend & Systems Engineer",
+  title: "Mohd Quamar Tyagi · Software Engineer",
   description:
-    "Backend and systems engineer working on distributed systems, infrastructure and production software, with work across trading systems and full-stack products. Founding Engineer at Takkada. Previously SDE-1 at Zomato.",
+    "Software engineer building production systems, infrastructure, trading systems and full-stack products. Founding Engineer at Takkada. Previously SDE-1 at Zomato.",
   url: "https://quamar.vercel.app",
   email: "mohdquamartyagi@gmail.com",
   location: "Remote · UTC+5:30",
@@ -27,11 +27,12 @@ export const navLinks = [
 
 export const hero = {
   name: "Mohd Quamar Tyagi",
-  role: "Backend & Systems Engineer",
+  role: "Software Engineer",
   tagline:
-    "Distributed systems, infrastructure and production software, with work across trading systems and full-stack products.",
-  current:
-    "Currently founding engineer at Takkada. Previously SDE-1 at Zomato.",
+    "Building production software across backend systems, infrastructure, trading systems and full-stack products.",
+  current: "Founding Engineer at Takkada · Previously SDE-1 at Zomato.",
+  previous: "SDE-1 · Zomato",
+  focus: "Systems · Product · Trading infrastructure",
   photo: "/images/profile-rose.jpg",
 } as const
 
@@ -60,7 +61,7 @@ export const proofMarks: ProofMark[] = [
 
 export const about = {
   heading: "Systems over demos.",
-  body: "I got into engineering through competitive programming. Years of Codeforces rounds taught me to reason about correctness and complexity before writing a line of code. That habit stuck: I am drawn to systems where getting it wrong is expensive — durable execution, data capture, and production backends. Day-to-day I also ship product surfaces people depend on. Outside of work I still do CP rounds and tinker with systems projects in Go and C++.",
+  body: "I got into engineering through competitive programming. Years of Codeforces rounds taught me to reason about correctness and complexity before writing a line of code. That habit stuck: I am drawn to systems where getting it wrong is expensive: durable execution, data capture, and production backends. Day-to-day I also ship product surfaces people depend on. Outside of work I still do CP rounds and tinker with systems projects in Go and C++.",
 } as const
 
 export const cpProfiles = [
@@ -94,6 +95,9 @@ export interface Experience {
   mark?: string
   current?: boolean
   bullets: string[]
+  /** Shortest strong subset for the homepage; full bullets stay for detail contexts. */
+  homeBullets?: string[]
+  caseStudyHref?: string
   tech: string[]
 }
 
@@ -112,6 +116,12 @@ export const experience: Experience[] = [
       "Hardened access and operations through RBAC/voucher-type grants, tenant-write guards, license/feature gates, partner tier controls, assisted onboarding, and admin wallet/payment reconciliation",
       "Improved sync performance and reliability: statement-level rewrite of hot sales-invoice aggregate triggers, fresh-before-retry tally job claiming, per-company sync status in the Tally loader, and hardened auth/payment boundaries",
     ],
+    homeBullets: [
+      "First engineer building PaySaathi end-to-end: Flutter app, Supabase/PostgreSQL backend, Next.js admin tooling, Tally connector, and production infrastructure",
+      "Rebuilt the standalone accounting core across app and backend: voucher families, registers, bill-wise settlements, ageing/analytics, financial statements, and GST/e-invoice workflows",
+      "Hardened reliability and access in production: RBAC and tenant-write guards, license/feature gates, hot-trigger rewrites, and fresh-before-retry Tally sync infrastructure",
+    ],
+    caseStudyHref: "/work/takkada",
     tech: ["Flutter", "Supabase", "PostgreSQL", "Next.js", "TypeScript"],
   },
   {
@@ -182,7 +192,7 @@ export const caseStudy = {
   screenshots: [
     {
       title: "Marketing site",
-      detail: "Live product marketing site — real businesses, real receivables",
+      detail: "Live product marketing site: real businesses, real receivables",
       src: "/images/takkada-landing.png",
     },
     {

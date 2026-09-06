@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowLeft, ArrowUpRight } from "lucide-react"
 import { ProjectGrid } from "@/components/project-card"
 import { SiteFooter } from "@/components/site-footer"
 import { takkadaPreview } from "@/components/featured-case-study"
@@ -13,7 +13,7 @@ import { trackOrder } from "@/data/tracks"
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Backend and systems projects, trading-systems engineering, and production full-stack product work by Mohd Quamar Tyagi.",
+    "Production software by Mohd Quamar Tyagi: backend systems, trading-systems engineering, and full-stack product work.",
   alternates: { canonical: "/work" },
   openGraph: {
     title: `Work · ${siteConfig.name}`,
@@ -29,9 +29,16 @@ export default function WorkPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <div className="editorial-section pt-28">
-        <p className="section-kicker">Work</p>
+        <Link
+          href="/"
+          className="quiet-link inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em]"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          Home
+        </Link>
+        <p className="section-kicker mt-10">Work</p>
         <h1 className="mt-4 max-w-3xl font-display text-4xl leading-tight sm:text-6xl">
-          Backend and systems first, with trading infrastructure and product work beside it.
+          Production software across systems, trading infrastructure, and product engineering.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
           Flagship Go systems around durability, capture, and chain correctness; market-data and

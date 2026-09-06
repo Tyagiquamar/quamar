@@ -52,29 +52,24 @@ export function OpenSourceSection({
 }) {
   return (
     <section id="open-source" className="editorial-section scroll-mt-20 border-t">
-      <div className="grid gap-8 md:grid-cols-[180px_1fr]">
+      <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
         <div>
           <p className="section-kicker">Selected open source engineering</p>
-          <p className="mt-4 max-w-40 text-sm text-muted-foreground">
-            Curated upstream work. Status checked against GitHub on {openSource.verifiedOn}.
+          <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">
+            {openSource.positioning} Status checked against GitHub on {openSource.verifiedOn}.
           </p>
-          {showAllLink ? (
-            <Link href="/open-source" className="quiet-link mt-8 inline-flex items-center gap-2 text-sm">
-              View all contributions
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          ) : null}
         </div>
-        <div>
-          <p className="max-w-2xl text-sm leading-6 text-muted-foreground">
-            {openSource.positioning}
-          </p>
-          <div className="mt-8 grid items-stretch gap-4 sm:grid-cols-2">
-            {contributions.map((contribution) => (
-              <OssCard key={contribution.href} contribution={contribution} />
-            ))}
-          </div>
-        </div>
+        {showAllLink ? (
+          <Link href="/open-source" className="quiet-link inline-flex items-center gap-2 text-sm">
+            View all contributions
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        ) : null}
+      </div>
+      <div className="mt-8 grid items-stretch gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {contributions.map((contribution) => (
+          <OssCard key={contribution.href} contribution={contribution} />
+        ))}
       </div>
     </section>
   )

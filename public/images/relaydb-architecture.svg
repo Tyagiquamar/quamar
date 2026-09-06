@@ -70,5 +70,5 @@
   <text x="578" y="346" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">webhooks</text>
 
   <!-- Invariant note -->
-  <text x="320" y="412" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">persist events + checkpoint in one transaction, then ack the LSN — crash before ack replays idempotently</text>
+  <text x="320" y="412" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#8b8b8b">persist events + checkpoint in one transaction, then ack the LSN : crash before ack replays idempotently</text>
 </svg>

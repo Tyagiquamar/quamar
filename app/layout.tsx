@@ -15,10 +15,12 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "Mohd Quamar Tyagi",
+    "Software Engineer",
+    "Founding Engineer",
+    "Full-Stack Engineer",
     "Backend Engineer",
     "Systems Engineer",
     "Distributed Systems",
-    "Founding Engineer",
     "Takkada",
     "PaySaathi",
     "Competitive Programming",
@@ -52,7 +54,7 @@ const jsonLd = {
   name: siteConfig.name,
   url: siteConfig.url,
   email: siteConfig.email,
-  jobTitle: "Backend & Systems Engineer",
+  jobTitle: "Software Engineer",
   worksFor: { "@type": "Organization", name: "Takkada", url: "https://takkada.com" },
   sameAs: [
     "https://github.com/Tyagiquamar",

@@ -15,7 +15,7 @@ export interface OpenSourceContribution {
 // Verified against GitHub Pull Request API on 2026-09-06.
 export const openSource = {
   positioning:
-    "Selected production-code fixes in unfamiliar upstream systems — runtimes, databases, market math, and protocol clients.",
+    "Selected production-code fixes in unfamiliar upstream systems: runtimes, databases, market math, and protocol clients.",
   verifiedOn: "2026-09-06",
   contributions: [
     {

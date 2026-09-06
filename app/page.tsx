@@ -14,14 +14,15 @@ import Link from "next/link"
 import Image from "next/image"
 import {
   about,
-  cpProfiles,
   hero,
   proofMarks,
   siteConfig,
   skillGroups,
   stats,
 } from "@/data/portfolio"
-import { homeSelectedProjects, homeSystemsProjects } from "@/lib/projects"
+import { featuredOpenSource } from "@/data/opensource"
+import { trackOrder, tracks } from "@/data/tracks"
+import { homeFeaturedProjects } from "@/lib/projects"
 
 function BrandMark({
   label,
@@ -57,13 +58,12 @@ function BrandMark({
 }
 
 export default function Portfolio() {
-  const systems = homeSystemsProjects()
-  const selected = homeSelectedProjects()
+  const selected = homeFeaturedProjects()
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <section className="editorial-section flex min-h-[92vh] flex-col justify-center pt-28">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end">
+      <section className="editorial-section flex flex-col justify-center pt-28 lg:min-h-[80vh]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div>
             <Greeting />
             <h1 className="cool-title mt-8 max-w-5xl text-balance font-display text-5xl leading-[1.02] sm:text-7xl lg:text-8xl">
@@ -85,11 +85,11 @@ export default function Portfolio() {
                 <Download className="h-4 w-4" />
                 Resume
               </a>
+              <a href="#experience" className="quiet-link">
+                Experience
+              </a>
               <a href="#contact" className="quiet-link">
                 Contact
-              </a>
-              <a href="#systems" className="quiet-link">
-                Systems work
               </a>
             </div>
             <div className="mt-12 border-y py-4">
@@ -113,7 +113,90 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <HeroStats role={hero.role} stats={stats} />
+          <HeroStats
+            role={hero.role}
+            stats={stats}
+            facts={[
+              { label: "Current", value: "Founding Engineer · Takkada" },
+              { label: "Previous", value: hero.previous },
+              { label: "Focus", value: hero.focus },
+              { label: "Location", value: siteConfig.location },
+            ]}
+          />
+        </div>
+      </section>
+
+      <section id="experience" className="editorial-section scroll-mt-20 border-t">
+        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
+          <div>
+            <p className="section-kicker">Experience</p>
+            <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
+              Most recent first. Summaries here; the Takkada case study carries the detail.
+            </p>
+          </div>
+        </div>
+        <div className="mt-8">
+          <ExperienceList variant="home" />
+        </div>
+      </section>
+
+      <FeaturedCaseStudy />
+
+      <section id="work" className="editorial-section scroll-mt-20 border-t">
+        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
+          <div>
+            <p className="section-kicker">Selected engineering work</p>
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">
+              A sample across systems, trading infrastructure, and product. The full project sets
+              live on the track pages.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+            {trackOrder.map((slug) => (
+              <Link
+                key={slug}
+                href={tracks[slug].href}
+                className="quiet-link inline-flex items-center gap-2"
+              >
+                {tracks[slug].title}
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="mt-8">
+          <ProjectGrid projects={selected} />
+        </div>
+      </section>
+
+      <TrackSelector />
+
+      <OpenSourceSection contributions={featuredOpenSource.slice(0, 6)} />
+
+      <CapabilityStrip />
+
+      <section id="signals" className="editorial-section scroll-mt-20 border-t">
+        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
+          <div>
+            <p className="section-kicker">Engineering signals</p>
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">
+              Competitive programming as supporting evidence, not the engineering story, and the
+              day-to-day toolkit.
+            </p>
+          </div>
+        </div>
+        <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start">
+          <CpGraph />
+          <div id="skills" className="grid gap-6 sm:grid-cols-2">
+            {skillGroups.map((group) => (
+              <div key={group.title} className="border-t pt-4">
+                <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  {group.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-foreground">{group.skills.join(" / ")}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -127,116 +210,14 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="systems" className="editorial-section scroll-mt-20 border-t">
-        <div className="grid gap-8 md:grid-cols-[180px_1fr]">
-          <div>
-            <p className="section-kicker">Flagship systems</p>
-            <p className="mt-4 max-w-40 text-sm text-muted-foreground">
-              Durable execution, CDC, and reorg-safe indexing.
-            </p>
-            <p className="mt-6 max-w-44 font-mono text-xs leading-5 text-muted-foreground">
-              Live dashboards on free-tier hosting may take 30–60s to wake.
-            </p>
-            <Link href="/systems" className="quiet-link mt-8 inline-flex items-center gap-2 text-sm">
-              Systems track
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <ProjectGrid projects={systems} />
-        </div>
-      </section>
-
-      <TrackSelector />
-
-      <section id="experience" className="editorial-section scroll-mt-20 border-t">
-        <div className="grid gap-8 md:grid-cols-[180px_1fr]">
-          <div>
-            <p className="section-kicker">Experience</p>
-            <p className="mt-4 max-w-36 text-sm text-muted-foreground">Most recent first.</p>
-          </div>
-          <ExperienceList />
-        </div>
-      </section>
-
-      <OpenSourceSection />
-
-      <section id="work" className="editorial-section scroll-mt-20 border-t">
-        <div className="grid gap-8 md:grid-cols-[180px_1fr]">
-          <div>
-            <p className="section-kicker">Selected product and market systems</p>
-            <p className="mt-4 max-w-40 text-sm text-muted-foreground">
-              Full-stack product work and the trading-systems flagship.
-            </p>
-            <Link href="/work" className="quiet-link mt-8 inline-flex items-center gap-2 text-sm">
-              All work
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <ProjectGrid projects={selected} />
-        </div>
-      </section>
-
-      <FeaturedCaseStudy />
-
-      <CapabilityStrip />
-
-      <section id="signals" className="editorial-section scroll-mt-20 border-t">
-        <div className="grid gap-8 md:grid-cols-[180px_minmax(0,1fr)]">
-          <div>
-            <p className="section-kicker">Competitive programming</p>
-            <p className="mt-4 max-w-40 text-sm text-muted-foreground">
-              Supporting evidence, not the engineering story.
-            </p>
-          </div>
-          <div>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {cpProfiles.map((profile) => (
-                <a
-                  key={profile.platform}
-                  href={profile.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex h-full flex-col border border-border/80 p-4 transition-colors hover:border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                >
-                  <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                    {profile.platform}
-                  </p>
-                  <p className="mt-3 text-sm text-foreground">{profile.rating}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{profile.detail}</p>
-                </a>
-              ))}
-            </div>
-            <div className="mt-8">
-              <CpGraph />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="skills" className="editorial-section border-t">
-        <div className="grid gap-8 md:grid-cols-[180px_1fr]">
-          <p className="section-kicker">Toolkit</p>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {skillGroups.map((group) => (
-              <div key={group.title} className="border-t pt-4">
-                <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                  {group.title}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-foreground">{group.skills.join(" / ")}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section id="contact" className="editorial-section scroll-mt-20 border-t">
         <div className="grid gap-10 md:grid-cols-[180px_1fr]">
           <p className="section-kicker">Contact</p>
           <div>
             <h2 className="font-display text-4xl leading-tight sm:text-6xl">Reach out.</h2>
             <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
-              Open to focused backend and systems conversations, founding-team work, and software that
-              needs careful shipping.
+              Open to software engineering and founding-team opportunities, especially where
+              backend depth, product ownership and reliable systems matter.
             </p>
             <div className="mt-8 space-y-4 text-sm">
               <ContactHandshakeLink email={siteConfig.email} />

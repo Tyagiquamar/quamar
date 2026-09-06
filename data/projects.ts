@@ -100,7 +100,7 @@ export const projects: Project[] = [
         {
           title: "AI rule proposals",
           detail:
-            "Paste a policy and the generator drafts structured rules with verbatim source excerpts. Proposals stay inert until a human approves them and a set version is activated — model output can never silently change compliance behavior.",
+            "Paste a policy and the generator drafts structured rules with verbatim source excerpts. Proposals stay inert until a human approves them and a set version is activated. Model output can never silently change compliance behavior.",
         },
         {
           title: "Human review console",
@@ -132,7 +132,7 @@ export const projects: Project[] = [
         {
           title: "Hand-rolled SigV4 object storage",
           detail:
-            "Documents persist to S3-compatible storage (MinIO locally, Backblaze B2 in production) through a hand-rolled SigV4 signer — no SDK dependency at the storage boundary.",
+            "Documents persist to S3-compatible storage (MinIO locally, Backblaze B2 in production) through a hand-rolled SigV4 signer. No SDK dependency sits at the storage boundary.",
         },
       ],
       testing:
@@ -192,7 +192,7 @@ export const projects: Project[] = [
         {
           title: "Read-only proof dashboard",
           detail:
-            "A Next.js console distinguishes deterministic Demo evidence from an unavailable, empty, partial or populated Live API response — it never replaces an unavailable response with fixture data.",
+            "A Next.js console distinguishes deterministic Demo evidence from an unavailable, empty, partial or populated Live API response. It never replaces an unavailable response with fixture data.",
         },
       ],
       decisions: [
@@ -209,7 +209,7 @@ export const projects: Project[] = [
         {
           title: "Failure scenes as the product",
           detail:
-            "Automated scenes SIGKILL workers mid-execution and drive crash recovery, stale fencing, duplicate starts and retry exhaustion — the proof is the point, not an afterthought.",
+            "Automated scenes SIGKILL workers mid-execution and drive crash recovery, stale fencing, duplicate starts and retry exhaustion. The proof is the point, not an afterthought.",
         },
       ],
       testing:
@@ -231,7 +231,7 @@ export const projects: Project[] = [
     showOnHome: false,
     descriptor: "Supervised AI support operations",
     description:
-      "Traced agent pipeline: injection scan, intent classification, grounded cited drafts — and financial write actions queued behind an explicit human approval gate. Not a chatbot; a supervised ops system.",
+      "Traced agent pipeline: injection scan, intent classification, grounded cited drafts, and financial write actions queued behind an explicit human approval gate. Not a chatbot; a supervised ops system.",
     tech: ["Next.js", "PostgreSQL", "pgvector", "Gemini"],
     featured: true,
     github: "https://github.com/Tyagiquamar/supportpilot",
@@ -331,7 +331,7 @@ export const projects: Project[] = [
     caseStudy: {
       headline: "Change data capture that can prove what it delivered",
       problem:
-        "Databases change and everything downstream finds out late: caches drift, search indexes fall behind, invoices wait on batch jobs. Polling misses deletes and double-reads race transactions — and nobody can prove what was delivered, or to whom.",
+        "Databases change and everything downstream finds out late: caches drift, search indexes fall behind, invoices wait on batch jobs. Polling misses deletes and double-reads race transactions, and nobody can prove what was delivered, or to whom.",
       built: [
         {
           title: "WAL capture with pgoutput",
@@ -341,7 +341,7 @@ export const projects: Project[] = [
         {
           title: "The capture invariant",
           detail:
-            "Capture persists the transaction's normalized events and advances the metadata checkpoint in one transaction. Only after that commit may capture report the flushed LSN back to PostgreSQL — a crash before acknowledgement replays WAL without creating a second durable event identity.",
+            "Capture persists the transaction's normalized events and advances the metadata checkpoint in one transaction. Only after that commit may capture report the flushed LSN back to PostgreSQL. A crash before acknowledgement replays WAL without creating a second durable event identity.",
         },
         {
           title: "Fenced checkpoints and consumers",
@@ -363,7 +363,7 @@ export const projects: Project[] = [
         {
           title: "The dashboard never fakes it",
           detail:
-            "Live mode never substitutes fixtures when the API is unavailable or empty — unavailable reads stay visibly unavailable. Demo mode is opt-in deterministic evidence, clearly labeled.",
+            "Live mode never substitutes fixtures when the API is unavailable or empty. Unavailable reads stay visibly unavailable. Demo mode is opt-in deterministic evidence, clearly labeled.",
         },
         {
           title: "Keys stay server-side",
@@ -404,7 +404,7 @@ export const projects: Project[] = [
         {
           title: "Canonical-chain coordinator",
           detail:
-            "A single writer ingests heads, detects parent-hash divergence, finds the common ancestor, orphans the dead branch and its events, then indexes the replacement — atomically with the checkpoint.",
+            "A single writer ingests heads, detects parent-hash divergence, finds the common ancestor, orphans the dead branch and its events, then indexes the replacement, atomically with the checkpoint.",
         },
         {
           title: "Event lifecycle",
@@ -431,7 +431,7 @@ export const projects: Project[] = [
         {
           title: "Deterministic fake RPC",
           detail:
-            "Integration tests use an in-process Ethereum RPC and testcontainers Postgres — including a flagship reorg scene and restart-after-reorg convergence — without a live Ethereum dependency.",
+            "Integration tests use an in-process Ethereum RPC and testcontainers Postgres, including a flagship reorg scene and restart-after-reorg convergence, without a live Ethereum dependency.",
         },
         {
           title: "Explicit demo vs live",
@@ -444,7 +444,7 @@ export const projects: Project[] = [
       screenshots: [
         {
           title: "Operator dashboard",
-          detail: "Labeled demo snapshot of indexing, reorg handling, and delivery — never implied to be mainnet data",
+          detail: "Labeled demo snapshot of indexing, reorg handling, and delivery, never implied to be mainnet data",
           src: "/images/chainforge-dashboard.png",
         },
       ],
@@ -467,7 +467,7 @@ export const projects: Project[] = [
       alt: "ApexBook operator dashboard overview: feed health, paper orders, and system status",
     },
     caseStudy: {
-      headline: "Crypto execution and market-data engine in Go — paper matching against public L2 data",
+      headline: "Crypto execution and market-data engine in Go: paper matching against public L2 data",
       problem:
         "A depth stream cannot be applied to an empty map. Missed or misordered updates silently corrupt the local book, and matching on top of that book is meaningless. ApexBook makes snapshot/delta reconciliation, determinism, and pre-trade risk inspectable. It does not place real-money orders.",
       built: [
@@ -524,7 +524,7 @@ export const projects: Project[] = [
         },
         {
           title: "Execution",
-          detail: "Paper fills against the local book — simulated matching, not live exchange orders",
+          detail: "Paper fills against the local book: simulated matching, not live exchange orders",
           src: "/images/apexbook-execution.png",
         },
       ],
@@ -559,7 +559,7 @@ export const projects: Project[] = [
         {
           title: "Depth-aware opportunity pricing",
           detail:
-            "Opportunities are computed from observed depth (VWAP) after configurable fees, modeled slippage, and a latency penalty — not top-of-book spreads.",
+            "Opportunities are computed from observed depth (VWAP) after configurable fees, modeled slippage, and a latency penalty, not top-of-book spreads.",
         },
         {
           title: "Non-atomic two-leg simulation",
@@ -619,7 +619,7 @@ export const projects: Project[] = [
     caseStudy: {
       headline: "Correctness-first market-data and execution-simulation engine in C++20",
       problem:
-        "Exchange order-book feeds are incremental and stateful: a missed or misordered update silently corrupts the local book, and everything computed on top of it is wrong. Execution simulation is just as fragile — it is meaningless unless replaying a recorded session produces exactly the same book state and results as processing it live.",
+        "Exchange order-book feeds are incremental and stateful: a missed or misordered update silently corrupts the local book, and everything computed on top of it is wrong. Execution simulation is just as fragile: it is meaningless unless replaying a recorded session produces exactly the same book state and results as processing it live.",
       built: [
         {
           title: "L2 order-book reconstruction",
@@ -629,7 +629,7 @@ export const projects: Project[] = [
         {
           title: "Exchange sequencing integrity",
           detail:
-            "OKX books feeds use seqId/prevSeqId continuity, not dense +1 counters. A snapshot (prevSeqId = -1) establishes the baseline; an update is accepted only if its prevSeqId equals the last accepted seqId. A mismatch invalidates the book, counts a gap and requests a fresh snapshot — the bad update is never applied.",
+            "OKX books feeds use seqId/prevSeqId continuity, not dense +1 counters. A snapshot (prevSeqId = -1) establishes the baseline; an update is accepted only if its prevSeqId equals the last accepted seqId. A mismatch invalidates the book, counts a gap and requests a fresh snapshot. The bad update is never applied.",
         },
         {
           title: "Execution simulator",
