@@ -639,7 +639,7 @@ export const projects: Project[] = [
         {
           title: "Deterministic record & replay",
           detail:
-            "Recorded market events replay through the same validation/application path as live data. The parity invariant — identical event sequence, byte-identical order book, identical execution results — is enforced by qx.parity_test, a required member of make verify.",
+            "Recorded market events replay through the same validation/application path as live data. The parity invariant (identical event sequence, byte-identical order book, identical execution results) is enforced by qx.parity_test, a required member of make verify.",
         },
         {
           title: "Resilient feed client",
@@ -649,24 +649,24 @@ export const projects: Project[] = [
         {
           title: "API & engineering console",
           detail:
-            "REST endpoints for /health, /book and /simulate plus a 1 Hz WebSocket /events stream. The Next.js dashboard exposes feed and book health — including parity status — and reports the engine as unavailable instead of rendering placeholder data.",
+            "REST endpoints for /health, /book and /simulate plus a 1 Hz WebSocket /events stream. The Next.js dashboard exposes feed and book health, including parity status, and reports the engine as unavailable instead of rendering placeholder data.",
         },
       ],
       decisions: [
         {
           title: "Sequence correctness over naive counters",
           detail:
-            "seqId may jump forward arbitrarily, repeat on empty keepalives, or move lower on a maintenance reset — none of those are false gaps. Continuity is judged solely on prevSeqId matching the last accepted seqId, with keepalive, stale-reject and gap-resync handled as distinct verdicts.",
+            "seqId may jump forward arbitrarily, repeat on empty keepalives, or move lower on a maintenance reset: none of those are false gaps. Continuity is judged solely on prevSeqId matching the last accepted seqId, with keepalive, stale-reject and gap-resync handled as distinct verdicts.",
         },
         {
           title: "Explicit integrity policy",
           detail:
-            "OKX deprecated the books checksum on 2026-06-23 — the field still arrives but is fixed to 0 — so the engine runs OKX under an explicit SequenceOnly integrity policy and never advertises CRC32 as a live guarantee. Checksum-capable feeds can opt into SequenceAndChecksum, where a genuine mismatch takes the book offline until a fresh snapshot recovers it.",
+            "OKX deprecated the books checksum on 2026-06-23 (the field still arrives but is fixed to 0) so the engine runs OKX under an explicit SequenceOnly integrity policy and never advertises CRC32 as a live guarantee. Checksum-capable feeds can opt into SequenceAndChecksum, where a genuine mismatch takes the book offline until a fresh snapshot recovers it.",
         },
         {
           title: "One code path for live and replay",
           detail:
-            "Replay drives the same decoder, validator, book and execution simulator as the live feed — there is no separate demo implementation. The parity test ships with negative controls: dropping one delta or tampering one prevSeqId must break parity.",
+            "Replay drives the same decoder, validator, book and execution simulator as the live feed: there is no separate demo implementation. The parity test ships with negative controls: dropping one delta or tampering one prevSeqId must break parity.",
         },
         {
           title: "No fake availability",
@@ -675,7 +675,7 @@ export const projects: Project[] = [
         },
       ],
       testing:
-        "make verify runs three gates in a Linux container: an ASan+UBSan instrumented build of the production libraries under the full CTest suite, a ThreadSanitizer pass, and clang-tidy over core, feed and server — all enforced by GitHub Actions alongside dashboard tests, typecheck and build, plus a Docker replay smoke test. Benchmarks are measured, not claimed (GCC 12, Release -O2): applyDelta at p50 122 ns across 200k ops on a 5,000-level book, and deterministic replay sustaining ~239,656 events/s over a 100k-delta recording.",
+        "make verify runs three gates in a Linux container: an ASan+UBSan instrumented build of the production libraries under the full CTest suite, a ThreadSanitizer pass, and clang-tidy over core, feed and server: all enforced by GitHub Actions alongside dashboard tests, typecheck and build, plus a Docker replay smoke test. Benchmarks are measured, not claimed (GCC 12, Release -O2): applyDelta at p50 122 ns across 200k ops on a 5,000-level book, and deterministic replay sustaining ~239,656 events/s over a 100k-delta recording.",
       architecture: {
         image: "/images/quantxecute-architecture.svg",
         caption:
@@ -691,7 +691,7 @@ export const projects: Project[] = [
       background: {
         heading: "Algorithms & performance background",
         body:
-          "The habits behind this engine come from competitive programming: reasoning about invariants, edge cases and complexity before writing code. That background carries directly into correctness-sensitive C++ systems — sequence validation, deterministic replay and sanitizer-clean concurrency are the same discipline applied to market data.",
+          "The habits behind this engine come from competitive programming: reasoning about invariants, edge cases and complexity before writing code. That background carries directly into correctness-sensitive C++ systems: sequence validation, deterministic replay and sanitizer-clean concurrency are the same discipline applied to market data.",
       },
     },
   },
@@ -743,17 +743,17 @@ export const projects: Project[] = [
         {
           title: "One log, three jobs",
           detail:
-            "The activity event {id, seq, type, actor, entityId, data, ts} is simultaneously the realtime payload, the activity feed, and the reconnect-replay source — one source of truth instead of three drifting ones.",
+            "The activity event {id, seq, type, actor, entityId, data, ts} is simultaneously the realtime payload, the activity feed, and the reconnect-replay source: one source of truth instead of three drifting ones.",
         },
         {
           title: "Authz at every layer",
           detail:
-            "JWT verified on the Socket.IO handshake and membership re-checked on every room join; REST routes check membership on every request; non-members get 403/404 — tested, not assumed.",
+            "JWT verified on the Socket.IO handshake and membership re-checked on every room join; REST routes check membership on every request; non-members get 403/404 (tested, not assumed).",
         },
         {
           title: "Cursor pagination everywhere",
           detail:
-            "Keyset cursors (sort field + _id tiebreak) for issues, comments and activity keep pages stable while rows change underneath — regression-tested.",
+            "Keyset cursors (sort field + _id tiebreak) for issues, comments and activity keep pages stable while rows change underneath (regression-tested).",
         },
       ],
       testing:
@@ -808,7 +808,7 @@ export const projects: Project[] = [
         {
           title: "Immutable event log",
           detail:
-            "Every state transition is appended to an execution_events table — the schema is the proof, inspectable from Postgres through a read-only Next.js dashboard.",
+            "Every state transition is appended to an execution_events table: the schema is the proof, inspectable from Postgres through a read-only Next.js dashboard.",
         },
         {
           title: "Real MCP protocol",
@@ -825,7 +825,7 @@ export const projects: Project[] = [
         {
           title: "Failure demos as scripts",
           detail:
-            "fencing-demo.sh, duplicate-demo.sh and retry-demo.sh reproduce stale-worker rejection, duplicate submission, and retry exhaustion against the running stack — and the hosted demo kills its own executor to generate genuine crash-recovery events.",
+            "fencing-demo.sh, duplicate-demo.sh and retry-demo.sh reproduce stale-worker rejection, duplicate submission, and retry exhaustion against the running stack, and the hosted demo kills its own executor to generate genuine crash-recovery events.",
         },
         {
           title: "Raw pgx, no ORM",
@@ -908,11 +908,11 @@ export const capabilityAreas: CapabilityArea[] = [
   },
   {
     title: "Customer-facing Engineering",
-    detail: "React, Next.js, Flutter — including realtime collaborative UX.",
+    detail: "React, Next.js, Flutter, including realtime collaborative UX.",
   },
   {
     title: "Backend & Data",
-    detail: "Go, Node.js, PostgreSQL, Supabase — API design and distributed workflows.",
+    detail: "Go, Node.js, PostgreSQL, Supabase: API design and distributed workflows.",
   },
   {
     title: "AI Systems",

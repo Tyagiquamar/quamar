@@ -15,15 +15,17 @@ import Link from "next/link"
 import Image from "next/image"
 import {
   about,
+  education,
   hero,
   proofMarks,
   siteConfig,
   skillGroups,
   stats,
 } from "@/data/portfolio"
-import { featuredOpenSource, openSource } from "@/data/opensource"
+import { activeContributions, featuredOpenSource } from "@/data/opensource"
 import { trackOrder, tracks } from "@/data/tracks"
 import { homeFeaturedProjects } from "@/lib/projects"
+import { getMergedPrStats } from "@/lib/github"
 
 function BrandMark({
   label,
@@ -58,7 +60,8 @@ function BrandMark({
   )
 }
 
-export default function Portfolio() {
+export default async function Portfolio() {
+  const { count: mergedCount } = await getMergedPrStats()
   const selected = homeFeaturedProjects()
 
   return (
@@ -89,13 +92,16 @@ export default function Portfolio() {
               <a href="#experience" className="quiet-link">
                 Experience
               </a>
+              <a href="#open-source" className="quiet-link">
+                Open Source
+              </a>
               <a href="#contact" className="quiet-link">
                 Contact
               </a>
             </div>
             <div className="mt-12 border-y py-4">
               <p className="section-kicker">Current engineering focus</p>
-              <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+              <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-6">
                 {proofMarks.map((item) => (
                   <div
                     key={item.label}
@@ -123,7 +129,7 @@ export default function Portfolio() {
               { label: "Focus", value: hero.focus },
               {
                 label: "Open Source",
-                value: `${openSource.mergedTotal} upstream PRs merged`,
+                value: `${mergedCount} Merged Pull Requests`,
               },
               { label: "Location", value: siteConfig.location },
             ]}
@@ -135,7 +141,7 @@ export default function Portfolio() {
         <SectionHeading
           kicker="Experience"
           title="Professional Experience"
-          description="Most recent first. Summaries here; the Takkada case study carries the detail."
+          description="Most recent first. Engineering across early-stage startups, hyper-growth production backends, and cloud-native open source."
         />
         <div className="mt-8">
           <ExperienceList variant="home" />
@@ -144,12 +150,18 @@ export default function Portfolio() {
 
       <FeaturedCaseStudy />
 
+      <OpenSourceSection
+        contributions={featuredOpenSource.slice(0, 9)}
+        active={activeContributions}
+        mergedCount={mergedCount}
+      />
+
       <section id="work" className="editorial-section scroll-mt-20 border-t">
         <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
           <SectionHeading
             kicker="Selected Work"
             title="Selected Engineering Work"
-            description="A sample across systems, trading infrastructure, and product. The full project sets live on the track pages."
+            description="Systems engines, trading infrastructure, and full-stack software products."
             className="max-w-2xl"
           />
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pb-1 text-sm">
@@ -172,19 +184,17 @@ export default function Portfolio() {
 
       <TrackSelector />
 
-      <OpenSourceSection contributions={featuredOpenSource.slice(0, 6)} />
-
       <CapabilityStrip />
 
       <section id="signals" className="editorial-section scroll-mt-20 border-t">
         <SectionHeading
           kicker="Signals"
           title="Engineering Signals"
-          description="Competitive programming as supporting evidence, not the engineering story, and the day-to-day toolkit."
+          description="Competitive programming as foundational problem-solving discipline, technical skills, and academic background."
         />
         <div className="mt-10 space-y-10">
           <CpGraph />
-          <div id="skills" className="grid gap-6 sm:grid-cols-2">
+          <div id="skills" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {skillGroups.map((group) => (
               <div key={group.title} className="border-t pt-4">
                 <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
@@ -193,6 +203,20 @@ export default function Portfolio() {
                 <p className="mt-3 text-sm leading-6 text-foreground">{group.skills.join(" / ")}</p>
               </div>
             ))}
+          </div>
+          <div id="education" className="border-t border-border/70 pt-6">
+            <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              Education
+            </h3>
+            <div className="mt-3 flex flex-wrap items-baseline justify-between gap-2">
+              <div>
+                <p className="text-base font-medium text-foreground">{education.institution}</p>
+                <p className="mt-0.5 text-sm text-muted-foreground">{education.degree}</p>
+              </div>
+              <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                {education.dates} · {education.score}
+              </p>
+            </div>
           </div>
         </div>
       </section>
