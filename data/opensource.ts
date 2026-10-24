@@ -26,9 +26,21 @@ export interface ActiveContribution {
 
 export const openSource = {
   positioning:
-    "Selected production code contributions across trading systems, distributed databases, systems software, and cloud infrastructure.",
-  verifiedOn: "2026-09-24",
+    "Selected merged contributions across Rust/Go databases, streaming correctness, distributed storage, networking, and cloud infrastructure.",
+  verifiedOn: "2026-10-24",
   contributions: [
+    {
+      repo: "GreptimeTeam/greptimedb",
+      title: "Correct Prometheus timeseries grouping across RecordBatches",
+      detail: "Merged duplicate timeseries across streaming RecordBatches in Prometheus remote-read paths, protecting response correctness.",
+      language: "Rust",
+      domain: "Time-series / telemetry databases",
+      prNumber: 9032,
+      href: "https://github.com/GreptimeTeam/greptimedb/pull/9032",
+      status: "MERGED",
+      mergedAt: "2026-09-19",
+      featured: true,
+    },
     {
       repo: "thrasher-corp/gocryptotrader",
       title: "Order remaining amount calculation",
@@ -66,19 +78,6 @@ export const openSource = {
       href: "https://github.com/dragonflydb/dragonfly/pull/8306",
       status: "MERGED",
       mergedAt: "2026-09-16",
-      featured: true,
-    },
-    {
-      repo: "GreptimeTeam/greptimedb",
-      title: "Prometheus remote read timeseries deduplication",
-      detail:
-        "Merged duplicate timeseries across streaming RecordBatches in Prometheus remote-read server paths to prevent corrupted time-series responses.",
-      language: "Rust",
-      domain: "Time-series database",
-      prNumber: 9032,
-      href: "https://github.com/GreptimeTeam/greptimedb/pull/9032",
-      status: "MERGED",
-      mergedAt: "2026-09-19",
       featured: true,
     },
     {
