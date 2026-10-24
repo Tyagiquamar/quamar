@@ -1,11 +1,11 @@
 export const siteConfig = {
   name: "Mohd Quamar Tyagi",
-  title: "Mohd Quamar Tyagi · Software Engineer",
+  title: "Mohd Quamar Tyagi · Go / Rust Backend & Systems Engineer",
   description:
-    "Software Engineer with experience at Zomato, startup engineering at Takkada, Linux Foundation mentorship and extensive open-source contributions across backend, full-stack, infrastructure and systems software.",
+    "Go backend engineer with production Go/gRPC experience at Zomato and merged contributions to Rust/Go databases, distributed storage, streaming systems, and cloud infrastructure.",
   url: "https://quamar.vercel.app",
   email: "mohdquamartyagi@gmail.com",
-  location: "Remote · UTC+5:30",
+  location: "Delhi NCR, India · Open to remote / hybrid / onsite",
 } as const
 
 export const socials = [
@@ -27,12 +27,12 @@ export const navLinks = [
 
 export const hero = {
   name: "Mohd Quamar Tyagi",
-  role: "Software Engineer",
+  role: "Go / Rust Backend & Systems Engineer",
   tagline:
-    "Building production software across backend, full-stack, infrastructure and open source.",
-  current: "Founding Engineer at Takkada · Previously SDE-1 at Zomato.",
+    "Building reliable Go backends and contributing to Rust/Go databases, distributed storage, streaming pipelines, and infrastructure.",
+  current: "Previously SDE-1 (Go Backend) at Zomato · Founding engineering experience at Takkada · Available immediately.",
   previous: "SDE-1 (Backend) · Zomato",
-  focus: "Backend · Full-Stack · Infrastructure · Systems",
+  focus: "Go · Rust OSS · Databases · Distributed Systems",
   photo: "/images/profile-rose.jpg",
 } as const
 
@@ -61,8 +61,8 @@ export const proofMarks: ProofMark[] = [
 ]
 
 export const about = {
-  heading: "Systems over demos.",
-  body: "I got into engineering through competitive programming. Years of Codeforces rounds taught me to reason about correctness and complexity before writing a line of code. That habit stuck: I am drawn to systems where getting it wrong is expensive: durable execution, data capture, and production backends. Day-to-day I also ship product surfaces people depend on. Outside of work I still do CP rounds and tinker with systems projects in Go and C++.",
+  heading: "Correctness, performance, and systems that last.",
+  body: "I build backend systems in Go and contribute to real-world Go, Rust, and C++ infrastructure. At Zomato, I worked on production Go/gRPC services and latency-sensitive APIs. In open source, my merged changes span GreptimeDB time-series correctness, ParadeDB query handling, Feldera streaming recovery, SeaweedFS distributed storage, and networking and security tooling. I care about data correctness, recoverability, concurrency, and measurable performance. Outside work, I also enjoy scientific open-source software, especially computational chemistry and scientific computing.",
 } as const
 
 export const cpProfiles = [
@@ -321,11 +321,11 @@ export const featuredRepos = [
 export const skillGroups = [
   {
     title: "Languages",
-    skills: ["Go", "C++", "TypeScript", "JavaScript", "Python", "SQL"],
+    skills: ["Go", "Rust (open-source contributions)", "C++", "TypeScript", "JavaScript", "Python", "SQL"],
   },
   {
     title: "Backend",
-    skills: ["gRPC", "REST", "Node.js", "Express", "FastAPI"],
+    skills: ["gRPC", "REST", "Go services", "Node.js", "Express", "FastAPI"],
   },
   {
     title: "Frontend",
