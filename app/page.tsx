@@ -84,6 +84,9 @@ export default async function Portfolio() {
               {hero.tagline}
             </p>
             <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">{hero.current}</p>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
+              Recent Rust/database OSS: <a className="quiet-link" href="https://github.com/GreptimeTeam/greptimedb/pull/9032" target="_blank" rel="noopener noreferrer">GreptimeDB record-batch grouping fix</a> · <a className="quiet-link" href="https://github.com/paradedb/paradedb/pull/6308" target="_blank" rel="noopener noreferrer">ParadeDB query correctness</a> · <a className="quiet-link" href="https://github.com/feldera/feldera/pull/7011" target="_blank" rel="noopener noreferrer">Feldera streaming recovery</a>
+            </p>
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
               <a href="/resume.pdf" download className="quiet-link inline-flex items-center gap-2">
                 <Download className="h-4 w-4" />
@@ -124,7 +127,7 @@ export default async function Portfolio() {
             role={hero.role}
             stats={stats}
             facts={[
-              { label: "Current", value: "Founding Engineer · Takkada" },
+              { label: "Availability", value: "Immediate · Delhi NCR / Remote / Hybrid" },
               { label: "Previous", value: hero.previous },
               { label: "Focus", value: hero.focus },
               {
@@ -247,11 +250,11 @@ export default async function Portfolio() {
                 github.com/Tyagiquamar
               </Link>
               <Link
-                href="https://linkedin.com/in/mohd-quamar-tyagi"
+                href="https://www.linkedin.com/in/mohd-quamar-tyagi-5456b1225/"
                 className="quiet-link flex items-center gap-3"
               >
                 <Linkedin className="h-4 w-4" />
-                linkedin.com/in/mohd-quamar-tyagi
+                linkedin.com/in/mohd-quamar-tyagi-5456b1225/
               </Link>
               <p className="flex items-center gap-3 text-muted-foreground">
                 <MapPin className="h-4 w-4" />
